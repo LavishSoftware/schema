@@ -5,22 +5,14 @@
   "type": "object",
   "definitions": {
     "numberOrInteger": {
-        "anyOf": [
-            {
-                "type": "integer"
-            },
-            {
-                "type": "number"
-            }
-        ]
-    }
-  },
-  "properties": {
-    "duration":{
-      "$ref": "#/definitions/numberOrInteger"
-    },
-    "instant":{
-      "type":"boolean"
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        }
+      ]
     }
   },
   "oneOf": [
@@ -42,6 +34,12 @@
       "properties": {
         "type": {
           "type": "string"
+        },
+        "duration": {
+          "$ref": "#/definitions/numberOrInteger"
+        },
+        "instant": {
+          "type": "boolean"
         }
       },
       "required": [
