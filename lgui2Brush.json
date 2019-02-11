@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/lgui2Brush.json",
+    "description": "JSON Schema for a LavishGUI2 Brush",
+    "definitions": {
+        "numberOrInteger": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "lgui2": {
+            "pixelShader": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2PixelShader.json"
+            },
+            "vertexShader": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2VertexShader.json"
+            },
+            "color": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Color.json"
+            }
+        }
+    },
+    "type": "object",
+    "properties": {
+        "color": {
+            "$ref": "#/definitions/lgui2/color"
+        },
+        "imageFile": {
+            "type": "string"
+        },
+        "imageFileTransparencyKey": {
+            "$ref": "#/definitions/lgui2/color"
+        },
+        "imageOrientation": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "normal",
+                            "mirrorHorizontal",
+                            "mirrorVertical"
+                        ]
+                    }
+                }
+            ]
+        },
+        "pixelShader": {
+            "$ref": "#/definitions/lgui2/pixelShader"
+        },
+        "vertexShader": {
+            "$ref": "#/definitions/lgui2/vertexShader"
+        }
+    }
+}

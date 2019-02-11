@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://www.lavishsoft.com/schema/lmacTask.json",
+  "description": "JSON Schema for a LMAC Task Type",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "oneOf": [
+    {
+    "properties":{
+      "object": {
+        "type": "string"
+      },
+      "method": {
+        "type": "string"
+      }  
+      },
+      "required":["object","method"]
+    },
+    {
+      "properties":{
+        "function":{
+          "type":"string"
+        }
+      },
+      "required":["function"]
+    }
+  ],
+  "required": [ "name" ]
+}

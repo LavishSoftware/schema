@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://www.lavishsoft.com/schema/lmacPackage.json",
+  "description": "JSON Schema for an LMAC Package",
+  "type": "object",
+  "properties": {
+    "taskLibraries": {
+      "type": "object",
+      "title": "Task Libraries",
+      "description": "A set of Task Libraries to find/create and add specified Tasks to.",
+      "additionalProperties": {
+        "type": "object",
+        "title": "Task Library",
+        "description": "A Task Library (which may or may not already exist) to fill with Tasks",
+
+        "additionalProperties": {
+          "type": "object",
+          "title": "Task",
+          "description": "An LMAC Task",
+          "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
+        }
+      }
+    },
+    "taskTypes": {
+      "items": {
+        "type": "object",
+        "title": "Task Type",
+        "description": "An LMAC Task Type",
+        "$ref": "http://www.lavishsoft.com/schema/lmacTaskType.json"
+      },
+      "type": "array"
+    }
+  }
+}

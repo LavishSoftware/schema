@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/lgui2Animation.json",
+    "description": "JSON Schema for a LavishGUI2 Animation",
+    "type": "object",
+    "definitions": {
+        "numberOrInteger": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        }
+    },
+    "properties": {
+        "type": {
+            "type": "string",
+            "examples": ["chain","fade","slide","value"]
+        },
+        "name": {
+            "type": "string",
+            "description": "name of the Animation. Must be unique within its parent, or the previous Animation with the same name will be replaced"
+        },
+        "duration": {
+            "allOf":[{"$ref":"#/definitions/numberOrInteger"}],
+            "description":"A number specifying the duration, if any, for the Animation. If specified as an integer (whole number), the duration is interpreted as milliseconds. If specified as a floating point, the duration is interpreted as seconds."
+        },
+        "instant":{
+            "type":"boolean",
+            "description":"whether a 0-duration Animation is instant. If not, it may run indefinitely."
+        }
+    },
+    "required": [
+        "type"
+    ]
+}

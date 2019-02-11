@@ -1,0 +1,1343 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/lgui2Element.json",
+    "description": "JSON Schema for a LavishGUI2 Element",
+    "definitions": {
+        "numberOrInteger": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "lgui2": {
+            "element": {
+                "$ref": "#"
+            },
+            "brush": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Brush.json"
+            },
+            "font": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Font.json"
+            },
+            "animation": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Animation.json"
+            },
+            "animationType": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2AnimationType.json"
+            },
+            "eventHandler": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2EventHandler.json"
+            },
+            "inputBinding": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json"
+            },
+            "textScanner": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2TextScanner.json"
+            },
+            "color": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Color.json"
+            },
+            "children": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/lgui2/element"
+                        }
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/lgui2/element"
+                        }
+                    }
+                ]
+            },
+            "point": {
+                "oneOf": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/numberOrInteger"
+                        },
+                        "maxItems": 2
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "x": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "y": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            }
+                        }
+                    }
+                ]
+            },
+            "size": {
+                "oneOf": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/numberOrInteger"
+                        },
+                        "maxItems": 2
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "width": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "height": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            }
+                        }
+                    }
+                ]
+            },
+            "edge": {
+                "type": "string",
+                "enum": [
+                    "left",
+                    "right",
+                    "top",
+                    "bottom"
+                ]
+            },
+            "thickness": {
+                "oneOf": [
+                    {
+                        "type": "array",
+                        "maxItems": 4,
+                        "items": {
+                            "$ref": "#/definitions/numberOrInteger"
+                        }
+                    },
+                    {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "left": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "right": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "top": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "bottom": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            }
+                        }
+                    }
+                ]
+            },
+            "borderBase": {
+                "properties": {
+                    "borderBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "backgroundBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "borderThickness": {
+                        "$ref": "#/definitions/lgui2/thickness"
+                    }
+                }
+            },
+            "textblockBase": {
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "lavishscript": {
+                        "type": "object",
+                        "properties": {
+                            "parse": {
+                                "type": "boolean"
+                            },
+                            "ms": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "frames": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            "maxLength": {
+                                "$ref": "#/definitions/numberOrInteger"
+                            }
+                        }
+                    },
+                    "textScanner": {
+                        "$ref": "#/definitions/lgui2/textScanner"
+                    }
+                }
+            },
+            "panelBase": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "children": {
+                        "$ref": "#/definitions/lgui2/children"
+                    }
+                }
+            },
+            "contentContainer": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "content": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "contentContainer": {
+                        "$ref": "#/definitions/lgui2/element"
+                    }
+                }
+            },
+            "headeredContentContainer": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "header": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "headerContainer": {
+                        "$ref": "#/definitions/lgui2/element"
+                    }
+                }
+            },
+            "item": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "itemType": {
+                                "type": "string",
+                                "default": "default"
+                            },
+                            "itemAs": {
+                                "type": "string",
+                                "enum": [
+                                    "content",
+                                    "children"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "itemViewGenerator": {
+                "oneOf": [
+                    {
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "type": "string",
+                            "enum": [
+                                "method",
+                                "code"
+                            ]
+                        },
+                        "required": [
+                            "type"
+                        ],
+                        "oneOf": [
+                            {
+                                "properties": {
+                                    "type": {
+                                        "const": "method"
+                                    },
+                                    "object": {
+                                        "type": "string"
+                                    },
+                                    "method": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "object",
+                                    "method"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "type": {
+                                        "const": "code"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "code"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "itemList": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/lgui2/item"
+                        }
+                    },
+                    "itemViewGenerators": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/lgui2/itemViewGenerator"
+                        }
+                    }
+                }
+            },
+            "anchor": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "anchor"
+                    },
+                    "anchorToCursor": {
+                        "type": "boolean"
+                    },
+                    "clipToParent": {
+                        "type": "boolean"
+                    },
+                    "anchorLocation": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "anchorLocationFactor": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "anchorOffset": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "anchorOffsetFactor": {
+                        "$ref": "#/definitions/lgui2/point"
+                    }
+                }
+            },
+            "border": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "border"
+                    },
+                    "child": {
+                        "$ref": "#/definitions/lgui2/element"
+                    }
+                }
+            },
+            "dockpanel": {
+                "properties": {
+                    "type": {
+                        "const": "dockpanel"
+                    }
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/panelBase"
+                    }
+                ]
+            },
+            "dragger": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "dragger"
+                    },
+                    "allowMove": {
+                        "type": "boolean"
+                    },
+                    "allowResize": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "expander": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/headeredContentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "expander"
+                    },
+                    "expanded": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "hud": {
+                "properties": {
+                    "type": {
+                        "const": "hud"
+                    }
+                }
+            },
+            "panel": {
+                "$ref": "#/definitions/lgui2/panelBase",
+                "properties": {
+                    "type": {
+                        "const": "panel"
+                    }
+                }
+            },
+            "popup": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "popup"
+                    }
+                }
+            },
+            "radialItem": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "arcLength": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "innerRadius": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "outerRadius": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "arcMargins": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/definitions/numberOrInteger"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            }
+                        ]
+                    },
+                    "styles": {
+                        "type": "object"
+                    }
+                }
+            },
+            "radialpanel": {
+                "properties": {
+                    "type": {
+                        "const": "radialpanel"
+                    },
+                    "deadZone": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "liveZone": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "zoneMargin": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "deadZoneBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "originDegrees": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "resolution": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "childSize": {
+                        "$ref": "#/definitions/lgui2/size"
+                    },
+                    "radialItem": {
+                        "$ref": "#/definitions/lgui2/radialItem"
+                    }
+                }
+            },
+            "screen": {
+                "properties": {
+                    "type": {
+                        "const": "screen"
+                    }
+                }
+            },
+            "scrollviewer": {
+                "properties": {
+                    "type": {
+                        "const": "scrollviewer"
+                    },
+                    "horizontalBar": {
+                        "type": {
+                            "const": "scrollbar"
+                        },
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/element"
+                            }
+                        ]
+                    },
+                    "verticalBar": {
+                        "type": {
+                            "const": "scrollbar"
+                        },
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/element"
+                            }
+                        ]
+                    },
+                    "horizontalScroll": {
+                        "type": "string",
+                        "enum": [
+                            "auto",
+                            "none",
+                            "always"
+                        ]
+                    },
+                    "verticalScroll": {
+                        "type": "string",
+                        "enum": [
+                            "auto",
+                            "none",
+                            "always"
+                        ]
+                    },
+                    "maxContentWidth": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "maxContentHeight": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    }
+                }
+            },
+            "stackpanel": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/panelBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "stackpanel"
+                    },
+                    "orientation": {
+                        "type": "string",
+                        "enum": [
+                            "horizontal",
+                            "vertical"
+                        ],
+                        "default": "vertical"
+                    },
+                    "uniform": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "tab": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/headeredContentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "tab"
+                    }
+                }
+            },
+            "tabcontrol": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/headeredContentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "tabcontrol"
+                    },
+                    "headerEdge": {
+                        "$ref": "#/definitions/lgui2/edge"
+                    },
+                    "tabs": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "type": {
+                                                    "const": "tab"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/definitions/lgui2/element"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "type": {
+                                                    "const": "tab"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/definitions/lgui2/element"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "window": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "window"
+                    },
+                    "title": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "titleBar": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "expanded": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "imagebox": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "imagebox"
+                    },
+                    "imageBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    }
+                }
+            },
+            "progressbar": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "progressbar"
+                    },
+                    "textblock": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "text": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "percent",
+                            "value",
+                            "value/max"
+                        ]
+                    },
+                    "fillerBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "overlayBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "minValue": {
+                        "type": "integer"
+                    },
+                    "maxValue": {
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "radialgauge": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "radialgauge"
+                    },
+                    "textblock": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "text": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "percent",
+                            "value",
+                            "value/max"
+                        ]
+                    },
+                    "fillerBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "overlayBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "originDegrees": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "resolution": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "minValue": {
+                        "type": "integer"
+                    },
+                    "maxValue": {
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "integer"
+                    },
+                    "maxValueArcLength": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "outerRadius": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "outerRadiusFactor": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "innerRadius": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "innerRadiusFactor": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "centerPoint": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "centerPointFactor": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "needles": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/lgui2/radialGaugeNeedle"
+                        }
+                    }
+                }
+            },
+            "radialGaugeNeedle": {
+                "type": "object",
+                "properties": {
+                    "backgroundBrush": {
+                        "$ref": "#/definitions/lgui2/brush"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "minValue": {
+                        "type": "integer"
+                    },
+                    "maxValue": {
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "integer"
+                    },
+                    "originDegrees": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "maxValueArcLength": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "innerArcLength": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "outerArcLength": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "innerRadius": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "innerRadiusFactor": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "outerRadius": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "outerRadiusFactor": {
+                        "$ref": "#/definitions/numberOrInteger"
+                    },
+                    "segments": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "textblock": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/textblockBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "textblock"
+                    }
+                }
+            },
+            "button": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "button"
+                    }
+                }
+            },
+            "checkbox": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "checkbox"
+                    },
+                    "useIndeterminate": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "combobox": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/itemList"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "combobox"
+                    },
+                    "popup": {
+                        "$ref": "#/definitions/lgui2/element"
+                    }
+                }
+            },
+            "contextmenu": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/itemList"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "contextmenu"
+                    }
+                }
+            },
+            "itemview": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "itemview"
+                    }
+                }
+            },
+            "listbox": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/itemList"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "listbox"
+                    }
+                }
+            },
+            "scrollbar": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/panelBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "scrollbar"
+                    },
+                    "slider": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "incButton": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "decButton": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "fromEdge": {
+                        "$ref": "#/definitions/lgui2/edge"
+                    },
+                    "minValue": {
+                        "type": "integer"
+                    },
+                    "maxValue": {
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "integer"
+                    },
+                    "increment": {
+                        "type": "integer"
+                    },
+                    "pageIncrement": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "slider": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/borderBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "slider"
+                    },
+                    "handle": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "fromEdge": {
+                        "$reF": "#/definitions/lgui2/edge"
+                    },
+                    "minValue": {
+                        "type": "integer"
+                    },
+                    "maxValue": {
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "textbox": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/textblockBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "textbox"
+                    },
+                    "multiline": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "broadcaster": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "broadcaster"
+                    },
+                    "broadcastTarget": {
+                        "type": "string"
+                    },
+                    "receiver": {
+                        "type": "string"
+                    },
+                    "blockLocal": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "videofeed": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/remoteControl"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "videofeed"
+                    },
+                    "feedName": {
+                        "type": "string"
+                    },
+                    "permanent": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "remoteControl": {
+                "type": "object",
+                "properties": {
+                    "sendKeyboard": {
+                        "type": "boolean"
+                    },
+                    "sendMouse": {
+                        "type": "boolean"
+                    },
+                    "sendForegroundOnly": {
+                        "type": "boolean"
+                    },
+                    "receiveMouseFeedback": {
+                        "type": "boolean"
+                    },
+                    "useLocalBindings": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    },
+    "oneOf": [
+        {
+            "type": "string",
+            "description": "A Text Block element briefly defined as a string"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "jsonTemplate": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "acceptsKeyboardFocus": {
+                    "type": "boolean"
+                },
+                "acceptsMouseFocus": {
+                    "type": "boolean"
+                },
+                "eventHandlers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/lgui2/eventHandler"
+                    }
+                },
+                "styles": {
+                    "type": "object"
+                },
+                "contextMenu": {
+                    "$ref": "#/definitions/lgui2/element"
+                },
+                "font": {
+                    "$ref": "#/definitions/lgui2/font"
+                },
+                "color": {
+                    "$ref": "#/definitions/lgui2/color"
+                },
+                "hooks": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "eventHandler": {
+                                "$ref": "#/definitions/lgui2/eventHandler"
+                            }
+                        }
+                    }
+                },
+                "tooltip": {
+                    "$ref": "#/definitions/lgui2/element"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "visible",
+                        "hidden",
+                        "collapsed"
+                    ]
+                },
+                "opacity": {
+                    "type": "number"
+                },
+                "strata": {
+                    "type": "number"
+                },
+                "animations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/lgui2/animation"
+                    }
+                },
+                "margin": {
+                    "$ref": "#/definitions/lgui2/thickness"
+                },
+                "padding": {
+                    "$ref": "#/definitions/lgui2/thickness"
+                },
+                "minSize": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "width": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                },
+                                "height": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                }
+                            }
+                        },
+                        {
+                            "type": "array",
+                            "maxItems": 2
+                        }
+                    ]
+                },
+                "maxSize": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "width": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                },
+                                "height": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                }
+                            }
+                        },
+                        {
+                            "type": "array",
+                            "maxItems": 2
+                        }
+                    ]
+                },
+                "horizontalAlignment": {
+                    "type": "string",
+                    "enum": [
+                        "left",
+                        "center",
+                        "right",
+                        "stretch"
+                    ]
+                },
+                "verticalAlignment": {
+                    "type": "string",
+                    "enum": [
+                        "top",
+                        "center",
+                        "bottom",
+                        "stretch"
+                    ]
+                },
+                "width": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "height": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "widthFactor": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "heightFactor": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "x": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "y": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "xFactor": {
+                    "$ref": "#/definitions/numberOrInteger"
+                },
+                "yFactor": {
+                    "$ref": "#/definitions/numberOrInteger"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/lgui2/anchor"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/border"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/dockpanel"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/dragger"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/expander"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/hud"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/panel"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/popup"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/radialpanel"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/screen"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/scrollviewer"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/stackpanel"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/tab"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/tabcontrol"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/window"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/imagebox"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/progressbar"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/radialgauge"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/textblock"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/button"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/checkbox"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/combobox"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/contextmenu"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/itemview"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/listbox"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/scrollbar"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/slider"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/textbox"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/broadcaster"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/videofeed"
+                }
+            ]
+        }
+    ]
+}

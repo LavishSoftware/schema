@@ -1,0 +1,15 @@
+{
+    "$schema":"http://json-schema.org/draft-07/schema#",
+    "type":"object",
+    "title":"LavishGUI 2 Skin",
+    "description": "A LavishGUI 2 Skin containing templates",
+    "properties":{
+        "name":{
+            "type":"string"
+        },
+        "templates":{
+            "type":"object"            
+        }
+    },
+    "required":["name"]
+}

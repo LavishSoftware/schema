@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/lgui2AnimationType.json",
+    "description": "JSON Schema for a LavishGUI2 Animation Type",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        }
+    },
+    "oneOf": [
+        {
+            "properties": {
+                "code": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code"
+            ]
+        },
+        {
+            "properties": {
+                "object": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "methodArgs": {
+                    "type": "array"
+                }
+            },
+            "required": [
+                "object",
+                "method"
+            ]
+        }
+    ],
+    "required": [
+        "name"
+    ]
+}
