@@ -1,2 +1,2 @@
 # schema
-Schema files for editing JSON, XML, etc
+Schema files for editing Lavish-related JSON, XML, etc
