@@ -3,6 +3,26 @@
   "$id": "http://www.lavishsoft.com/schema/lmacTask.json",
   "description": "JSON Schema for an LMAC Task",
   "type": "object",
+  "definitions": {
+    "numberOrInteger": {
+        "anyOf": [
+            {
+                "type": "integer"
+            },
+            {
+                "type": "number"
+            }
+        ]
+    }
+  },
+  "properties": {
+    "duration":{
+      "$ref": "#/definitions/numberOrInteger"
+    },
+    "instant":{
+      "type":"boolean"
+    }
+  },
   "oneOf": [
     {
       "properties": {
