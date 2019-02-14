@@ -6,21 +6,27 @@
     "properties":{
         "templates":{
             "type":"object",
-            "additionalProperties": true
+            "additionalProperties":{
+                "description": "A Template to add to the default Skin"
+            },
+            "description": "A set of Templates to add to the default Skin"
         },
         "skin":{
             "oneOf":[
                 { 
-                    "type":"string"
+                    "type":"string",
+                    "description": "The name of an existing Skin to use for the listed elements"
                 },
                 {
                     "type":"object",
+                    "description": "A Skin to add. If the Skin already exists, it is updated to add/replace specified details",
                     "$ref":"http://www.lavishsoft.com/schema/lgui2Skin.json"
                 }
             ]
         },
         "elements":{
             "type":"array",
+            "description": "LavishGUI 2 Elements to create",
             "items":{
                 "$ref":"http://www.lavishsoft.com/schema/lgui2Element.json"
             }

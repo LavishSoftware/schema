@@ -10,7 +10,10 @@
         },
         "templates":{
             "type":"object",
-            "description": "A set Templates to add to the Skin. Each Template can be referred to by the name provided here to define it."
+            "description": "A set Templates to add to the Skin. Each Template can be referred to by the name provided here to define it.",
+            "additionalProperties": {
+                "description": "A Template to add to the Skin"
+            }
         }
     },
     "required":["name"]
