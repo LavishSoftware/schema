@@ -2,5 +2,38 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.lavishsoft.com/schema/lgui2TextScanner.json",
     "description": "JSON Schema for a LavishGUI2 Text Scanner",
-    "type":"object"
+    "definitions": {
+        "lgui2": {
+            "brush": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Brush.json"
+            },
+            "font": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Font.json"
+            },
+            "color": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Color.json"
+            }
+        }
+    },
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The Text Type, usually a type of container, to process text as"
+        }
+    },
+    "required": ["type"],
+    "additionalProperties": {
+        "type":"object",
+        "description": "Highlighting properties for a specific Text Type",
+        "color": {
+            "$ref": "#/definitions/lgui2/color"
+        },
+        "backgroundBrush": {
+            "$ref": "#/definitions/lgui2/brush"
+        },
+        "font": {
+            "$ref": "#/definitions/lgui2/font"
+        }
+    }
 }

@@ -1,0 +1,119 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/lgui2TextType.json",
+    "description": "JSON Schema for a LavishGUI2 Text Type",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "A name for the Text Type, which will be specified in Text Scanners for highlighting"
+        },
+        "base": {
+            "type": "string",
+            "enum": [
+                "plain",
+                "character",
+                "sequence",
+                "container"
+            ]
+        }
+    },
+    "oneOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "plain"
+                },
+                "terminators": {
+                    "type": "string",
+                    "description": "a list of single-character strings, each indicating the end of the Text segment"
+                }
+            },
+            "required": [
+                "type",
+                "terminators"
+            ]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "character"
+                },
+                "character": {
+                    "type": "string",
+                    "description": "a single-character string specifying the one and only valid character for this Text segment"
+                }
+            },
+            "required": [
+                "type",
+                "character"
+            ]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "sequence"
+                },
+                "sequence": {
+                    "type": "string",
+                    "description": "a string specifying the one and only valid sequence for this Text segment"
+                }
+            },
+            "required": [
+                "type",
+                "sequence"
+            ]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "container"
+                },
+                "subOpenType": {
+                    "type": "string",
+                    "description": "The name of the Text Type that opens a new instance of this container type, if found within. For example, \"json_{\" would open (start) a new JSON Object"
+                },
+                "escapeType": {
+                    "type": "string",
+                    "description": "The name of the Text Type that enables escaping. (Tip: Use the built-in \"escape\" type.)"
+                },
+                "terminatorTypes": {
+                    "type": "object",
+                    "description": "Defines terminators for the container. Text Type names map to an object containing options for terminating the container with that Text Type",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "allowedInside": {
+                                "type": "boolean",
+                                "default":true
+                            },
+                            "escapeable":{
+                                "type":"boolean",
+                                "default":false
+                            }
+                        }
+                    }
+                },
+                "characterTypes": {
+                    "type": "object",
+                    "description": "Maps single characters (given as property names) to Text Types for processing",
+                    "additionalProperties": {
+                        "type": "string",
+                        "description": "The name of the Text Type that handles the given character"
+                    }
+                },
+                "sequenceTypes": {
+                    "type": "object",
+                    "description": "Maps character sequences (given as property names) to Text Types for processing",
+                    "additionalProperties": {
+                        "type": "string",
+                        "description": "The name of the Text Type that handles the given sequence"
+                    }
+                }
+            },
+            "required": [
+                "type"
+            ]
+        }
+    ]
+}
