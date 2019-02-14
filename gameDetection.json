@@ -29,7 +29,7 @@
                         "type": "object",
                         "properties": {
                             "detectionType": {
-                                "description":"Method of game detection",
+                                "description": "Method of game detection",
                                 "enum": [
                                     "file",
                                     "uninstallKey",
@@ -171,7 +171,17 @@
                 },
                 "settings": {
                     "type": "object",
-                    "description": "Inner Space Game Settings to be applied to the Inner Space Game"
+                    "description": "Inner Space Game Settings to be applied to the Inner Space Game",
+                    "properties": {
+                        "Lock Foreground": {
+                            "type": "integer",
+                            "enum": [
+                                0,
+                                1
+                            ],
+                            "description": "Set to 1 if the game should always believe and act as though it is the foreground window"
+                        }
+                    }
                 }
             },
             "required": [
@@ -180,7 +190,7 @@
         }
     },
     "properties": {
-        "games": {            
+        "games": {
             "type": "array",
             "description": "A list of games that can be detected",
             "items": {
