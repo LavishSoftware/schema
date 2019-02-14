@@ -5,10 +5,12 @@
     "description": "A LavishGUI 2 Skin containing templates",
     "properties":{
         "name":{
-            "type":"string"
+            "type":"string",
+            "description":"The Name of the Skin"
         },
         "templates":{
-            "type":"object"            
+            "type":"object",
+            "description": "A set Templates to add to the Skin. Each Template can be referred to by the name provided here to define it."
         }
     },
     "required":["name"]
