@@ -626,7 +626,7 @@
                                             }
                                         },
                                         {
-                                            "$ref": "#/definitions/lgui2/element"
+                                            "$ref": "#/definitions/lgui2/tab"
                                         }
                                     ]
                                 }
@@ -643,7 +643,7 @@
                                             }
                                         },
                                         {
-                                            "$ref": "#/definitions/lgui2/element"
+                                            "$ref": "#/definitions/lgui2/tab"
                                         }
                                     ]
                                 }
@@ -1243,9 +1243,6 @@
                     "$ref": "#/definitions/numberOrInteger"
                 }
             },
-            "required": [
-                "type"
-            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/lgui2/anchor"
