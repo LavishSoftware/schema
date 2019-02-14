@@ -37,7 +37,9 @@
                     ]
                 }
             },
-            "required":["type"],
+            "required": [
+                "type"
+            ],
             "oneOf": [
                 {
                     "properties": {
@@ -45,7 +47,19 @@
                             "const": "code"
                         },
                         "code": {
-                            "type": "string"
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "description": "Embedded LavishScript code"
+                                },
+                                {
+                                    "type": "array",
+                                    "description": "Lines of embedded LavishScript code",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
                         }
                     },
                     "required": [
@@ -139,7 +153,10 @@
                             "default": false
                         }
                     },
-                    "required":["taskManager","task"]
+                    "required": [
+                        "taskManager",
+                        "task"
+                    ]
                 }
             ]
         }
