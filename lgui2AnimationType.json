@@ -6,13 +6,29 @@
     "properties": {
         "name": {
             "type": "string"
+        },
+        "schema": {
+            "description": "Define any parameters for an Animation of this Type. GUI can be provided based on the schema.",
+            "$ref": "http://json-schema.org/draft-07/schema#"
         }
     },
     "oneOf": [
         {
             "properties": {
                 "code": {
-                    "type": "string"
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "description": "Embedded LavishScript code"
+                        },
+                        {
+                            "type": "array",
+                            "description": "Lines of embedded LavishScript code",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
                 }
             },
             "required": [
@@ -22,13 +38,21 @@
         {
             "properties": {
                 "object": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "LavishScript Object with a Method to handle this Animation"
                 },
                 "method": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "LavishScript Method to perform on the object, for this Animation",
+                    "examples": [
+                        "Animation_MyAnimation",
+                        "Animation_Fade",
+                        "Animation_Blink"
+                    ]
                 },
                 "methodArgs": {
-                    "type": "array"
+                    "type": "array",
+                    "description": "Any arguments to be passed directly to the Method"
                 }
             },
             "required": [
