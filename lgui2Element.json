@@ -352,7 +352,10 @@
                     "anchorOffsetFactor": {
                         "$ref": "#/definitions/lgui2/point"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "border": {
                 "allOf": [
@@ -367,7 +370,10 @@
                     "child": {
                         "$ref": "#/definitions/lgui2/element"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "dockpanel": {
                 "properties": {
@@ -379,6 +385,9 @@
                     {
                         "$ref": "#/definitions/lgui2/panelBase"
                     }
+                ],
+                "required": [
+                    "type"
                 ]
             },
             "dragger": {
@@ -397,7 +406,10 @@
                     "allowResize": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "expander": {
                 "allOf": [
@@ -412,14 +424,20 @@
                     "expanded": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "hud": {
                 "properties": {
                     "type": {
                         "const": "hud"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "panel": {
                 "$ref": "#/definitions/lgui2/panelBase",
@@ -427,7 +445,10 @@
                     "type": {
                         "const": "panel"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "popup": {
                 "allOf": [
@@ -439,7 +460,10 @@
                     "type": {
                         "const": "popup"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "radialItem": {
                 "allOf": [
@@ -475,7 +499,10 @@
                     "styles": {
                         "type": "object"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "radialpanel": {
                 "properties": {
@@ -506,14 +533,20 @@
                     "radialItem": {
                         "$ref": "#/definitions/lgui2/radialItem"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "screen": {
                 "properties": {
                     "type": {
                         "const": "screen"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "scrollviewer": {
                 "properties": {
@@ -562,7 +595,10 @@
                     "maxContentHeight": {
                         "$ref": "#/definitions/numberOrInteger"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "stackpanel": {
                 "allOf": [
@@ -585,7 +621,10 @@
                     "uniform": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "tab": {
                 "allOf": [
@@ -650,7 +689,10 @@
                             }
                         ]
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "window": {
                 "allOf": [
@@ -671,7 +713,10 @@
                     "expanded": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "imagebox": {
                 "allOf": [
@@ -686,7 +731,10 @@
                     "imageBrush": {
                         "$ref": "#/definitions/lgui2/brush"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "progressbar": {
                 "allOf": [
@@ -725,7 +773,10 @@
                     "value": {
                         "type": "integer"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "radialgauge": {
                 "allOf": [
@@ -797,7 +848,10 @@
                             "$ref": "#/definitions/lgui2/radialGaugeNeedle"
                         }
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "radialGaugeNeedle": {
                 "type": "object",
@@ -844,7 +898,10 @@
                     "segments": {
                         "type": "integer"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "textblock": {
                 "allOf": [
@@ -856,7 +913,10 @@
                     "type": {
                         "const": "textblock"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "button": {
                 "allOf": [
@@ -868,7 +928,10 @@
                     "type": {
                         "const": "button"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "checkbox": {
                 "allOf": [
@@ -883,7 +946,10 @@
                     "useIndeterminate": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "combobox": {
                 "allOf": [
@@ -898,7 +964,10 @@
                     "popup": {
                         "$ref": "#/definitions/lgui2/element"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "contextmenu": {
                 "allOf": [
@@ -910,7 +979,10 @@
                     "type": {
                         "const": "contextmenu"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "itemview": {
                 "allOf": [
@@ -922,7 +994,10 @@
                     "type": {
                         "const": "itemview"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "listbox": {
                 "allOf": [
@@ -934,7 +1009,10 @@
                     "type": {
                         "const": "listbox"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "scrollbar": {
                 "allOf": [
@@ -973,7 +1051,10 @@
                     "pageIncrement": {
                         "type": "integer"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "slider": {
                 "allOf": [
@@ -1000,7 +1081,10 @@
                     "value": {
                         "type": "integer"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "textbox": {
                 "allOf": [
@@ -1015,7 +1099,10 @@
                     "multiline": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "broadcaster": {
                 "allOf": [
@@ -1036,7 +1123,10 @@
                     "blockLocal": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "videofeed": {
                 "allOf": [
@@ -1054,7 +1144,10 @@
                     "permanent": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "remoteControl": {
                 "type": "object",
@@ -1074,7 +1167,10 @@
                     "useLocalBindings": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             }
         }
     },
@@ -1087,10 +1183,13 @@
             "type": "object",
             "properties": {
                 "jsonTemplate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of a Template, provided by a Skin, to serve as defaults for values not explicitly provided"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of a LavishGUI 2 element type",
+                    "examples": ["button","textbox","window"]
                 },
                 "name": {
                     "type": "string"
@@ -1108,7 +1207,8 @@
                     }
                 },
                 "styles": {
-                    "type": "object"
+                    "type": "object",
+                    "description": "An object containing named Styles, similar to Templates, which can be applied to this element on demand"
                 },
                 "contextMenu": {
                     "$ref": "#/definitions/lgui2/element"
@@ -1333,6 +1433,13 @@
                 },
                 {
                     "$ref": "#/definitions/lgui2/videofeed"
+                },
+                {
+                    "not": {
+                        "required": [
+                            "type"
+                        ]
+                    }
                 }
             ]
         }
