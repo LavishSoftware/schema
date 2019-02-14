@@ -1,0 +1,193 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "An Inner Space Game Detections file, used to detect games for Inner Space",
+    "type": "object",
+    "definitions": {
+        "game": {
+            "type": "object",
+            "title": "An Inner Space Game Detection",
+            "description": "A list of game executables and ways of detecting and launching them, and any special options required for this game",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "executables": {
+                    "type": "object",
+                    "description": "A list of executables for this game, and whether to detect as client, launcher, or disable (do not detect this game based on that executable)",
+                    "additionalProperties": {
+                        "enum": [
+                            "launcher",
+                            "client",
+                            "disable"
+                        ]
+                    }
+                },
+                "paths": {
+                    "type": "array",
+                    "description": "A list of path detections for this game",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "detectionType": {
+                                "enum": [
+                                    "file",
+                                    "uninstallKey",
+                                    "registryKey",
+                                    "appPathKey"
+                                ]
+                            },
+                            "pathOffset": {
+                                "description": "If the detected path does not point directly to the game folder, this relative path offset (such as x64 or ..) will be added",
+                                "type": "string",
+                                "examples": [
+                                    "x64",
+                                    "..",
+                                    "_retail_"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "detectionType"
+                        ],
+                        "oneOf": [
+                            {
+                                "properties": {
+                                    "detectionType": {
+                                        "const": "file"
+                                    },
+                                    "filename": {
+                                        "description": "Filename to search for. If this file exists in the specified location, the game is detected there",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "filename"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "detectionType": {
+                                        "const": "uninstallKey"
+                                    },
+                                    "id": {
+                                        "description": "Uninstall ID to search for. If the Uninstall key exists, the game is detected in the specified location",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "detectionType": {
+                                        "const": "registryKey"
+                                    },
+                                    "key": {
+                                        "enum": [
+                                            "HKLM",
+                                            "HKCU"
+                                        ]
+                                    },
+                                    "subkey": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "key",
+                                    "subkey",
+                                    "value"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "detectionType": {
+                                        "const": "appPathKey"
+                                    },
+                                    "filename": {
+                                        "type": "string",
+                                        "description": "App Paths filename to search for. If the App Paths filename exists, the game is detected in the specified location"
+                                    }
+                                },
+                                "required": [
+                                    "filename"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "profiles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name for the Game Profile"
+                            },
+                            "executable": {
+                                "type": "string",
+                                "description": "Main executable filename",
+                                "examples": [
+                                    "steam.exe",
+                                    "launcher.exe",
+                                    "wow.exe"
+                                ]
+                            },
+                            "parameters": {
+                                "type": "string",
+                                "description": "Main executable parameters (Any parameters to be passed to the executable)",
+                                "examples": [
+                                    "patchme"
+                                ]
+                            },
+                            "pathOffset": {
+                                "description": "If the detected path does not point directly to the game folder for this Game Profile, this relative path offset (such as x64 or ..) will be added",
+                                "type": "string",
+                                "examples": [
+                                    "x64",
+                                    "..",
+                                    "_retail_"
+                                ]
+                            },
+                            "killBeforeLaunch": {
+                                "type": "string",
+                                "description": "An executable filename to terminate before launching this Game Profile. This is particularly useful for game launchers that can only have a single instance running at a time.",
+                                "examples": [
+                                    "launcher.exe",
+                                    "battle.net.exe"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "executable"
+                        ]
+                    }
+                },
+                "settings": {
+                    "type": "object",
+                    "description": "Inner Space Game Settings to be applied to the Inner Space Game"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        }
+    },
+    "properties": {
+        "games": {            
+            "type": "array",
+            "description": "A list of games that can be detected",
+            "items": {
+                "$ref": "#/definitions/game"
+            }
+        }
+    },
+    "required": [
+        "games"
+    ]
+}
