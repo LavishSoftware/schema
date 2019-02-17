@@ -34,16 +34,24 @@
                         "type": "object",
                         "properties": {
                             "game": {
-                                "type": "string"
+                                "type": "string",
+                                "title": "Inner Space Game",
+                                "description": "The Inner Space Game Name for launching. This is the name from the Inner Space menu, when launching a game instance direct through Inner Space."
                             },
                             "gameProfile": {
-                                "type": "string"
+                                "type": "string",
+                                "title": "Inner Space Game Profile",
+                                "description": "The Inner Space Game Profile Name for launching. This is the name from the Game's sub-menu, when launching a game instance direct through Inner Space."
                             },
                             "parameters": {
-                                "type": "string"
+                                "type": "string",
+                                "title": "Executable Parameters",
+                                "description": "Parameters to be passed to the Main executable."
                             },
                             "parametersExclusive": {
-                                "type": "boolean"
+                                "type": "boolean",
+                                "title": "Parameters Exclusive",
+                                "description": "If true, Parameters given are exclusive and replace any Parameters in the Game Profile. If false, Parameters given are added to any Parameters in the Game Profile."
                             }
                         }
                     }
@@ -64,7 +72,7 @@
                     "$ref": "#/definitions/isboxer2/innerSpaceWindow"
                 }
             ],
-            "title":"Inner Space Window",
+            "title": "Inner Space Window",
             "description": "Describes how to launch an Inner Space session window"
         },
         "isboxer1Window": {
@@ -81,16 +89,20 @@
                     "type": "object",
                     "properties": {
                         "characterSet": {
-                            "type": "string"
+                            "type": "string",
+                            "title": "Character Set",
+                            "description": "The name of a Character Set in ISBoxer 1"
                         },
                         "slotNumber": {
                             "type": "integer",
-                            "minimum": 1
+                            "minimum": 1,
+                            "title": "Slot Number",
+                            "description": "The Slot Number to launch, e.g. with 1 being the first Slot"
                         }
                     }
                 }
             ],
-            "title":"ISBoxer 1 Window",
+            "title": "ISBoxer 1 Window",
             "description": "Describes how to launch an ISBoxer 1 Character Set Slot"
         },
         "externalWindow": {
@@ -110,23 +122,23 @@
                     }
                 }
             ],
-            "title":"External Window",
+            "title": "External Window",
             "description": "Describes how to launch a non-Inner Space window"
         },
         "windowTitleFormat": {
             "type": "string",
-            "title":"Window Title Format",
+            "title": "Window Title Format",
             "description": "Not yet implemented"
         },
         "minDelayBefore": {
             "type": "number",
-            "title":"Minimum Delay Before Launch",
+            "title": "Minimum Delay Before Launch",
             "description": "Minimum delay, in seconds, after launching one window but before launching this one"
         },
         "minDelayAfter": {
             "type": "number",
-            "title":"Minimum Delay After Launch",
-            "description": "Minimum delay, in seconds, after launching this window and before launching the next one"            
+            "title": "Minimum Delay After Launch",
+            "description": "Minimum delay, in seconds, after launching this window and before launching the next one"
         },
         "game": {
             "$ref": "#/definitions/isboxer2/gameIdentifier"

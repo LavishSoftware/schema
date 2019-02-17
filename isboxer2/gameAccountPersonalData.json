@@ -44,19 +44,33 @@
     "isboxer2_object": "gameAccountPersonalData",
     "properties": {
         "game": {
-            "$ref": "#/definitions/isboxer2/gameIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/gameIdentifier"
+                }
+            ],
+            "title":"Game",
+            "description": "The Game that owns this account"
         },
         "email": {
-            "type": "string"
+            "type": "string",
+            "title":"E-mail",
+            "description": "The E-mail address for this account"
         },
         "username": {
-            "type": "string"
+            "type": "string",
+            "title":"Username",
+            "description": "The Username for this account"
         },
         "encryptedPassword": {
-            "type": "string"
+            "type": "string",
+            "title":"Encrypted Password",
+            "description": "An encrypted password used to log in to the account. The password can only be decrypted by entering a Master Key."
         },
         "encryptedPasswordIV": {
-            "type": "string"
+            "type": "string",
+            "title":"Encrypted Password IV",
+            "description": "An Initialization Vector (IV) used for the Encrypted Password. An IV ensures that entering the same Password does not produce the same Encrypted Password value."
         }
     }
 }
