@@ -27,13 +27,21 @@
     "isboxer2_object": "hotkey",
     "properties": {
         "codeName": {
-            "type": "string"
+            "type": "string",
+            "title":"Code Name",
+            "description": "A name to uniquely identify this Hotkey between all Hotkeys from all Modules. e.g. core.MasterToggle",
+            "examples":["core.MasterToggle"]
         },
         "category": {
-            "type": "string"
+            "type": "string",
+            "title":"Category",
+            "description":"A Category name to place the Hotkey in, such as for grouped Hotkey listings",
+            "examples":["Combat","Window Management"]
         },
         "description": {
-            "type": "string"
+            "type": "string",
+            "title":"Description",
+            "description": "A description of the intended purpose of the Hotkey"
         }
     }
 }

@@ -1,7 +1,7 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
     "$id": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json",
-    "description": "ISBoxer 2 Game Account Personal Data",
+    "description": "ISBoxer 2 Game Account Personal Data. This data is kept locally, and not sent anywhere. Certain sensitive items (any passwords) are kept encrypted.",
     "type": "object",
     "definitions": {
         "isboxer2": {

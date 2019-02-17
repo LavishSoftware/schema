@@ -58,7 +58,13 @@
                     "entries": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/definitions/isboxer2/windowMapEntry"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/isboxer2/windowMapEntry"
+                                }
+                            ],
+                            "title": "Window Map Entry",
+                            "description": "An entry in a Window Map, mapping one Team Member to a Computer for launching"
                         }
                     }
                 }
@@ -75,14 +81,30 @@
         "teammembers": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/isboxer2/teamMemberIdentifier"
-            }
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/teamMemberIdentifier"
+                    }
+                ],
+                "title": "Team Member",
+                "description": "A Team Member that is part of the Team"
+            },
+            "title": "Team Members",
+            "description": "List of Team Members that make up the Team"
         },
         "windowmaps": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/isboxer2/windowMap"
-            }
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/windowMap"
+                    }
+                ],
+                "title": "Window Map",
+                "description": "A mapping of Team Members to Computers for launching"
+            },
+            "title": "Window Maps",
+            "description": "List of Window Maps, which map Team Members to Computers for launching"
         }
     }
 }

@@ -30,7 +30,13 @@
     "isboxer2_object": "computer",
     "properties": {
         "screenLayout": {
-         "$ref":"#/definitions/isboxer2/screenLayout"   
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/screenLayout"
+                }
+            ],
+            "title": "Screen Layout",
+            "description": "The layout of screens in use by this Computer"
         }
     }
 }

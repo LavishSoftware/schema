@@ -46,10 +46,22 @@
     "isboxer2_object": "character",
     "properties": {
         "gameAccount": {
-            "$ref": "#/definitions/isboxer2/gameAccountIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/gameAccountIdentifier"
+                }
+            ],
+            "title": "Game Account",
+            "description": "The Game Account that owns this Character"
         },
         "game": {
-            "$ref": "#/definitions/isboxer2/gameIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/gameIdentifier"
+                }
+            ],
+            "title": "Game",
+            "description": "The Game that owns this Character"
         }
     }
 }

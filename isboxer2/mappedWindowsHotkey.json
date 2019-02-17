@@ -27,13 +27,19 @@
     },
     "allOf": [
         {
-            "$ref": "#/definitions/isboxer2/identifier"
+            "$ref": "#/definitions/isboxer2/hotkey"
         }
     ],
     "isboxer2_object": "mappedWindowsHotkey",
     "properties": {
         "keyCombo": {
-            "$ref": "#/definitions/isboxer2/keycombo"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/keycombo"
+                }
+            ],
+            "title": "Key Combination",
+            "description": "Key Combination to map the Hotkey to in Windows"
         }
     }
 }

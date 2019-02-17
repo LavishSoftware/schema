@@ -1,7 +1,7 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
     "$id": "http://www.lavishsoft.com/schema/isboxer2/personalData.json",
-    "description": "ISBoxer 2 Personal Data",
+    "description": "ISBoxer 2 Personal Data. This data is kept locally, and not sent anywhere. Certain sensitive items (any passwords) are kept encrypted.",
     "type": "object",
     "definitions": {
         "isboxer2": {
@@ -33,25 +33,35 @@
             "type": "array",
             "items":{
                 "$ref":"#/definitions/isboxer2/gameAccountPersonalData"
-            }
+            },
+            "title":"Game Account Personal Data",
+            "description": "Array of Game Account Personal Data"
         },
         "characters": {
             "type": "array",
             "items":{
                 "$ref":"#/definitions/isboxer2/characterPersonalData"
-            }
+            },
+            "title":"Character Personal Data",
+            "description": "Array of Character Personal Data"
         },
         "computers": {
             "type": "array",
             "items":{
                 "$ref":"#/definitions/isboxer2/computerPersonalData"
-            }
+            },
+            "title":"Computer Personal Data",
+            "description": "Array of Computer Personal Data"
         },
         "masterKeyCheck": {
-            "type": "string"
+            "type": "string",
+            "title":"Master Key Check",
+            "description": "An encrypted code to check a Master Key entry attempt against. The Master Key itself is discarded."
         },
         "masterKeyCheckIV": {
-            "type": "string"
+            "type": "string",
+            "title":"Master Key Check IV",
+            "description": "An Initialization Vector (IV) used for the Master Key Check. An IV ensures that entering the same Master Key does not produce the same encrypted Master Key Check value."
         }
     }
 }

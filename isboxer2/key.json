@@ -22,13 +22,17 @@
     "isboxer2_object": "key",
     "properties": {
         "keyName":{
-            "type":"string"
+            "type":"string",
+            "title":"Key Name",
+            "description": "The Name of the button"
         },
         "vkeyCode":{
-            "type":"integer"
+            "type":"integer",
+            "title":"The Virtual Key Code for the button, if available"
         },
         "scanCode":{
-            "type":"integer"
+            "type":"integer",
+            "title":"The Scan Code for the button, if available"
         }
     }
 }

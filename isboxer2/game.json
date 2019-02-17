@@ -33,14 +33,28 @@
     "isboxer2_object": "game",
     "properties": {
         "url": {
-            "type": "string"
+            "type": "string",
+            "title":"URL",
+            "description": "Website for the Game"
         },
-        "abbreviation": {},
+        "abbreviation": {
+            "type":"string",
+            "title":"Abbreviation",
+            "description": "Short way of referring to the game, e.g. WoW for World of Warcraft",
+            "examples": ["EQ1","EQ2","EVE","WoW"]
+        },
         "publisher": {
-            "$ref": "#/definitions/isboxer2/gamePublisher"
+            "allOf": [
+                {"$ref": "#/definitions/isboxer2/gamePublisher"}],
+            "title":"Publisher",
+            "description": "The Game Publisher"
         },
         "rules":{
-            "$ref": "#/definitions/isboxer2/multiboxingRules"
+            "allOf": [
+                {"$ref": "#/definitions/isboxer2/multiboxingRules"}
+            ],
+            "title":"Multiboxing Rules",
+            "description": "The Game's rules that govern multiboxing-related functionality such as Input Broadcasting"
         }
     }
 }

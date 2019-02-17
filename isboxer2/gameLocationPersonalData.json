@@ -25,15 +25,6 @@
                 ],
                 "isboxer2_identifier": "game"
             },
-            "gameAccountPersonalData": {
-                "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json"
-            },
-            "characterPersonalData": {
-                "$ref": "http://www.lavishsoft.com/schema/isboxer2/characterPersonalData.json"
-            },
-            "computerPersonalData": {
-                "$ref": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json"
-            },
             "innerSpaceWindow": {
                 "oneOf": [
                     {
@@ -68,7 +59,13 @@
     "isboxer2_object": "gameLocationPersonalData",
     "properties": {
         "innerSpaceWindow": {
-            "$ref": "#/definitions/isboxer2/innerSpaceWindow"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/innerSpaceWindow"
+                }
+            ],
+            "title":"Inner Space Window",
+            "description": "Describes how to launch an Inner Space session window"
         },
         "isboxer1Window": {
             "allOf": [
@@ -92,7 +89,9 @@
                         }
                     }
                 }
-            ]
+            ],
+            "title":"ISBoxer 1 Window",
+            "description": "Describes how to launch an ISBoxer 1 Character Set Slot"
         },
         "externalWindow": {
             "oneOf": [
@@ -110,16 +109,24 @@
                         }
                     }
                 }
-            ]
+            ],
+            "title":"External Window",
+            "description": "Describes how to launch a non-Inner Space window"
         },
         "windowTitleFormat": {
-            "type": "string"
+            "type": "string",
+            "title":"Window Title Format",
+            "description": "Not yet implemented"
         },
         "minDelayBefore": {
-            "type": "number"
+            "type": "number",
+            "title":"Minimum Delay Before Launch",
+            "description": "Minimum delay, in seconds, after launching one window but before launching this one"
         },
         "minDelayAfter": {
-            "type": "number"
+            "type": "number",
+            "title":"Minimum Delay After Launch",
+            "description": "Minimum delay, in seconds, after launching this window and before launching the next one"            
         },
         "game": {
             "$ref": "#/definitions/isboxer2/gameIdentifier"

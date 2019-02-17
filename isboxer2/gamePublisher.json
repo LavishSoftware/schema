@@ -27,7 +27,9 @@
     "isboxer2_object": "gamePublisher",
     "properties": {
         "url": {
-            "type": "string"
+            "type": "string",
+            "title": "URL",
+            "description": "Website for the Game Publisher"
         }
     }
 }

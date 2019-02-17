@@ -56,19 +56,43 @@
             "$ref": "#/definitions/isboxer2/identifier"
         }
     ],
-    "isboxer2_object":"teamMember",
+    "isboxer2_object": "teamMember",
     "properties": {
         "game": {
-            "$ref": "#/definitions/isboxer2/gameIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/gameIdentifier"
+                }
+            ],
+            "title":"Game",
+            "description": "The Game for this Team Member"
         },
         "gameaccount": {
-            "$ref": "#/definitions/isboxer2/gameAccountIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/gameAccountIdentifier"
+                }
+            ],
+            "title":"Game Account",
+            "description": "The Game Account for this Team Member"
         },
         "gamelocation": {
-            "$ref": "#/definitions/isboxer2/gameLocationIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/gameLocationIdentifier"
+                }
+            ],
+            "title":"Game Location",
+            "description": "The Game Location for this Team Member"
         },
         "character": {
-            "$ref": "#/definitions/isboxer2/characterIdentifier"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/characterIdentifier"
+                }
+            ],
+            "title":"Character",
+            "description": "The Character for this Team Member"
         }
     }
 }

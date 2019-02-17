@@ -20,12 +20,16 @@
             "screen": {
                 "screen_rect": {
                     "type": "string",
+                    "title":"Screen Rect",
+                    "description":"The rectangle describing the desktop location and size of this screen, given as x,y,width,height, e.g. 0,0,1920,1080",
                     "examples": [
                         "0,0,1920,1080"
                     ]
                 },
                 "working_rect": {
                     "type": "string",
+                    "title":"Working Area Rect",
+                    "description":"The rectangle describing the desktop Working Area of this screen (usually defined as the screen area without the Taskbar), given as x,y,width,height, e.g. 0,0,1920,1040",
                     "examples": [
                         "0,0,1920,1040",
                         "0,0,1920,1080"
@@ -44,11 +48,21 @@
         "screens": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/isboxer2/screen"
-            }
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/screen"
+                    }
+                ],
+                "title":"Screen",
+                "description": "A Screen that is part of the Screen Layout"
+            },
+            "title": "Screens",
+            "description": "Array of Screens that make up the Screen Layout"
         },
         "primaryScreen": {
-            "type": "integer"
+            "type": "integer",
+            "title": "Primary Screen",
+            "description": "A number specifying which of the defined screens is the Primary"
         }
     }
 }

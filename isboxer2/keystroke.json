@@ -30,7 +30,9 @@
     "isboxer2_object": "keystroke",
     "properties": {
         "press":{
-            "type":"boolean"
+            "type":"boolean",
+            "title":"Press",
+            "description": "If true, presses the key and modifiers. Otherwise, releases the key and modifiers."
         }
     }
 }

@@ -30,7 +30,9 @@
     "isboxer2_object": "keycombo",
     "properties": {
         "modifiers":{
-            "type":"string"
+            "type":"string",
+            "title":"Modifiers",
+            "description": "Modifier names separated by +, to combine with the Key Name"
         }
     }
 }

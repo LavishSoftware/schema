@@ -1,7 +1,7 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
     "$id": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json",
-    "description": "ISBoxer 2 Computer Personal Data",
+    "description": "ISBoxer 2 Computer Personal Data. This data is kept locally, and not sent anywhere.",
     "type": "object",
     "definitions": {
         "isboxer2": {
@@ -19,7 +19,7 @@
             },
             "gameLocationPersonalData": {
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameLocationPersonalData.json"
-            }    
+            }
         }
     },
     "allOf": [
@@ -30,19 +30,27 @@
     "isboxer2_object": "computerPersonalData",
     "properties": {
         "machineName": {
-            "type": "string"
+            "type": "string",
+            "title": "Machine Name",
+            "description": "Machine Name in Windows (also referred to as NetBIOS name)"
         },
         "hostname": {
-            "type": "string"
+            "type": "string",
+            "title":"IP or Hostname",
+            "description": "The computer's local IP address or network hostname (which can be used to resolve its local IP address; usually the hostname is the same as Machine Name) for ISBoxer 2 or Inner Space to communicate with"
         },
         "uplinkName": {
-            "type": "string"
+            "type": "string",
+            "title":"Inner Space Uplink Name",
+            "description": "The Computer-specific Uplink Name as configured within Inner Space. This name must match the Inner Space setting for the given Computer, and must not be the same as the Uplink Name for another Computer. The Uplink Name defaults to the Machine Name."
         },
         "gameLocations": {
             "type": "array",
-            "items":{
-                "$ref":"#/definitions/isboxer2/gameLocationPersonalData"
-            }
+            "items": {
+                "$ref": "#/definitions/isboxer2/gameLocationPersonalData"
+            },
+            "title":"Game Location Personal Data",
+            "description": "Array of Game Location Personal Data"
         }
     }
 }

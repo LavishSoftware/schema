@@ -1,7 +1,7 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
     "$id": "http://www.lavishsoft.com/schema/isboxer2/characterPersonalData.json",
-    "description": "ISBoxer 2 Character Personal Data",
+    "description": "ISBoxer 2 Character Personal Data. This data is kept locally, and not sent anywhere.",
     "type": "object",
     "definitions": {
         "isboxer2": {
@@ -16,15 +16,6 @@
                         "description": "A human-readable name or title to display"
                     }
                 }
-            },
-            "gameAccountPersonalData": {
-                "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json"
-            },
-            "characterPersonalData": {
-                "$ref": "http://www.lavishsoft.com/schema/isboxer2/characterPersonalData.json"
-            },
-            "computerPersonalData": {
-                "$ref": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json"
             }
         }
     },
@@ -33,13 +24,17 @@
             "$ref": "#/definitions/isboxer2/identifier"
         }
     ],
-    "isboxer2_object": "characterPersonalData",
+    "isboxer2_object": "characterPersonalData",    
     "properties": {
         "actualName": {
-            "type": "string"
+            "type": "string",
+            "title":"Actual Character Name",
+            "description": "The in-game name of the Character, which could potentially be used to refer to the Character with in-game commands"
         },
         "gameServer": {
-            "type": "string"
+            "type": "string",
+            "title":"Game Server",
+            "description": "The Game Server (sometimes also called a Shard or Realm) the Character resides on"
         }
     }
 }

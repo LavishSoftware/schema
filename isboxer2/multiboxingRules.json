@@ -21,16 +21,24 @@
     },
     "properties": {
         "multipleClientsAllowed":{
-            "type":"boolean"
+            "type":"boolean",
+            "title":"Multiple Clients Allowed",
+            "description": "True if Multiple Clients are allowed. If not, the Game should not be multiboxed."
         },
         "broadcastingAllowed":{
-            "type":"boolean"
+            "type":"boolean",
+            "title":"Broadcasting Allowed",
+            "description": "True if Input Broadcasting is allowed. If not, only one window should be controlled at a time."
         },
         "inputDelayAllowed":{
-            "type":"boolean"            
+            "type":"boolean",
+            "title":"Input Delay Allowed",
+            "description": "True if Input Delays are allowed. If not, delayed actions should be restricted to those that do not send inputs to the Game, and any inputs to the game must be an instant result of user inputs (e.g. pressing or releasing a button)."
         },
         "cursorPositioningAllowed":{
-            "type":"boolean"
+            "type":"boolean",
+            "title":"Cursor Positioning Allowed",
+            "description": "True if Cursor Positioning is allowed, e.g. as part of a Hotkey. If not, the cursor position can only be synchronized with another Game window."
         }
     }
 }

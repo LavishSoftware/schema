@@ -27,7 +27,7 @@
     },
     "allOf": [
         {
-            "$ref": "#/definitions/isboxer2/identifier"
+            "$ref": "#/definitions/isboxer2/hotkey"
         }
     ],
     "isboxer2_object": "mappedHotkey",
@@ -40,7 +40,9 @@
             ],
             "not":{
                 "required":["eventHandler"]
-            }
+            },
+            "title":"Input Binding",
+            "description": "A LavishGUI 2 Input Binding, excluding eventHandler, to map an ISBoxer 2 Hotkey"
         }
     }
 }
