@@ -64,12 +64,12 @@
             "default":true            
         },
         "useVersionTrack":{
-            "enum": ["live","test"],
-            "default":"live"
+            "enum": ["Live","Test"],
+            "default":"Live"
         },
         "notifyVersionDifference":{
-            "enum":["older","none","revision","date","major","fullVersion"],
-            "default":"revision"
+            "enum":["Older","None","Revision","Date","Major","FullVersion"],
+            "default":"Revision"
         },
         "enableModuleDeveloperMode":{
             "type":"boolean",
