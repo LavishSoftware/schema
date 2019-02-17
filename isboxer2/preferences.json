@@ -1,0 +1,92 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/preferences.json",
+    "description": "ISBoxer 2 Preferences",
+    "type":"object",
+    "definitions":{
+        "isboxer2":{
+            "identifier":{
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            },
+            "teamIdentifier":{
+                "$ref":"#/isboxer2/identifier",
+                "description":"A Team Identifier"
+            },
+            "teamMemberIdentifier":{
+                "$ref":"#/isboxer2/identifier",
+                "description":"A Team Member Identifier"
+            } 
+        }
+    },
+    "properties":{
+        "isboxerExperienceLevel":{
+                "minimum":0,
+                "maximum":4,
+                "type":"integer",
+                "description":"ISBoxer 1 experience level, from 0 being new or none to 4 being expert"
+        },
+        "isboxer2ExperienceLevel":{
+            "minimum":0,
+            "maximum":4,
+            "type":"integer",
+            "description":"ISBoxer 2 experience level, from 0 being new or none to 4 being expert"
+        },
+        "multiboxingExperienceLevel":{
+            "minimum":0,
+            "maximum":4,
+            "type":"integer",
+            "description":"Multiboxing experience level, from 0 being new or none to 4 being expert"
+        },
+        "safeViewLevel":{
+            "description":"Safe View Level. 0=None, 1=Account, 2=Character, 4=Private",
+            "type":"integer",
+            "enum":[0,1,2,4]            
+        },
+        "use64BitInnerSpace":{
+            "type":"boolean",
+            "default":true            
+        },
+        "useVersionTrack":{
+            "enum": ["live","test"],
+            "default":"live"
+        },
+        "notifyVersionDifference":{
+            "enum":["older","none","revision","date","major","fullVersion"],
+            "default":"revision"
+        },
+        "enableModuleDeveloperMode":{
+            "type":"boolean",
+            "default":false
+        },
+        "uiZoomLevel":{
+            "type":"number",
+            "default":1.0
+        },
+        "autoLoadModules":{
+            "items":{
+                "type":"string",
+                "description": "An ISBoxer 2 Module Name and Version to load",
+                "examples":["Core 0.1"]
+            },
+            "uniqueItems": true
+        },
+        "defaultToLastSelectedTeamAndMember":{
+            "default":true
+        },
+        "defaultTeam":{
+            "$ref":"#/definitions/isboxer2/teamIdentifier"
+        },
+        "defaultTeamMember":{
+            "$ref":"#/definitions/isboxer2/teamMemberIdentifier"
+        }
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/team.json",
+    "description": "ISBoxer 2 Team",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            },
+            "computerIdentifier": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "isboxer2_identifier": "computer"
+            },
+            "teamMemberIdentifier": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "isboxer2_identifier": "teammember"
+            },
+            "windowMapEntry": {
+                "type": "object",
+                "properties": {
+                    "computer": {
+                        "$ref": "#/definitions/isboxer2/computerIdentifier"
+                    },
+                    "teammember": {
+                        "$ref": "#/definitions/isboxer2/teamMemberIdentifier"
+                    }
+                },
+                "required": [
+                    "computer,teammember"
+                ]
+            },
+            "windowMap": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "type": "object",
+                "properties": {
+                    "entries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/isboxer2/windowMapEntry"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "team",
+    "properties": {
+        "teammembers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/isboxer2/teamMemberIdentifier"
+            }
+        },
+        "windowmaps": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/isboxer2/windowMap"
+            }
+        }
+    }
+}

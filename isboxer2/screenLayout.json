@@ -1,0 +1,54 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/screenLayout.json",
+    "description": "ISBoxer 2 Screen Layout",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            },
+            "screen": {
+                "screen_rect": {
+                    "type": "string",
+                    "examples": [
+                        "0,0,1920,1080"
+                    ]
+                },
+                "working_rect": {
+                    "type": "string",
+                    "examples": [
+                        "0,0,1920,1040",
+                        "0,0,1920,1080"
+                    ]
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "screenLayout",
+    "properties": {
+        "screens": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/isboxer2/screen"
+            }
+        },
+        "primaryScreen": {
+            "type": "integer"
+        }
+    }
+}

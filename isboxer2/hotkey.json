@@ -1,0 +1,39 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/hotkey.json",
+    "description": "ISBoxer 2 Hotkey",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "hotkey",
+    "properties": {
+        "codeName": {
+            "type": "string"
+        },
+        "category": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        }
+    }
+}

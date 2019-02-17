@@ -1,0 +1,55 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/character.json",
+    "description": "ISBoxer 2 Character",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            },
+            "screenLayout": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/screenLayout.json"
+            },
+            "gameIdentifier": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "isboxer2_identifier": "game"
+            },
+            "gameAccountIdentifier": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "isboxer2_identifier": "gameAccountPersonalData"
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "character",
+    "properties": {
+        "gameAccount": {
+            "$ref": "#/definitions/isboxer2/gameAccountIdentifier"
+        },
+        "game": {
+            "$ref": "#/definitions/isboxer2/gameIdentifier"
+        }
+    }
+}

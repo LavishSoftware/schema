@@ -1,0 +1,48 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json",
+    "description": "ISBoxer 2 Computer Personal Data",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            }
+        },
+        "gameLocationPersonalData": {
+            "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameLocationPersonalData.json"
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "computerPersonalData",
+    "properties": {
+        "machineName": {
+            "type": "string"
+        },
+        "hostname": {
+            "type": "string"
+        },
+        "uplinkName": {
+            "type": "string"
+        },
+        "gameLocations": {
+            "type": "array",
+            "items":{
+                "$ref":"#/definitions/isboxer2/gameLocationPersonalData"
+            }
+        }
+    }
+}

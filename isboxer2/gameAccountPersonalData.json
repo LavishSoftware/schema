@@ -1,0 +1,62 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json",
+    "description": "ISBoxer 2 Game Account Personal Data",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A generated GUID"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "A human-readable name or title to display"
+                    }
+                }
+            }
+        },
+        "gameIdentifier": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/isboxer2/identifier"
+                }
+            ],
+            "isboxer2_identifier": "game"
+        },
+        "gameAccountPersonalData": {
+            "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json"
+        },
+        "characterPersonalData": {
+            "$ref": "http://www.lavishsoft.com/schema/isboxer2/characterPersonalData.json"
+        },
+        "computerPersonalData": {
+            "$ref": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json"
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "gameAccountPersonalData",
+    "properties": {
+        "game": {
+            "$ref": "#/definitions/isboxer2/gameIdentifier"
+        },
+        "email": {
+            "type": "string"
+        },
+        "username": {
+            "type": "string"
+        },
+        "encryptedPassword": {
+            "type": "string"
+        },
+        "encryptedPasswordIV": {
+            "type": "string"
+        }
+    }
+}
