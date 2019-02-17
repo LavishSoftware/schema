@@ -1,0 +1,145 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/isboxer2Module.json",
+    "description": "An installed ISBoxer 2 Module manifest",
+    "type": "object",
+    "properties": {
+        "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "A human-readable name or title to display"
+        },
+        "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "A string containing a version name/number (e.g. 1.0)",
+            "examples": [
+                "1.0",
+                "1.0.1"
+            ]
+        },
+        "url": {
+            "type": "string",
+            "title": "URL",
+            "description": "A website for the Module"
+        },
+        "abbreviation": {
+            "type": "string",
+            "title": "Abbreviation",
+            "description": "Short way of referring to the Module"
+        },
+        "folder": {
+            "type": "string",
+            "description": "The name of the folder used for the Module (not the full path to the folder)"
+        },
+        "author": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "The Module Author's name"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The Module Author's e-mail"
+                },
+                "bitcoin": {
+                    "type": "string",
+                    "description": "A Bitcoin wallet for donating to the Author"
+                },
+                "paypal": {
+                    "type": "string",
+                    "description": "A PayPal e-mail for donating to the Author"
+                },
+                "patreon": {}
+            },
+            "title": "Author",
+            "description": "Author/credit information"
+        },
+        "lua": {
+            "properties": {
+                "controller": {
+                    "type": "string",
+                    "title": "Controller Filename",
+                    "description": "A .lua file containing a controller for the module within ISBoxer 2 Launcher"
+                }
+            },
+            "title": "Lua Scripting",
+            "description": "Lua scripts for ISBoxer 2 Launcher"
+        },
+        "lavishscript": {
+            "properties": {
+                "controller": {
+                    "type": "string",
+                    "title": "Controller Filename",
+                    "description": "An .iss file containing a controller for the module within Inner Space"
+                },
+                "objectdef": {
+                    "type": "string",
+                    "title": "Object Definition Name",
+                    "description": "Name of the Object Definition (objectdef) in the Controller file"
+                },
+                "object": {
+                    "type": "string",
+                    "title": "Object Name",
+                    "description": "Name of the instantiated object in the Controller file"
+                }
+            },
+            "title": "LavishScript Scripting",
+            "description": "LavishScript scripts for within Inner Space"
+        },
+        "lavishmachine": {
+            "properties": {
+                "clientFilename": {
+                    "type": "string",
+                    "title": "Client Filename",
+                    "description": "A .json file containing a LMAC Package for the module within Inner Space"
+                },
+                "launcherFilename": {
+                    "type": "string",
+                    "title": "Launcher Filename",
+                    "description": "A .json file containing a LMAC Package for the module within ISBoxer 2 Launcher"
+                }
+            },
+            "title": "LavishMachine Scripting",
+            "description": "LavishMachine (LMAC) packages for both Inner Space and ISBoxer 2 Launcher"
+        },
+        "lavishgui2": {
+            "properties": {
+                "filename": {
+                    "type": "string",
+                    "description": "A .json file containing a LavishGUI 2 Package "
+                }
+            },
+            "title": "LavishGUI 2",
+            "description": "LavishGUI 2 (LGUI2) packages for Inner Space"
+        },
+        "archive": {
+            "properties": {
+                "filename": {
+                    "type": "string",
+                    "title": "Filename",
+                    "description": ".zip file containing the archived ISBoxer 2 Module"
+                },
+                "sha256": {
+                    "type": "string",
+                    "title": "SHA-256 Hash",
+                    "description": "SHA-256 hash of the original archive file"
+                }
+            },
+            "title": "Archive",
+            "description": "A .zip file containing the archived ISBoxer 2 Module, and its SHA-256 hash"
+        },
+        "configuration": {
+            "properties": {
+                "schemaFilename": {
+                    "type": "string",
+                    "title": "Schema Filename",
+                    "description": "A .json file containing a JSON schema with additional ISBoxer 2-properties. The file follows the schema http://www.lavishsoft.com/schema/isboxer2/isboxer2.json"
+                }
+            },
+            "title": "Configuration",
+            "description": "Properties used for defining user configuration of the ISBoxer 2 Module"
+        }
+    }
+}
