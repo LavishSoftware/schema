@@ -35,23 +35,30 @@
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json"
             },
             "innerSpaceWindow": {
-                "type": "object",
-                "properties": {
-                    "game": {
-                        "type": "string"
+                "oneOf": [
+                    {
+                        "type": "null"
                     },
-                    "gameProfile": {
-                        "type": "string"
-                    },
-                    "parameters": {
-                        "type": "string"
-                    },
-                    "parametersExclusive": {
-                        "type": "boolean"
+                    {
+                        "type": "object",
+                        "properties": {
+                            "game": {
+                                "type": "string"
+                            },
+                            "gameProfile": {
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "type": "string"
+                            },
+                            "parametersExclusive": {
+                                "type": "boolean"
+                            }
+                        }
                     }
-                }
+                ]
             }
-        }    
+        }
     },
     "allOf": [
         {
@@ -69,25 +76,41 @@
                     "$ref": "#/definitions/isboxer2/innerSpaceWindow"
                 }
             ],
-            "properties": {
-                "characterSet": {
-                    "type": "string"
+            "oneOf": [
+                {
+                    "type": "null"
                 },
-                "slotNumber": {
-                    "type": "integer",
-                    "minimum": 1
+                {
+                    "type": "object",
+                    "properties": {
+                        "characterSet": {
+                            "type": "string"
+                        },
+                        "slotNumber": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
                 }
-            }
+            ]
         },
         "externalWindow": {
-            "properties": {
-                "launchExecutable": {
-                    "type": "string"
+            "oneOf": [
+                {
+                    "type": "null"
                 },
-                "parameters": {
-                    "type": "string"
+                {
+                    "type": "object",
+                    "properties": {
+                        "launchExecutable": {
+                            "type": "string"
+                        },
+                        "parameters": {
+                            "type": "string"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "windowTitleFormat": {
             "type": "string"
