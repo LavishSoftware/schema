@@ -135,11 +135,11 @@
                 "schemaFilename": {
                     "type": "string",
                     "title": "Schema Filename",
-                    "description": "A .json file containing a JSON schema with additional ISBoxer 2-properties. The file follows the schema http://www.lavishsoft.com/schema/isboxer2/isboxer2.json"
+                    "description": "A .json file containing an ISBoxer 2-extended JSON schema, which automatically provides GUI for end-user configuration. The file follows the schema http://www.lavishsoft.com/schema/isboxer2/isboxer2.json"
                 }
             },
             "title": "Configuration",
-            "description": "Properties used for defining user configuration of the ISBoxer 2 Module"
+            "description": "Properties used for defining user configuration of the ISBoxer 2 Module. These settings can automatically provide GUI for end-user configuration."
         }
     }
 }
