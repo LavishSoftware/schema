@@ -56,12 +56,12 @@
         "masterKeyCheck": {
             "type": "string",
             "title":"Master Key Check",
-            "description": "An encrypted code to check a Master Key entry attempt against. The Master Key itself is discarded."
+            "description": "An encrypted code to check a Master Password entry attempt against. The Master Password itself is discarded."
         },
         "masterKeyCheckIV": {
             "type": "string",
             "title":"Master Key Check IV",
-            "description": "An Initialization Vector (IV) used for the Master Key Check. An IV ensures that entering the same Master Key does not produce the same encrypted Master Key Check value."
+            "description": "An Initialization Vector (IV) used for the Master Key Check. An IV ensures that entering the same Master Password does not produce the same encrypted Master Key Check value."
         }
     }
 }

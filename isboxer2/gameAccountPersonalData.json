@@ -65,7 +65,7 @@
         "encryptedPassword": {
             "type": "string",
             "title":"Encrypted Password",
-            "description": "An encrypted password used to log in to the account. The password can only be decrypted by entering a Master Key."
+            "description": "An encrypted password used to log in to the account. The password can only be decrypted by entering the Master Password."
         },
         "encryptedPasswordIV": {
             "type": "string",
