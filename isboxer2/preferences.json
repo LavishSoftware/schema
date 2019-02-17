@@ -61,23 +61,33 @@
         },
         "use64BitInnerSpace":{
             "type":"boolean",
-            "default":true            
+            "default":true,
+            "title":"Use 64-bit Inner Space",
+            "description": "Whether to use the 64-bit Inner Space executable. On a 32-bit Windows system, this should be false."
         },
         "useVersionTrack":{
             "enum": ["Live","Test"],
-            "default":"Live"
+            "default":"Live",
+            "title":"Version Track",
+            "description": "The ISBoxer 2 Version Track to follow for updates, between Live and Test"
         },
         "notifyVersionDifference":{
             "enum":["Older","None","Revision","Date","Major","FullVersion"],
-            "default":"Revision"
+            "default":"Revision",
+            "title":"Notify on Version Difference",
+            "description": "The minimum version difference required before an update notification popup window is allowed"
         },
         "enableModuleDeveloperMode":{
             "type":"boolean",
-            "default":false
+            "default":false,
+            "title":"Enable Module Developer Mode",
+            "description": "Enables additional controls to create and edit ISBoxer 2 Modules"
         },
         "uiZoomLevel":{
             "type":"number",
-            "default":1.0
+            "default":1.0,
+            "title":"UI Zoom Multiplier",
+            "description": "ISBoxer 2 Launcher UI zoom multiplier; i.e. 100% is a 1.0 multiplier, and 0% is a 0.0 multiplier"
         },
         "autoLoadModules":{
             "items":{
@@ -88,13 +98,18 @@
             "uniqueItems": true
         },
         "defaultToLastSelectedTeamAndMember":{
-            "default":true
+            "type":"boolean",
+            "default":true,
+            "title":"Default to last-selected Team and Member",
+            "description": "If set to true, the last-selected Team and Team Member are kept in defaultTeam and defaultTeamMember and selected on the Launch tab"
         },
         "defaultTeam":{
-            "$ref":"#/definitions/isboxer2/teamIdentifier"
+            "allOf":[{"$ref":"#/definitions/isboxer2/teamIdentifier"}],
+            "description": "If defaultToLastSelectedTeamAndMember is true, this Team is selected on the Launch tab"
         },
         "defaultTeamMember":{
-            "$ref":"#/definitions/isboxer2/teamMemberIdentifier"
+            "allOf":[{"$ref":"#/definitions/isboxer2/teamMemberIdentifier"}],
+            "description": "If defaultToLastSelectedTeamAndMember is true, this Team Member is selected on the Launch tab"
         }
     }
 }
