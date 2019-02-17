@@ -25,7 +25,7 @@
                 ],
                 "isboxer2_identifier": "game"
             },
-            "innerSpaceWindow": {
+            "innerspaceWindow": {
                 "oneOf": [
                     {
                         "type": "null"
@@ -66,10 +66,10 @@
     ],
     "isboxer2_object": "gameLocationPersonalData",
     "properties": {
-        "innerSpaceWindow": {
+        "innerspaceWindow": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/isboxer2/innerSpaceWindow"
+                    "$ref": "#/definitions/isboxer2/innerspaceWindow"
                 }
             ],
             "title": "Inner Space Window",
@@ -78,7 +78,7 @@
         "isboxer1Window": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/isboxer2/innerSpaceWindow"
+                    "$ref": "#/definitions/isboxer2/innerspaceWindow"
                 }
             ],
             "oneOf": [
