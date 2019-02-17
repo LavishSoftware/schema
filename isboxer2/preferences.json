@@ -17,14 +17,22 @@
                     }
                 }
             },
-            "teamIdentifier":{
-                "$ref":"#/isboxer2/identifier",
-                "description":"A Team Identifier"
+            "teamIdentifier": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "isboxer2_identifier": "team"
             },
-            "teamMemberIdentifier":{
-                "$ref":"#/isboxer2/identifier",
-                "description":"A Team Member Identifier"
-            } 
+            "teamMemberIdentifier": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/isboxer2/identifier"
+                    }
+                ],
+                "isboxer2_identifier": "teamMember"
+            }
         }
     },
     "properties":{
