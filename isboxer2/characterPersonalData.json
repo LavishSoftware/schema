@@ -16,16 +16,16 @@
                         "description": "A human-readable name or title to display"
                     }
                 }
+            },
+            "gameAccountPersonalData": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json"
+            },
+            "characterPersonalData": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/characterPersonalData.json"
+            },
+            "computerPersonalData": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json"
             }
-        },
-        "gameAccountPersonalData": {
-            "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameAccountPersonalData.json"
-        },
-        "characterPersonalData": {
-            "$ref": "http://www.lavishsoft.com/schema/isboxer2/characterPersonalData.json"
-        },
-        "computerPersonalData": {
-            "$ref": "http://www.lavishsoft.com/schema/isboxer2/computerPersonalData.json"
         }
     },
     "allOf": [

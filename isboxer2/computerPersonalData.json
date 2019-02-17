@@ -16,10 +16,10 @@
                         "description": "A human-readable name or title to display"
                     }
                 }
-            }
-        },
-        "gameLocationPersonalData": {
-            "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameLocationPersonalData.json"
+            },
+            "gameLocationPersonalData": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameLocationPersonalData.json"
+            }    
         }
     },
     "allOf": [
