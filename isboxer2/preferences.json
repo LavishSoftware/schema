@@ -40,21 +40,25 @@
                 "minimum":0,
                 "maximum":4,
                 "type":"integer",
+                "title":"ISBoxer 1 Experience Level",
                 "description":"ISBoxer 1 experience level, from 0 being new or none to 4 being expert"
         },
         "isboxer2ExperienceLevel":{
             "minimum":0,
             "maximum":4,
             "type":"integer",
+            "title":"ISBoxer 2 Experience Level",
             "description":"ISBoxer 2 experience level, from 0 being new or none to 4 being expert"
         },
         "multiboxingExperienceLevel":{
             "minimum":0,
             "maximum":4,
             "type":"integer",
+            "title":"Multiboxing Experience Level",
             "description":"Multiboxing experience level, from 0 being new or none to 4 being expert"
         },
         "safeViewLevel":{
+            "title":"Safe View Level",
             "description":"Safe View Level. 0=None, 1=Account, 2=Character, 4=Private",
             "type":"integer",
             "enum":[0,1,2,4]            
@@ -90,6 +94,8 @@
             "description": "ISBoxer 2 Launcher UI zoom multiplier; i.e. 100% is a 1.0 multiplier, and 0% is a 0.0 multiplier"
         },
         "autoLoadModules":{
+            "title":"Auto-load Modules",
+            "description": "ISBoxer 2 will automatically load these Modules at startup",
             "items":{
                 "type":"string",
                 "description": "An ISBoxer 2 Module Name and Version to load",
@@ -105,10 +111,12 @@
         },
         "defaultTeam":{
             "allOf":[{"$ref":"#/definitions/isboxer2/teamIdentifier"}],
+            "title":"Default Team",
             "description": "If defaultToLastSelectedTeamAndMember is true, this Team is selected on the Launch tab"
         },
         "defaultTeamMember":{
             "allOf":[{"$ref":"#/definitions/isboxer2/teamMemberIdentifier"}],
+            "title":"Default Team Member",
             "description": "If defaultToLastSelectedTeamAndMember is true, this Team Member is selected on the Launch tab"
         }
     }
