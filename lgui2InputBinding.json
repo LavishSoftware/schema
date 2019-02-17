@@ -281,7 +281,6 @@
     },
     "required": [
         "name",
-        "controls",
-        "eventHandler"
+        "controls"
     ]
 }
