@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://www.lavishsoft.com/schema/lmacTask.json",
-  "description": "JSON Schema for an LMAC Task",
+  "description": "An LMAC Task",
   "type": "object",
   "definitions": {
     "numberOrInteger": {

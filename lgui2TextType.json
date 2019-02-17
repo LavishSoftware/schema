@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.lavishsoft.com/schema/lgui2TextType.json",
-    "description": "JSON Schema for a LavishGUI2 Text Type",
+    "description": "A LavishGUI2 Text Type",
     "type": "object",
     "properties": {
         "name": {

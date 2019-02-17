@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.lavishsoft.com/schema/lgui2InputBinding.json",
-    "description": "JSON Schema for a LavishGUI2 Input Binding",
+    "description": "A LavishGUI2 Input Binding",
     "definitions": {
         "lgui2": {
             "inputBinding": {
