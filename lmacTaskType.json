@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://www.lavishsoft.com/schema/lmacTask.json",
+  "$id": "http://www.lavishsoft.com/schema/lmacTaskType.json",
   "description": "An LMAC Task Type",
   "type": "object",
   "properties": {
@@ -20,7 +20,7 @@
           "$ref": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json"
         },
         {
-          "$ref": "#"
+          "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
         }
       ],      
       "description": "Define any parameters for a Task of this Type. GUI can be provided based on the schema."
