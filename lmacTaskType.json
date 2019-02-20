@@ -18,9 +18,6 @@
       "allOf": [
         {
           "$ref": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json"
-        },
-        {
-          "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
         }
       ],      
       "description": "Define any parameters for a Task of this Type. GUI can be provided based on the schema."
