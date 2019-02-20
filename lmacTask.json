@@ -15,33 +15,31 @@
       ]
     }
   },
-  "oneOf": [
+  "properties": {
+    "library": {
+      "type": "string"
+    },
+    "taskName": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "duration": {
+      "$ref": "#/definitions/numberOrInteger"
+    },
+    "instant": {
+      "type": "boolean"
+    }
+},
+"oneOf": [
     {
-      "properties": {
-        "library": {
-          "type": "string"
-        },
-        "taskName": {
-          "type": "string"
-        }
-      },
       "required": [
         "library",
         "taskName"
       ]
     },
     {
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "duration": {
-          "$ref": "#/definitions/numberOrInteger"
-        },
-        "instant": {
-          "type": "boolean"
-        }
-      },
       "required": [
         "type"
       ]
