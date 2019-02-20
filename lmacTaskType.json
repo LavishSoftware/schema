@@ -5,41 +5,65 @@
   "type": "object",
   "properties": {
     "name": {
-      "title":"Name",
+      "title": "Name",
       "description": "Name of the LMAC Task Type",
       "type": "string",
-      "examples": ["isboxer2.Keystroke","isboxer2launcher.debugtrace","isboxer2launcher.launchteam"]
+      "examples": [
+        "isboxer2.Keystroke",
+        "isboxer2launcher.DebugTrace",
+        "isboxer2launcher.LaunchTeam"
+      ]
     },
-    "schema":{
-      "description": "Define any parameters for a Task of this Type. GUI can be provided based on the schema.",
-      "$ref": "http://json-schema.org/draft-07/schema#"
+    "schema": {
+      "allOf": [
+        {
+          "$ref": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json"
+        },
+        {
+          "$ref": "#"
+        }
+      ],      
+      "description": "Define any parameters for a Task of this Type. GUI can be provided based on the schema."
     }
   },
   "oneOf": [
     {
-    "properties":{
-      "object": {
-        "type": "string",
-        "description": "LavishScript Object with a Method to handle this Task",
-        "examples":["ISB2_MyModule"]
+      "properties": {
+        "object": {
+          "type": "string",
+          "description": "LavishScript Object with a Method to handle this Task",
+          "examples": [
+            "ISB2_MyModule"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "description": "LavishScript Method to perform on the object, for this Task",
+          "examples": [
+            "Task_MyTask",
+            "Task_Keystroke",
+            "Task_DebugTrace"
+          ]
+        }
       },
-      "method": {
-        "type": "string",
-        "description": "LavishScript Method to perform on the object, for this Task",
-        "examples": ["Task_MyTask","Task_Keystroke","Task_DebugTrace"]
-      }  
-      },
-      "required":["object","method"]
+      "required": [
+        "object",
+        "method"
+      ]
     },
     {
-      "properties":{
-        "function":{
-          "type":"string",
+      "properties": {
+        "function": {
+          "type": "string",
           "description": "Lua function to handle this Task. (ISBoxer 2 Launcher only)"
         }
       },
-      "required":["function"]
+      "required": [
+        "function"
+      ]
     }
   ],
-  "required": [ "name" ]
+  "required": [
+    "name"
+  ]
 }

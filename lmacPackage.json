@@ -12,21 +12,24 @@
         "type": "object",
         "title": "Task Library",
         "description": "A Task Library (which may or may not already exist) to fill with Tasks",
-
         "additionalProperties": {
+          "allOf": [{
+            "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
+          }],
           "type": "object",
           "title": "Task",
-          "description": "An LMAC Task",
-          "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
+          "description": "An LMAC Task"
         }
       }
     },
     "taskTypes": {
       "items": {
+        "allOf": [{
+          "$ref": "http://www.lavishsoft.com/schema/lmacTaskType.json"
+        }],
         "type": "object",
         "title": "Task Type",
-        "description": "An LMAC Task Type",
-        "$ref": "http://www.lavishsoft.com/schema/lmacTaskType.json"
+        "description": "An LMAC Task Type"
       },
       "type": "array"
     }
