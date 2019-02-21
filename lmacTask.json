@@ -17,31 +17,75 @@
   },
   "properties": {
     "library": {
-      "type": "string"
+      "type": "string",
+      "title": "Task Library",
+      "description": "A Task Library containing the Task specified by taskName. When referencing a Task in a Task Library, all values other than library and taskName are ignored."
     },
     "taskName": {
-      "type": "string"
+      "type": "string",
+      "title": "Task Name",
+      "description": "A Task within the Task Library specified by library. When referencing a Task in a Task Library, all values other than library and taskName are ignored."
     },
     "type": {
-      "type": "string"
+      "type": "string",
+      "title": "Task Type",
+      "description": "A Task Type to construct"
     },
     "duration": {
-      "$ref": "#/definitions/numberOrInteger"
+      "allOf": [
+        {
+          "$ref": "#/definitions/numberOrInteger"
+        }
+      ],
+      "title": "Duration",
+      "description": "An integer specifying a number of milliseconds, or a floating point number specifying a number of seconds (e.g. 1.0)",
+      "examples": [
+        0.5,
+        500
+      ]
     },
     "instant": {
-      "type": "boolean"
+      "type": "boolean",
+      "title": "Instant",
+      "description": "When enabled, specifies that the Task must complete instantly, ignoring any specified duration."
     }
-},
-"oneOf": [
+  },
+  "allOf": [
     {
-      "required": [
-        "library",
-        "taskName"
+      "oneOf": [
+        {
+          "required": [
+            "library",
+            "taskName"
+          ]
+        },
+        {
+          "required": [
+            "type"
+          ]
+        }
       ]
     },
     {
-      "required": [
-        "type"
+      "oneOf": [
+        {
+          "required": [
+            "duration"
+          ]
+        },
+        {
+          "required": [
+            "instant"
+          ]
+        },
+        {
+          "not": {
+            "required": [
+              "duration",
+              "instant"
+            ]
+          }
+        }
       ]
     }
   ]
