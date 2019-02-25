@@ -2,23 +2,7 @@
     "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
     "$id": "http://www.lavishsoft.com/schema/isboxer2/multiboxingRules.json",
     "description": "Game Multiboxing Rules",
-    "type": "object",
-    "definitions": {
-        "isboxer2": {
-            "identifier": {
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "A generated GUID"
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "A human-readable name or title to display"
-                    }
-                }
-            }
-        }
-    },
+    "type": "object",  
     "properties": {
         "multipleClientsAllowed":{
             "type":"boolean",

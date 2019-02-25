@@ -4,19 +4,7 @@
     "description": "ISBoxer 2 Keystroke",
     "type": "object",
     "definitions": {
-        "isboxer2": {
-            "identifier": {
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "A generated GUID"
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "A human-readable name or title to display"
-                    }
-                }
-            },
+        "isboxer2": {            
             "keycombo":{
                 "$ref":"http://www.lavishsoft.com/schema/isboxer2/keycombo.json"
             }

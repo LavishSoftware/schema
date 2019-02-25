@@ -1,0 +1,18 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/identifier.json",
+    "description": "ISBoxer 2 Identifier",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "title":"ID",
+            "description": "A generated GUID that can identify the object even if its Display Name is changed."
+        },
+        "display_name": {
+            "type": "string",
+            "title":"Display Name",
+            "description": "A human-readable name or title to display"
+        }
+    }
+}

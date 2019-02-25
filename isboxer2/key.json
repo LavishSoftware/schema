@@ -3,22 +3,6 @@
     "$id": "http://www.lavishsoft.com/schema/isboxer2/key.json",
     "description": "ISBoxer 2 Key",
     "type": "object",
-    "definitions": {
-        "isboxer2": {
-            "identifier": {
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "A generated GUID"
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "A human-readable name or title to display"
-                    }
-                }
-            }
-        }
-    },
     "isboxer2_object": "key",
     "properties": {
         "keyName":{

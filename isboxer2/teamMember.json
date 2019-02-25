@@ -6,16 +6,7 @@
     "definitions": {
         "isboxer2": {
             "identifier": {
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "A generated GUID"
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "A human-readable name or title to display"
-                    }
-                }
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/identifier.json"
             },
             "characterIdentifier": {
                 "allOf": [
