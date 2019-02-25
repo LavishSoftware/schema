@@ -52,41 +52,70 @@
   },
   "allOf": [
     {
-      "oneOf": [
-        {
+      "if": {
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "not": {
           "required": [
             "library",
             "taskName"
           ]
-        },
-        {
+        }
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "required": [
+              "library"
+            ]
+          },
+          {
+            "required": [
+              "taskName"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "not": {
           "required": [
             "type"
           ]
         }
-      ]
+      }
     },
     {
-      "oneOf": [
-        {
-          "required": [
-            "duration"
-          ]
-        },
-        {
+      "if": {
+        "required": [
+          "duration"
+        ]
+      },
+      "then": {
+        "not": {
           "required": [
             "instant"
           ]
-        },
-        {
-          "not": {
-            "required": [
-              "duration",
-              "instant"
-            ]
-          }
         }
-      ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "instant"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "duration"
+          ]
+        }
+      }
     }
   ]
 }
