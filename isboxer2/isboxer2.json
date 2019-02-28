@@ -39,7 +39,8 @@
                     "module",
                     "screenLayout",
                     "team",
-                    "teamMember"
+                    "teamMember",
+                    "taskType"
                 ]
             },
             "gameLocationPersonalData": {
@@ -341,31 +342,25 @@
         }
     },
     "default": true,
-    "oneOf": [
+    "allOf":[
         {
-            "required": [
-                "isboxer2_object"
-            ]
+            "if":{
+                "required":["isboxer2_object"]
+            },
+            "then":{
+                "not":{
+                    "required": ["isboxer2_identifier"]
+                }
+            }
         },
         {
-            "required": [
-                "isboxer2_identifier"
-            ]
-        },
-        {
-            "not": {
-                "oneOf": [
-                    {
-                        "required": [
-                            "isboxer2_object"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "isboxer2_identifier"
-                        ]
-                    }
-                ]
+            "if":{
+                "required":["isboxer2_identifier"]
+            },
+            "then":{
+                "not":{
+                    "required": ["isboxer2_object"]
+                }
             }
         }
     ]
