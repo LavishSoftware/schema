@@ -4,14 +4,7 @@
     "description": "A LavishGUI2 Brush",
     "definitions": {
         "numberOrInteger": {
-            "anyOf": [
-                {
-                    "type": "integer"
-                },
-                {
-                    "type": "number"
-                }
-            ]
+                "type":["integer","number"]
         },
         "lgui2": {
             "pixelShader": {

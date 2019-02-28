@@ -5,14 +5,7 @@
   "type": "object",
   "definitions": {
     "numberOrInteger": {
-      "anyOf": [
-        {
-          "type": "integer"
-        },
-        {
-          "type": "number"
-        }
-      ]
+      "type":["integer","number"]
     }
   },
   "properties": {
