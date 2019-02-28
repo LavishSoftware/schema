@@ -4,14 +4,7 @@
     "description": "A LavishGUI2 Color",
     "definitions":{
         "numberOrInteger": {
-            "anyOf": [
-                {
-                    "type": "integer"
-                },
-                {
-                    "type": "number"
-                }
-            ]
+            "type":["integer","number"]
         }
     },
     "oneOf":[
