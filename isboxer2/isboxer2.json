@@ -40,6 +40,8 @@
                     "screenLayout",
                     "team",
                     "teamMember",
+                    "taskLibrary",
+                    "taskLibraryTask",
                     "taskType"
                 ]
             },
