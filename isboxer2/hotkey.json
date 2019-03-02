@@ -38,7 +38,15 @@
             "type":"object",
             "title":"Metadata",
             "description": "A collection of Metadata about the Hotkey used for various purposes. For example, metadata may be used to determine whether and when to toggle the Hotkey on and off",
-            "isboxer2_object": "metadata"
+            "isboxer2_object": "metadata",
+            "properties":{
+                "masterHotkeyToggle":{
+                    "type":"boolean",
+                    "title":"Master Hotkey Toggle",
+                    "description": "true or false indicating whether the Master Hotkey Toggle includes this Hotkey. Defaults to false",
+                    "default":true
+                }
+            }
         }
     }
 }
