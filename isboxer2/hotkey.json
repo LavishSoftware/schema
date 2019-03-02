@@ -33,6 +33,12 @@
             "type": "string",
             "title":"Description",
             "description": "A description of the intended purpose of the Hotkey"
+        },
+        "metadata":{
+            "type":"object",
+            "title":"Metadata",
+            "description": "A collection of Metadata about the Hotkey used for various purposes. For example, metadata may be used to determine whether and when to toggle the Hotkey on and off",
+            "isboxer2_object": "metadata"
         }
     }
 }

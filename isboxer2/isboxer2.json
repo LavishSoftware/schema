@@ -22,7 +22,9 @@
                     "mappedWindowsHotkey",
                     "screenLayout",
                     "team",
-                    "teamMember"
+                    "teamMember",
+                    "keylist",
+                    "metadata"
                 ]
             },
             "identifiers_enum": {
