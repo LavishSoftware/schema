@@ -1,0 +1,43 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/processDetection.json",
+    "description": "ISBoxer 2 Process Detection",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/identifier.json"
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "processDetection",
+    "properties": {
+        "processTitle": {
+            "type": "string",
+            "title":"Process title",
+            "description": "",
+            "examples":[""]
+        },
+        "mainWindowTitle": {
+            "type": "string",
+            "title":"Main Window Title",
+            "description":"",
+            "examples":[""]
+        },
+        "executableFilename": {
+            "type": "string",
+            "title":"Executable Filename",
+            "description": ""
+        },
+        "processID":{
+            "type":"integer",
+            "title":"Process ID",
+            "description": ""
+        }
+    }
+}

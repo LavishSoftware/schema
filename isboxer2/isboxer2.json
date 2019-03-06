@@ -24,6 +24,7 @@
                     "team",
                     "teamMember",
                     "keylist",
+                    "processDetection",
                     "metadata"
                 ]
             },
