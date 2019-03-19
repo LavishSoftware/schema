@@ -24,6 +24,7 @@
                     "team",
                     "teamMember",
                     "keylist",
+                    "keycombolist",
                     "processDetection",
                     "metadata",
                     "task"
