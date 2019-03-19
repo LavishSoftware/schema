@@ -25,7 +25,8 @@
                     "teamMember",
                     "keylist",
                     "processDetection",
-                    "metadata"
+                    "metadata",
+                    "task"
                 ]
             },
             "identifiers_enum": {
