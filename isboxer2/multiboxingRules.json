@@ -2,27 +2,45 @@
     "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
     "$id": "http://www.lavishsoft.com/schema/isboxer2/multiboxingRules.json",
     "description": "Game Multiboxing Rules",
-    "type": "object",  
+    "type": "object",
     "properties": {
-        "multipleClientsAllowed":{
-            "type":"boolean",
-            "title":"Multiple Clients Allowed",
+        "multipleClients": {
+            "type": "boolean",
+            "title": "Multiple Clients",
             "description": "True if Multiple Clients are allowed. If not, the Game should not be multiboxed."
         },
-        "broadcastingAllowed":{
-            "type":"boolean",
-            "title":"Broadcasting Allowed",
+        "broadcasting": {
+            "type": "boolean",
+            "title": "Input Broadcasting",
             "description": "True if Input Broadcasting is allowed. If not, only one window should be controlled at a time."
         },
-        "inputDelayAllowed":{
-            "type":"boolean",
-            "title":"Input Delay Allowed",
+        "inputDelay": {
+            "type": "boolean",
+            "title": "Input Delay",
             "description": "True if Input Delays are allowed. If not, delayed actions should be restricted to those that do not send inputs to the Game, and any inputs to the game must be an instant result of user inputs (e.g. pressing or releasing a button)."
         },
-        "cursorPositioningAllowed":{
-            "type":"boolean",
-            "title":"Cursor Positioning Allowed",
+        "cursorPositioning": {
+            "type": "boolean",
+            "title": "Cursor Positioning",
             "description": "True if Cursor Positioning is allowed, e.g. as part of a Hotkey. If not, the cursor position can only be synchronized with another Game window."
+        },
+        "partialVideoFX": {
+            "type": "boolean",
+            "title": "Partial Video FX",
+            "description": "True if partial-window Video FX (such as a view of a minimap) are allowed. If not, only full window Video FX views are allowed."
+        },
+        "restrictedServers": {
+            "type": "array",
+            "title":"Restricted Servers",
+            "description": "A list of servers that multiboxing is further restricted or prohibited on.",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true
+        },
+        "notes": {
+            "type": "string",
+            "title":"Notes"
         }
     }
 }

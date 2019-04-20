@@ -27,7 +27,8 @@
                     "keycombolist",
                     "processDetection",
                     "metadata",
-                    "task"
+                    "task",
+                    "virtualFile"
                 ]
             },
             "identifiers_enum": {
@@ -47,8 +48,17 @@
                     "teamMember",
                     "taskLibrary",
                     "taskLibraryTask",
-                    "taskType"
+                    "taskType",
+                    "virtualFile"
                 ]
+            },
+            "settingtargets_enum": {
+                "enum": [
+                    "global",
+                    "team",
+                    "teamMember",
+                    "character"
+                ]            
             },
             "gameLocationPersonalData": {
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/gameLocationPersonalData.json"
@@ -74,8 +84,8 @@
             "gamePublisher": {
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/gamePublisher.json"
             },
-            "inputBinding":{
-                "$ref":"http://www.lavishsoft.com/schema/lgui2InputBinding.json"
+            "inputBinding": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json"
             },
             "hotkey": {
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/hotkey.json"
@@ -103,6 +113,9 @@
             },
             "teamMember": {
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/teamMember.json"
+            },
+            "virtualFile": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/virtualFile.json"
             },
             "identifier": {
                 "$ref": "http://www.lavishsoft.com/schema/isboxer2/identifier.json"
@@ -346,27 +359,38 @@
         },
         "isboxer2_object": {
             "$ref": "#/definitions/isboxer2/objects_enum"
+        },
+        "isboxer2_settingtarget": {
+            "$ref": "#/definitions/isboxer2/settingtargets_enum"
         }
     },
     "default": true,
-    "allOf":[
+    "allOf": [
         {
-            "if":{
-                "required":["isboxer2_object"]
+            "if": {
+                "required": [
+                    "isboxer2_object"
+                ]
             },
-            "then":{
-                "not":{
-                    "required": ["isboxer2_identifier"]
+            "then": {
+                "not": {
+                    "required": [
+                        "isboxer2_identifier"
+                    ]
                 }
             }
         },
         {
-            "if":{
-                "required":["isboxer2_identifier"]
+            "if": {
+                "required": [
+                    "isboxer2_identifier"
+                ]
             },
-            "then":{
-                "not":{
-                    "required": ["isboxer2_object"]
+            "then": {
+                "not": {
+                    "required": [
+                        "isboxer2_object"
+                    ]
                 }
             }
         }

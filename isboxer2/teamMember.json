@@ -30,7 +30,7 @@
                         "$ref": "#/definitions/isboxer2/identifier"
                     }
                 ],
-                "isboxer2_identifier": "gameaccount"
+                "isboxer2_identifier": "gameAccountPersonalData"
             },
             "gameLocationIdentifier": {
                 "allOf": [
@@ -38,7 +38,7 @@
                         "$ref": "#/definitions/isboxer2/identifier"
                     }
                 ],
-                "isboxer2_identifier": "gamelocation"
+                "isboxer2_identifier": "gameLocationPersonalData"
             }
         }
     },

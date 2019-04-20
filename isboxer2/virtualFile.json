@@ -1,0 +1,35 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/isboxer2/isboxer2.json#",
+    "$id": "http://www.lavishsoft.com/schema/isboxer2/virtualFile.json",
+    "description": "ISBoxer 2 Virtual File",
+    "type": "object",
+    "definitions": {
+        "isboxer2": {
+            "identifier": {
+                "$ref": "http://www.lavishsoft.com/schema/isboxer2/identifier.json"
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/isboxer2/identifier"
+        }
+    ],
+    "isboxer2_object": "virtualFile",
+    "properties": {
+        "original_filename":{
+            "type":"string",
+            "title":"Original Filename",
+            "description": ""
+        },
+        "virtual_format":{
+            "type":"string",
+            "title":"Virtual Format",
+            "description": "New filename, with available variables including {AccountName} {EmailAddress} {CharacterName} {ServerName} {TeamMemberName} {TeamMemberFile}"
+        },
+        "description":{
+            "type":"string",
+            "title":"Description"
+        }
+    }
+}
