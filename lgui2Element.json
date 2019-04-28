@@ -324,6 +324,37 @@
                     }
                 }
             },
+            "trigger":{
+                "type":"object",
+                "properties":{
+                    "name":{
+                        "type":"string",
+                        "description":"Name of the Trigger. Because Triggers are defined within an Element, the Name is usually specified as the key in the 'triggers' property, and should not usually be specified as part of the Trigger itself."
+                    },
+                    "matched":{
+                        "$ref":"#/definitions/lgui2/eventHandler"
+                    },
+                    "unmatched":{
+                        "$ref":"#/definitions/lgui2/eventHandler"
+                    },
+                    "condition":{
+                        "type":"string"
+                    },
+                    "mode":{
+                        "type": "string",
+                        "enum": [
+                            "manual",
+                            "pulse",
+                            "event"
+                        ],
+                        "default":"pulse"
+                    },
+                    "ls1event":{
+                        "type":"string"
+                    }
+                },
+                "required":["matched"]
+            },
             "anchor": {
                 "allOf": [
                     {
@@ -1231,6 +1262,12 @@
                                 "$ref": "#/definitions/lgui2/eventHandler"
                             }
                         }
+                    }
+                },
+                "triggers":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "$ref": "#/definitions/lgui2/trigger"
                     }
                 },
                 "tooltip": {
