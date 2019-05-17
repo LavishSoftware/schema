@@ -116,7 +116,7 @@
                         }
                     ],
                     "required": [
-                        "style"
+                        "styleName"
                     ]
                 },
                 {

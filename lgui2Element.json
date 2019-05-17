@@ -258,12 +258,14 @@
                     },
                     {
                         "type": "object",
-                        "properties": {
-                            "type": "string",
-                            "enum": [
+                        "properties": {                            
+                            "type": {
+                                "type":"string",
+                                "enum": [
                                 "method",
                                 "code"
                             ]
+                            }
                         },
                         "required": [
                             "type"
