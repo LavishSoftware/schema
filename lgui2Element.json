@@ -29,6 +29,9 @@
             "animationType": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2AnimationType.json"
             },
+            "elementLocator": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2ElementLocator.json"
+            },
             "eventHandler": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2EventHandler.json"
             },
@@ -659,6 +662,74 @@
                     "type"
                 ]
             },
+            "page": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/headeredContentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "page"
+                    }
+                }
+            },
+            "pagecontrol": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/headeredContentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "pagecontrol"
+                    },
+                    "headerEdge": {
+                        "$ref": "#/definitions/lgui2/edge"
+                    },
+                    "pages": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "type": {
+                                                    "const": "page"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/definitions/lgui2/page"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "type": {
+                                                    "const": "page"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/definitions/lgui2/page"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "type"
+                ]
+            },
             "tab": {
                 "allOf": [
                     {
@@ -1255,15 +1326,21 @@
                 "hooks": {
                     "type": "object",
                     "additionalProperties": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/elementLocator"
+                            }
+                        ],    
                         "type": "object",
                         "properties": {
-                            "name": {
-                                "type": "string"
-                            },
                             "eventHandler": {
                                 "$ref": "#/definitions/lgui2/eventHandler"
+                            },
+                            "event":{
+                                "type":"string"
                             }
-                        }
+                        },
+                        "required": ["event","eventHandler"]
                     }
                 },
                 "triggers":{
@@ -1424,6 +1501,12 @@
                 },
                 {
                     "$ref": "#/definitions/lgui2/tabcontrol"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/page"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/pagecontrol"
                 },
                 {
                     "$ref": "#/definitions/lgui2/window"
