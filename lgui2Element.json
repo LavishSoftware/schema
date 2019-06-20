@@ -535,10 +535,7 @@
                     "styles": {
                         "type": "object"
                     }
-                },
-                "required": [
-                    "type"
-                ]
+                }
             },
             "radialpanel": {
                 "properties": {
