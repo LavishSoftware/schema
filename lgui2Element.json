@@ -29,6 +29,55 @@
             "animationType": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2AnimationType.json"
             },
+            "dataBinding": {
+                "description": "A LavishGUI2 Data Binding",
+                "oneOf": [
+                    {
+                        "type": "string",
+                        "examples": [
+                            "MyObject.MyVariable"
+                        ],
+                        "description": "The path to a LavishScript variable to generate pullFormat and pushFormat from. The variable must support a \"Set\" method (common for LavishScript value types)."
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "pullFormat": {
+                                "type": "string",
+                                "examples": [
+                                    "${MyObject.MyVariable}"
+                                ],
+                                "description": "A string containing a LavishScript Data Sequence (${LikeThese}), used to refresh the value from LavishScript"
+                            },
+                            "pushFormat": {
+                                "type": "array",
+                                "examples": [
+                                    [
+                                        "MyObject.MyVariable:Set[\"",
+                                        "\"]"
+                                    ]
+                                ],
+                                "description": "A 2-item array forming the left and right sides of a LavishScript command, used to push the value to LavishScript"
+                            },
+                            "autoPull": {
+                                "type": "boolean",
+                                "default": true,
+                                "description": "True if the LGUI2 element should automatically refresh the value from LavishScript"
+                            },
+                            "autoPush": {
+                                "type": "boolean",
+                                "default": true,
+                                "description": "True if the LGUI2 element should be able to automatically push value changes to LavishScript"
+                            },
+                            "bufferSize": {
+                                "type": "integer",
+                                "default": 4096,
+                                "description": "Size of the temporary buffer used to Pull the value from LavishScript, which will restrict the length of pulled values. Long strings and other large objects could need a larger buffer, but the default 4096 is safe for the vast majority of cases."
+                            }
+                        }
+                    }
+                ]
+            },
             "elementLocator": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2ElementLocator.json"
             },
@@ -181,6 +230,18 @@
                     },
                     "textScanner": {
                         "$ref": "#/definitions/lgui2/textScanner"
+                    },
+                    "wrap": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "textBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the text"
                     }
                 }
             },
@@ -261,13 +322,13 @@
                     },
                     {
                         "type": "object",
-                        "properties": {                            
+                        "properties": {
                             "type": {
-                                "type":"string",
+                                "type": "string",
                                 "enum": [
-                                "method",
-                                "code"
-                            ]
+                                    "method",
+                                    "code"
+                                ]
                             }
                         },
                         "required": [
@@ -329,36 +390,38 @@
                     }
                 }
             },
-            "trigger":{
-                "type":"object",
-                "properties":{
-                    "name":{
-                        "type":"string",
-                        "description":"Name of the Trigger. Because Triggers are defined within an Element, the Name is usually specified as the key in the 'triggers' property, and should not usually be specified as part of the Trigger itself."
+            "trigger": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Trigger. Because Triggers are defined within an Element, the Name is usually specified as the key in the 'triggers' property, and should not usually be specified as part of the Trigger itself."
                     },
-                    "matched":{
-                        "$ref":"#/definitions/lgui2/eventHandler"
+                    "matched": {
+                        "$ref": "#/definitions/lgui2/eventHandler"
                     },
-                    "unmatched":{
-                        "$ref":"#/definitions/lgui2/eventHandler"
+                    "unmatched": {
+                        "$ref": "#/definitions/lgui2/eventHandler"
                     },
-                    "condition":{
-                        "type":"string"
+                    "condition": {
+                        "type": "string"
                     },
-                    "mode":{
+                    "mode": {
                         "type": "string",
                         "enum": [
                             "manual",
                             "pulse",
                             "event"
                         ],
-                        "default":"pulse"
+                        "default": "pulse"
                     },
-                    "ls1event":{
-                        "type":"string"
+                    "ls1event": {
+                        "type": "string"
                     }
                 },
-                "required":["matched"]
+                "required": [
+                    "matched"
+                ]
             },
             "anchor": {
                 "allOf": [
@@ -568,7 +631,8 @@
                     }
                 },
                 "required": [
-                    "type"
+                    "type",
+                    "childSize"
                 ]
             },
             "screen": {
@@ -611,6 +675,7 @@
                         "enum": [
                             "auto",
                             "none",
+                            "fit",
                             "always"
                         ]
                     },
@@ -619,6 +684,7 @@
                         "enum": [
                             "auto",
                             "none",
+                            "fit",
                             "always"
                         ]
                     },
@@ -652,7 +718,33 @@
                         "default": "vertical"
                     },
                     "uniform": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": false,
+                        "description": "True if the stackpanel children should be uniformly-sized by filling the control. Same as horizontalContentAlignment/verticalContentAlignment \"stretch\""
+                    },
+                    "horizontalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "left",
+                            "center",
+                            "right",
+                            "stretch"
+                        ],
+                        "default": "none",
+                        "description": "Horizontal alignment override used for children, or \"none\" to use child-specified alignment"
+                    },
+                    "verticalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "top",
+                            "center",
+                            "bottom",
+                            "stretch"
+                        ],
+                        "default": "none",
+                        "description": "Vertical alignment override used for children, or \"none\" to use child-specified alignment"
                     }
                 },
                 "required": [
@@ -811,12 +903,32 @@
                     "titleBar": {
                         "$ref": "#/definitions/lgui2/element"
                     },
-                    "expanded": {
-                        "type": "boolean"
+                    "hideOnClose": {
+                        "type": "boolean",
+                        "default": false
                     }
                 },
                 "required": [
                     "type"
+                ]
+            },
+            "wrappanel": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/stackpanel"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "wrappanel"
+                    },
+                    "childSize": {
+                        "$ref": "#/definitions/lgui2/size"
+                    }
+                },
+                "required": [
+                    "type",
+                    "childSize"
                 ]
             },
             "imagebox": {
@@ -873,6 +985,14 @@
                     },
                     "value": {
                         "type": "integer"
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
                     }
                 },
                 "required": [
@@ -921,6 +1041,14 @@
                     },
                     "value": {
                         "type": "integer"
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
                     },
                     "maxValueArcLength": {
                         "$ref": "#/definitions/numberOrInteger"
@@ -971,6 +1099,14 @@
                     },
                     "value": {
                         "type": "integer"
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
                     },
                     "originDegrees": {
                         "$ref": "#/definitions/numberOrInteger"
@@ -1045,7 +1181,24 @@
                         "const": "checkbox"
                     },
                     "useIndeterminate": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "checked": {
+                        "type": "string",
+                        "enum": [
+                            "checked",
+                            "unchecked",
+                            "indeterminate"
+                        ]
+                    },
+                    "checkedBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the checked state"
                     }
                 },
                 "required": [
@@ -1146,6 +1299,14 @@
                     "value": {
                         "type": "integer"
                     },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
+                    },
                     "increment": {
                         "type": "integer"
                     },
@@ -1181,6 +1342,14 @@
                     },
                     "value": {
                         "type": "integer"
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
                     }
                 },
                 "required": [
@@ -1272,6 +1441,145 @@
                 "required": [
                     "type"
                 ]
+            },
+            "eventHandlersBase": {
+                "type": "object",
+                "onLoad": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouseMove": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouseWheel": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouseButtonMove": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onButtonMove": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onAxisMove": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onDpadMove": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "gotKeyboardFocus": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "lostKeyboardFocus": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "lostMouseFocus": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "gotMouseFocus": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "lostMouseCapture": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "gotMouseCapture": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "lostMouseOver": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "gotMouseOver": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onVisualAttached": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onVisualDetached": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onLogicalAttached": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onLogicalDetached": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "additionalProperties": {
+                    "$ref": "#/definitions/lgui2/eventHandler"
+                }
             }
         }
     },
@@ -1290,7 +1598,11 @@
                 "type": {
                     "type": "string",
                     "description": "The name of a LavishGUI 2 element type",
-                    "examples": ["button","textbox","window"]
+                    "examples": [
+                        "button",
+                        "textbox",
+                        "window"
+                    ]
                 },
                 "name": {
                     "type": "string"
@@ -1302,10 +1614,7 @@
                     "type": "boolean"
                 },
                 "eventHandlers": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/lgui2/eventHandler"
-                    }
+                    "$ref": "#/definitions/lgui2/eventHandlersBase"
                 },
                 "styles": {
                     "type": "object",
@@ -1327,22 +1636,25 @@
                             {
                                 "$ref": "#/definitions/lgui2/elementLocator"
                             }
-                        ],    
+                        ],
                         "type": "object",
                         "properties": {
                             "eventHandler": {
                                 "$ref": "#/definitions/lgui2/eventHandler"
                             },
-                            "event":{
-                                "type":"string"
+                            "event": {
+                                "type": "string"
                             }
                         },
-                        "required": ["event","eventHandler"]
+                        "required": [
+                            "event",
+                            "eventHandler"
+                        ]
                     }
                 },
-                "triggers":{
-                    "type":"object",
-                    "additionalProperties":{
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
                         "$ref": "#/definitions/lgui2/trigger"
                     }
                 },
