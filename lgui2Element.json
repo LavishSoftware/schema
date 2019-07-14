@@ -915,12 +915,49 @@
             "wrappanel": {
                 "allOf": [
                     {
-                        "$ref": "#/definitions/lgui2/stackpanel"
+                        "$ref": "#/definitions/lgui2/panelBase"
                     }
                 ],
                 "properties": {
                     "type": {
                         "const": "wrappanel"
+                    },
+                    "orientation": {
+                        "type": "string",
+                        "enum": [
+                            "horizontal",
+                            "vertical"
+                        ],
+                        "default": "vertical"
+                    },
+                    "uniform": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "True if the wrappanel children should be uniformly-sized by filling the childSize. Same as horizontalContentAlignment/verticalContentAlignment \"stretch\""
+                    },
+                    "horizontalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "left",
+                            "center",
+                            "right",
+                            "stretch"
+                        ],
+                        "default": "none",
+                        "description": "Horizontal alignment override used for children, or \"none\" to use child-specified alignment"
+                    },
+                    "verticalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "top",
+                            "center",
+                            "bottom",
+                            "stretch"
+                        ],
+                        "default": "none",
+                        "description": "Vertical alignment override used for children, or \"none\" to use child-specified alignment"
                     },
                     "childSize": {
                         "$ref": "#/definitions/lgui2/size"
