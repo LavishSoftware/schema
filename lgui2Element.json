@@ -1843,6 +1843,9 @@
                     "$ref": "#/definitions/lgui2/stackpanel"
                 },
                 {
+                    "$ref": "#/definitions/lgui2/wrappanel"
+                },
+                {
                     "$ref": "#/definitions/lgui2/tab"
                 },
                 {
