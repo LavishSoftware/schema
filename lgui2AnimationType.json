@@ -60,8 +60,5 @@
                 "method"
             ]
         }
-    ],
-    "required": [
-        "name"
     ]
 }
