@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "ISBoxer 2 WPF Package",
+    "description": "An ISBoxer 2 WPF Package containing WPF resources and other data",
+    "properties": {
+        "resources": {
+            "type": "object",
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "type": "array",
+                        "description": "An array of XAML pieces to string together, altogether defining the specified resource"
+                    },
+                    {
+                        "type": "string",
+                        "description": "A piece of XAML defining the specified resource"
+                    }
+                ]
+            }
+        }
+    }
+}
