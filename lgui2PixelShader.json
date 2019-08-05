@@ -1,6 +1,16 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.lavishsoft.com/schema/lgui2PixelShader.json",
-    "description": "(Incomplete) A LavishGUI2 Pixel Shader",
-    "type":"object"
+    "description": "An instanced LavishGUI2 Pixel Shader, with optional parameters",
+    "type":"object",
+    "properties": {
+        "name":{
+            "type":"string",
+            "description": "Name of the Pixel Shader to use"
+        },
+        "data":{
+            "type":"array",
+            "description": "Data items to be used as 'constants', for a parameterized Pixel Shader. This will override the default data specified for the Pixel Shader."
+        }
+    }
 }

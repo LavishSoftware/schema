@@ -2,7 +2,7 @@
     "$schema":"http://json-schema.org/draft-07/schema#",
     "type":"object",
     "title":"LavishGUI 2 Package",
-    "description": "A LavishGUI 2 Package containing templates, skins, and/or elements",
+    "description": "A LavishGUI 2 Package containing templates, skins, animation types, pixel shaders, vertex shaders, and/or elements",
     "properties":{
         "templates":{
             "type":"object",
@@ -10,6 +10,113 @@
                 "description": "A Template to add to the default Skin"
             },
             "description": "A set of Templates to add to the default Skin"
+        },
+        "animationTypes":{
+            "type":"object",
+            "description":"Custom Animation Types, by name",
+            "additionalProperties": {
+                "$ref":"http://www.lavishsoft.com/schema/lgui2AnimationType.json"
+            }
+        },
+        "pixelShaders":{
+            "type":"object",
+            "description":"Custom Pixel Shaders, by name",
+            "additionalProperties": {
+                "entryPoint":{
+                    "type":"string",
+                    "default":"PS"
+                },
+                "useFile":{
+                    "type":"boolean",
+                    "default":false
+                },
+                "ps_5_1":{
+                    "type":"string",
+                    "description":"Pixel Shader model 5.1 code or filename"
+                },
+                "ps_5_0":{
+                    "type":"string",
+                    "description":"Pixel Shader model 5.0 code or filename"
+                },
+                "ps_4_1":{
+                    "type":"string",
+                    "description":"Pixel Shader model 4.1 code or filename"
+                },
+                "ps_4_0":{
+                    "type":"string",
+                    "description":"Pixel Shader model 4.0 code or filename"
+                },
+                "ps_4_0_level_9_3":{
+                    "type":"string",
+                    "description":"Pixel Shader model 4.0 level 9.3 code or filename"
+                },
+                "ps_4_0_level_9_1":{
+                    "type":"string",
+                    "description":"Pixel Shader model 4.0 level 9.1 code or filename"
+                },
+                "ps_3_0":{
+                    "type":"string",
+                    "description":"Pixel Shader model 3.0 code or filename"
+                },
+                "ps_2_0":{
+                    "type":"string",
+                    "description":"Pixel Shader model 2.0 code or filename"
+                },
+                "data":{
+                    "type":"array",
+                    "description":"Data items to be placed in a Constant Buffer, for a parameterized Pixel Shader"
+                }
+            }
+        },
+        "vertexShaders":{
+            "type":"object",
+            "description":"Custom Vertex Shaders, by name",
+            "additionalProperties": {
+                "entryPoint":{
+                    "type":"string",
+                    "default":"VS"
+                },
+                "useFile":{
+                    "type":"boolean",
+                    "default":false
+                },
+                "vs_5_1":{
+                    "type":"string",
+                    "description":"Vertex Shader model 5.1 code or filename"
+                },
+                "vs_5_0":{
+                    "type":"string",
+                    "description":"Vertex Shader model 5.0 code or filename"
+                },
+                "vs_4_1":{
+                    "type":"string",
+                    "description":"Vertex Shader model 4.1 code or filename"
+                },
+                "vs_4_0":{
+                    "type":"string",
+                    "description":"Vertex Shader model 4.0 code or filename"
+                },
+                "vs_4_0_level_9_3":{
+                    "type":"string",
+                    "description":"Vertex Shader model 4.0 level 9.3 code or filename"
+                },
+                "vs_4_0_level_9_1":{
+                    "type":"string",
+                    "description":"Vertex Shader model 4.0 level 9.1 code or filename"
+                },
+                "vs_3_0":{
+                    "type":"string",
+                    "description":"Vertex Shader model 3.0 code or filename"
+                },
+                "vs_2_0":{
+                    "type":"string",
+                    "description":"Vertex Shader model 2.0 code or filename"
+                },
+                "data":{
+                    "type":"array",
+                    "description":"Default set of data items to be placed in a Constant Buffer, for a parameterized Vertex Shader"
+                }                
+            }
         },
         "skin":{
             "oneOf":[
