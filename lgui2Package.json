@@ -4,6 +4,22 @@
     "title":"LavishGUI 2 Package",
     "description": "A LavishGUI 2 Package containing templates, skins, animation types, pixel shaders, vertex shaders, and/or elements",
     "properties":{
+        "includes":{
+            "type":"array",
+            "description": "A set of required LavishGUI 2 Package files to load prior to this one.",
+            "items":{
+                "type":"string",
+                "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be speciied."
+            }
+        },
+        "optionalIncludes":{
+            "type":"array",
+            "description": "A set of optional LavishGUI 2 Package files to load prior to this one.",
+            "items":{
+                "type":"string",
+                "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be speciied."
+            }
+        },
         "templates":{
             "type":"object",
             "additionalProperties":{

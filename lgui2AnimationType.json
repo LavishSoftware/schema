@@ -2,6 +2,11 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.lavishsoft.com/schema/lgui2AnimationType.json",
     "description": "A LavishGUI2 Animation Type",
+    "definitions": {
+        "code":{
+            "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+        }
+    },
     "type": "object",
     "properties": {
         "name": {
@@ -16,17 +21,9 @@
         {
             "properties": {
                 "code": {
-                    "oneOf": [
+                    "allOf": [
                         {
-                            "type": "string",
-                            "description": "Embedded LavishScript code"
-                        },
-                        {
-                            "type": "array",
-                            "description": "Lines of embedded LavishScript code",
-                            "items": {
-                                "type": "string"
-                            }
+                            "$ref":"#/definitions/code"
                         }
                     ]
                 }

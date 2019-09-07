@@ -29,6 +29,9 @@
             "animationType": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2AnimationType.json"
             },
+            "code":{
+                "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+            },
             "dataBinding": {
                 "description": "A LavishGUI2 Data Binding",
                 "oneOf": [
@@ -58,6 +61,19 @@
                                     ]
                                 ],
                                 "description": "A 2-item array forming the left and right sides of a LavishScript command, used to push the value to LavishScript"
+                            },
+                            "pullReplaceNull":{
+                                "type":"string",
+                                "description":"A value to use instead if the Pull result is NULL"
+                            },
+                            "pushNullFormat":{
+                                "type":"string",
+                                "description":"A LavishScript command used to Push if the current value is NULL"
+                            },
+                            "pullOnce":{
+                                "type":"boolean",
+                                "default":false,
+                                "description":"True if autoPull should be enabled for one Pull, and then disabled (e.g. to initialize a control, but not refresh automatically)"
                             },
                             "autoPull": {
                                 "type": "boolean",
@@ -358,7 +374,11 @@
                                         "const": "code"
                                     },
                                     "code": {
-                                        "type": "string"
+                                        "allOf": [
+                                            {
+                                                "$ref":"#/definitions/code"
+                                            }
+                                        ]
                                     }
                                 },
                                 "required": [
@@ -387,6 +407,18 @@
                         "additionalProperties": {
                             "$ref": "#/definitions/lgui2/itemViewGenerator"
                         }
+                    },
+                    "selectedItemBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the selected Item, corresponding to the item's Index. If a selectedItemBindingProperty is provided, the selectedItemBinding corresponds instead to the item Data's value for the specified property; for Pull, a search is performed for an item with this value."
+                    },
+                    "selectedItemBindingProperty":{
+                        "type":"string",
+                        "description":"A property to use for the selectedItemBinding. If provided, the selectedItemBinding will correspond to the item Data's value for the specified property; Otheriwise, the selectedItemBinding is expected to correspond to the item's Index in the list. "
                     }
                 }
             },
@@ -468,6 +500,26 @@
                     },
                     "child": {
                         "$ref": "#/definitions/lgui2/element"
+                    },
+                    "horizontalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "left",
+                            "center",
+                            "right",
+                            "stretch"
+                        ]
+                    },
+                    "verticalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "top",
+                            "center",
+                            "bottom",
+                            "stretch"
+                        ]
                     }
                 },
                 "required": [
@@ -1614,6 +1666,111 @@
                         }
                     ]
                 },
+                "onMouse1Press":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse1Release":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse1DoubleClick":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse2Press":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse2Release":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse2DoubleClick":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse3Press":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse3Release":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse3DoubleClick":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse4Press":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse4Release":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse4DoubleClick":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse5Press":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse5Release":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onMouse5DoubleClick":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
                 "additionalProperties": {
                     "$ref": "#/definitions/lgui2/eventHandler"
                 }
@@ -1765,6 +1922,7 @@
                 "horizontalAlignment": {
                     "type": "string",
                     "enum": [
+                        "none",
                         "left",
                         "center",
                         "right",
@@ -1774,6 +1932,7 @@
                 "verticalAlignment": {
                     "type": "string",
                     "enum": [
+                        "none",
                         "top",
                         "center",
                         "bottom",

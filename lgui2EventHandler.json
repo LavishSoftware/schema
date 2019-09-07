@@ -15,6 +15,9 @@
             "task": {
                 "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
             }
+        },
+        "code":{
+            "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
         }
     },
     "oneOf": [
@@ -47,17 +50,9 @@
                             "const": "code"
                         },
                         "code": {
-                            "oneOf": [
+                            "allOf": [
                                 {
-                                    "type": "string",
-                                    "description": "Embedded LavishScript code"
-                                },
-                                {
-                                    "type": "array",
-                                    "description": "Lines of embedded LavishScript code",
-                                    "items": {
-                                        "type": "string"
-                                    }
+                                    "$ref":"#/definitions/code"
                                 }
                             ]
                         }

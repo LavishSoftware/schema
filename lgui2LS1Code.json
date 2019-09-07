@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/lgui2LS1Code.json",
+    "description": "A LavishGUI 2 Embedded LavishScript Code definition",
+    "definitions": {
+        "ls1Entry":{
+            "description": "One or more lines of LavishScript code",
+            "oneOf": [
+                {
+                    "type":"string",
+                    "description": "A line of Lavishcript code. End the line with \\ to cause the following line to add to the end of this line."
+                },
+                {
+                    "type":"object",
+                    "description": "A JSON object to embed in LavishScript"
+                },
+                {
+                    "type":"boolean",
+                    "description": "A boolean value to embed"
+                },
+                {
+                    "anyOf": [
+                        {"type":"number"},
+                        {"type":"integer"}
+                    ],
+                    "description": "A numeric value to embed"
+                },
+                {
+                    "type":"null",
+                    "description": "Embed a NULL"
+                },
+                {
+                    "type":"array",
+                    "description": "Segments to concatenate into a single line of LavishScript code",
+                    "items":{
+                        "allOf": [
+                            {
+                                "$ref":"#/definitions/ls1Entry"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "oneOf": [
+        {
+            "type": "string",
+            "description": "Embedded LavishScript code"
+        },
+        {
+            "type": "array",
+            "description": "Lines of embedded LavishScript code",
+            "items": {
+                "allOf": [
+                    {
+                        "$ref":"#/definitions/ls1Entry"
+                    }
+                ]
+            }
+        }
+    ]
+}
