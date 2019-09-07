@@ -3,8 +3,10 @@
     "$id": "http://www.lavishsoft.com/schema/lgui2AnimationType.json",
     "description": "A LavishGUI2 Animation Type",
     "definitions": {
-        "code":{
-            "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+        "lgui2":{
+            "code":{
+                "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+            }
         }
     },
     "type": "object",
@@ -23,7 +25,7 @@
                 "code": {
                     "allOf": [
                         {
-                            "$ref":"#/definitions/code"
+                            "$ref":"#/definitions/lgui2/code"
                         }
                     ]
                 }

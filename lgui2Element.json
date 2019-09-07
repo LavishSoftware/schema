@@ -376,7 +376,7 @@
                                     "code": {
                                         "allOf": [
                                             {
-                                                "$ref":"#/definitions/code"
+                                                "$ref":"#/definitions/lgui2/code"
                                             }
                                         ]
                                     }

@@ -9,15 +9,15 @@
             },
             "elementLocator": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2ElementLocator.json"
-            }
+            },
+            "code":{
+                "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+            }    
         },
         "lmac": {
             "task": {
                 "$ref": "http://www.lavishsoft.com/schema/lmacTask.json"
             }
-        },
-        "code":{
-            "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
         }
     },
     "oneOf": [
@@ -52,7 +52,7 @@
                         "code": {
                             "allOf": [
                                 {
-                                    "$ref":"#/definitions/code"
+                                    "$ref":"#/definitions/lgui2/code"
                                 }
                             ]
                         }
