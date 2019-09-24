@@ -209,6 +209,28 @@
                     }
                 ]
             },
+            "anchorBase":{
+                "properties": {
+                    "anchorToCursor": {
+                        "type": "boolean"
+                    },
+                    "clipToParent": {
+                        "type": "boolean"
+                    },
+                    "anchorLocation": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "anchorLocationFactor": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "anchorOffset": {
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "anchorOffsetFactor": {
+                        "$ref": "#/definitions/lgui2/point"
+                    }
+                }
+            },
             "borderBase": {
                 "properties": {
                     "borderBrush": {
@@ -402,11 +424,22 @@
                             "$ref": "#/definitions/lgui2/item"
                         }
                     },
+                    "defaultItemViewTemplate":{
+                        "type":"string"
+                    },
                     "itemViewGenerators": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/definitions/lgui2/itemViewGenerator"
                         }
+                    },
+                    "itemsBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the Item list (which should resolve to a JSON array), meant for use in initializing from new data sources. If automatic pull is enabled, it will be restricted to \"once\" behavior."
                     },
                     "selectedItemBinding": {
                         "allOf": [
@@ -459,29 +492,14 @@
                 "allOf": [
                     {
                         "$ref": "#/definitions/lgui2/contentContainer"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/anchorBase"
                     }
                 ],
                 "properties": {
                     "type": {
                         "const": "anchor"
-                    },
-                    "anchorToCursor": {
-                        "type": "boolean"
-                    },
-                    "clipToParent": {
-                        "type": "boolean"
-                    },
-                    "anchorLocation": {
-                        "$ref": "#/definitions/lgui2/point"
-                    },
-                    "anchorLocationFactor": {
-                        "$ref": "#/definitions/lgui2/point"
-                    },
-                    "anchorOffset": {
-                        "$ref": "#/definitions/lgui2/point"
-                    },
-                    "anchorOffsetFactor": {
-                        "$ref": "#/definitions/lgui2/point"
                     }
                 },
                 "required": [
@@ -943,6 +961,9 @@
                 "allOf": [
                     {
                         "$ref": "#/definitions/lgui2/contentContainer"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/anchorBase"
                     }
                 ],
                 "properties": {
@@ -958,6 +979,18 @@
                     "hideOnClose": {
                         "type": "boolean",
                         "default": false
+                    },
+                    "resizable": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "widthResizable":{
+                        "type": "boolean",
+                        "default": true                        
+                    },
+                    "heightResizable":{
+                        "type": "boolean",
+                        "default": true                        
                     }
                 },
                 "required": [
@@ -1306,6 +1339,10 @@
                     },
                     "popup": {
                         "$ref": "#/definitions/lgui2/element"
+                    },
+                    "selectedItemViewTemplate":{
+                        "type":"string",
+                        "default":"comboboxselection"
                     }
                 },
                 "required": [
