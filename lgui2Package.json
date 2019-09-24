@@ -9,7 +9,7 @@
             "description": "A set of required LavishGUI 2 Package files to load prior to this one.",
             "items":{
                 "type":"string",
-                "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be speciied."
+                "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be specified."
             }
         },
         "optionalIncludes":{
@@ -17,7 +17,7 @@
             "description": "A set of optional LavishGUI 2 Package files to load prior to this one.",
             "items":{
                 "type":"string",
-                "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be speciied."
+                "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be specified."
             }
         },
         "templates":{
