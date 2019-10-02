@@ -10,6 +10,75 @@
             "eventHandler": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2EventHandler.json"
             },
+            "modifiers": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "alt",
+                                "ctrl",
+                                "shift",
+                                "win",
+                                "lalt",
+                                "lctrl",
+                                "lshift",
+                                "lwin",
+                                "ralt",
+                                "rctrl",
+                                "rshift",
+                                "rwin"
+                            ]
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "alt": {
+                                "type": "boolean"
+                            },
+                            "ctrl": {
+                                "type": "boolean"
+                            },
+                            "shift": {
+                                "type": "boolean"
+                            },
+                            "win": {
+                                "type": "boolean"
+                            },
+                            "lAlt": {
+                                "type": "boolean"
+                            },
+                            "lCtrl": {
+                                "type": "boolean"
+                            },
+                            "lShift": {
+                                "type": "boolean"
+                            },
+                            "lWin": {
+                                "type": "boolean"
+                            },
+                            "rAlt": {
+                                "type": "boolean"
+                            },
+                            "rCtrl": {
+                                "type": "boolean"
+                            },
+                            "rShift": {
+                                "type": "boolean"
+                            },
+                            "rWin": {
+                                "type": "boolean"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            },
             "inputControl": {
                 "oneOf": [
                     {
@@ -27,6 +96,10 @@
                             "controlID": {
                                 "type": "integer"
                             },
+                            "controlChannel": {
+                                "type": "integer",
+                                "description": "For MIDI devices, this specifies a MIDI channel"
+                            },
                             "controlType": {
                                 "type": "string",
                                 "enum": [
@@ -35,11 +108,16 @@
                                     "dpad",
                                     "axis",
                                     "mousewheel",
-                                    "cursor"
+                                    "cursor",
+                                    "note"
                                 ]
                             },
                             "deviceName": {
                                 "type": "string"
+                            },
+                            "devicePort": {
+                                "type": "string",
+                                "description": "For MIDI devices, this will specify a MIDI port as named by Inner Space (e.g. MIDI 1, MIDI 2, etc)"
                             },
                             "deviceProductID": {
                                 "oneOf": [
@@ -66,7 +144,8 @@
                                 "enum": [
                                     "keyboard",
                                     "mouse",
-                                    "other"
+                                    "other",
+                                    "midi"
                                 ]
                             },
                             "minValue": {
@@ -209,74 +288,8 @@
         "eventHandler": {
             "$ref": "#/definitions/lgui2/eventHandler"
         },
-        "modifiers": {
-            "oneOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "alt",
-                            "ctrl",
-                            "shift",
-                            "win",
-                            "lalt",
-                            "lctrl",
-                            "lshift",
-                            "lwin",
-                            "ralt",
-                            "rctrl",
-                            "rshift",
-                            "rwin"
-                        ]
-                    }
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "alt": {
-                            "type": "boolean"
-                        },
-                        "ctrl": {
-                            "type": "boolean"
-                        },
-                        "shift": {
-                            "type": "boolean"
-                        },
-                        "win": {
-                            "type": "boolean"
-                        },
-                        "lAlt": {
-                            "type": "boolean"
-                        },
-                        "lCtrl": {
-                            "type": "boolean"
-                        },
-                        "lShift": {
-                            "type": "boolean"
-                        },
-                        "lWin": {
-                            "type": "boolean"
-                        },
-                        "rAlt": {
-                            "type": "boolean"
-                        },
-                        "rCtrl": {
-                            "type": "boolean"
-                        },
-                        "rShift": {
-                            "type": "boolean"
-                        },
-                        "rWin": {
-                            "type": "boolean"
-                        }
-                    },
-                    "additionalProperties": false
-                }
-            ]
+        "modifiers":{
+            "#ref":"#/definitions/lgui2/modifiers"
         }
     },
     "required": [

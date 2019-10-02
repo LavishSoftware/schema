@@ -455,6 +455,31 @@
                     }
                 }
             },
+            "inputHook":{
+                "type":"object",
+                "properties":{
+                    "control":{
+                        "$ref":"http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/inputControl"
+                    },
+                    "mouseFocus":{
+                        "type":"boolean",
+                        "description":"If true, the Input Hook is activated while the element has Mouse Focus (the primary element with mouseover). If neither Mouse or Keyboard focus are specified, the Input Hook is active by default.",
+                        "default":false
+                    },
+                    "keyboardFocus":{
+                        "type":"boolean",
+                        "description":"If true, the Input Hook is activated while the element has Keyboard Focus. If neither Mouse or Keyboard focus are specified, the Input Hook is active by default.",
+                        "default":false
+                    },
+                    "modifiers":{
+                        "$ref":"http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/modifiers"
+                    },
+                    "eventHandler":{
+                        "$ref": "#/definitions/lgui2/eventHandler"
+                    }
+                },
+                "required":["control","eventHandler"]
+            },
             "trigger": {
                 "type": "object",
                 "properties": {
@@ -1292,6 +1317,387 @@
                     "type"
                 ]
             },
+            "canvas":{
+                "vertex":{
+                    "oneOf":[{
+                        "type":"object",
+                        "properties":{
+                            "x":{
+                                "type":"float"
+                            },
+                            "y":{
+                                "type":"float"
+                            },
+                            "tu":{
+                                "type":"float"
+                            },
+                            "tv":{
+                                "type":"float"
+                            },
+                            "color":{
+                                "$ref":"#/definitions/lgui2/color"
+                            },
+                            "opacity":{
+                                "type":"float"
+                            }
+                        }
+                    },
+                    {
+                        "type":"array",
+                        "items":[
+                            {
+                                "type":"float",
+                                "title":"X"
+                            },
+                            {
+                                "type":"float",
+                                "title":"Y"
+                            },
+                            {
+                                "type":"float",
+                                "title":"Texture X"
+                            },
+                            {
+                                "type":"float",
+                                "title":"Texture Y"
+                            },
+                            {
+                                "$ref":"#/definitions/lgui2/color",
+                                "title":"Color"
+                            },
+                            {
+                                "type":"float",
+                                "title":"Opacity"
+                            }
+                        ]
+                    }
+               ]
+                },
+                "operation":{
+                    "type":"object",
+                    "properties":{
+                        "op":{
+                            "type":"string",
+                            "enum":[
+                                "pushBrush",
+                                "popBrush",
+                                "pushFont",
+                                "popFont",
+                                "drawPrimitives",
+                                "drawRect",
+                                "drawText",
+                                "drawArc",
+                                "drawCircle",
+                                "clear",
+                                "initialize"
+                            ]
+                        }
+                    },
+                    "required":["op"],
+                    "oneOf":[
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"clear"
+                                },
+                                "color":{
+                                    "$ref":"#/definitions/lgui2/color"
+                                }
+                            },
+                            "required":["op"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"initialize"
+                                },
+                                "force":{
+                                    "type":"boolean",
+                                    "description":"If Initialize was already processed (including automatically by the canvas) since the canvas was allocated or reallocated, this operation would typically be ignored. Set Force to true to force it to occur (which may be useful after a clear operation, which does not reallocate the canvas)",
+                                    "default":false
+                                }
+                            },
+                            "required":["op"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"pushBrush"
+                                },
+                                "brush":"string"
+                            },
+                            "required":["op","brush"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"popBrush"
+                                },
+                                "brush":"string"
+                            },
+                            "required":["op"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"pushFont"
+                                },
+                                "font":"string"
+                            },
+                            "required":["op","font"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"popFont"
+                                },
+                                "font":"string"
+                            },
+                            "required":["op"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"drawPrimitives"
+                                },
+                                "type":{
+                                    "enum":["triangleList","triangleStrip","lineList","lineStrip","pointList"]
+                                },
+                                "transform":{
+                                    "type":"boolean",
+                                    "default":true,
+                                    "description":"If true (default) the vertices are to be to be multiplied by canvas size"
+                                },
+                                "vertices":{
+                                    "type":"array",
+                                    "additionalItems":{
+                                        "$ref":"#/definitions/lgui2/canvas/vertex"
+                                    }
+                                }
+                            },
+                            "required":["op","type"]
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"drawRect"
+                                },
+                                "opacity":{
+                                    "type":"float",
+                                    "default":1.0
+                                },
+                                "color":{
+                                    "$ref":"#/definitions/lgui2/color"
+                                },
+                                "x":{
+                                    "type":"float"
+                                },
+                                "y":{
+                                    "type":"float"
+                                },
+                                "width":{
+                                    "type":"float"
+                                },
+                                "height":{
+                                    "type":"float"
+                                },
+                                "transform":{
+                                    "type":"boolean",
+                                    "default":true,
+                                    "description":"If true (default) the x,y,width,height are assumed to be between 0 and 1, and the generated vertices are to be to be multiplied by canvas size"
+                                },
+                                "texSz":{
+                                    "$ref":"#/definitions/lgui2/size"
+                                },
+                                "texPt":{
+                                    "$ref":"#/definitions/lgui2/point"
+                                }
+                            },
+                            "required":["op"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"drawCircle"
+                                },
+                                "opacity":{
+                                    "type":"float",
+                                    "default":1.0
+                                },
+                                "color":{
+                                    "$ref":"#/definitions/lgui2/color"
+                                },
+                                "x":{
+                                    "type":"float"
+                                },
+                                "y":{
+                                    "type":"float"
+                                },
+                                "radius":{
+                                    "type":"float"
+                                },
+                                "resolution":{
+                                    "type":"integer"
+                                },
+                                "transform":{
+                                    "type":"boolean",
+                                    "default":true,
+                                    "description":"If true (default) the generated vertices are to be to be multiplied by canvas size"
+                                }
+                            },
+                            "required":["op"]                          
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"drawArc"
+                                },
+                                "opacity":{
+                                    "type":"float",
+                                    "default":1.0
+                                },
+                                "color":{
+                                    "$ref":"#/definitions/lgui2/color"
+                                },
+                                "transform":{
+                                    "type":"boolean",
+                                    "default":true,
+                                    "description":"If true (default) the generated vertices are to be to be multiplied by canvas size"
+                                },
+                                "x":{
+                                    "type":"float"
+                                },
+                                "y":{
+                                    "type":"float"
+                                },
+                                "innerRadius":{
+                                    "type":"float"
+                                },
+                                "outerRadius":{
+                                    "type":"float"
+                                }
+                            },
+                            "required":["op"],
+                                "oneOf":[{
+                                    "properties":{
+                                        "centerDegrees":{
+                                            "type":"float"
+                                        },
+                                        "segments":{
+                                            "type":"integer"
+                                        },
+                                        "innerArcLength":{
+                                            "type":"float"
+                                        },
+                                        "outerArcLength":{
+                                            "type":"float"
+                                        },
+                                        "u1":{
+                                            "type":"float"
+                                        },
+                                        "u2":{
+                                            "type":"float"
+                                        }
+                                    },
+                                    "required":["centerDegrees"]
+                                },
+                                {
+                                    "properties":{
+                                        "startDegrees":{
+                                            "type":"float"
+                                        },
+                                        "endDegrees":{
+                                            "type":"float"
+                                        }
+                                    },
+                                    "required":["startDegrees"]
+                                }
+                            ]
+                        },
+                        {
+                            "properties":{
+                                "op":{
+                                    "const":"drawText"
+                                },
+                                "opacity":{
+                                    "type":"float",
+                                    "default":1.0
+                                },
+                                "color":{
+                                    "$ref":"#/definitions/lgui2/color"
+                                },
+                                "x":{
+                                    "type":"float"
+                                },
+                                "y":{
+                                    "type":"float"
+                                },
+                                "width":{
+                                    "type":"float"
+                                },
+                                "height":{
+                                    "type":"float"
+                                },
+                                "transform":{
+                                    "type":"boolean",
+                                    "default":true,
+                                    "description":"If true (default) the generated vertices are to be to be multiplied by canvas size"
+                                }
+                            },
+                            "required":["op"]                          
+                        }
+                    ]
+                },
+                "type":"object",
+                "properties":{
+                    "type":{
+                        "const":"canvas"
+                    },
+                    "fonts":{
+                        "type":"object",
+                        "additionalProperties":{
+                            "allOf":[
+                                {
+                                    "$ref":"#/definitions/lgui2/font"
+                                }
+                            ]
+                        }
+                    },
+                    "brushes":{
+                        "type":"object",
+                        "additionalProperties":{
+                            "allOf":[
+                                {
+                                    "$ref":"#/definitions/lgui2/brush"
+                                }
+                            ]
+                        }
+                    },
+                    "initialize":{
+                        "type":"array",
+                        "additionalItems":{
+                            "allOf":[
+                                {
+                                    "$ref":"#/definitions/lgui2/canvas/operation"
+                                }
+                            ]
+                        }
+                    },
+                    "batch":{
+                        "type":"array",
+                        "additionalItems":{
+                            "allOf":[
+                                {
+                                    "$ref":"#/definitions/lgui2/canvas/operation"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "required":[
+                    "type"
+                ]
+            },
             "checkbox": {
                 "allOf": [
                     {
@@ -1379,6 +1785,17 @@
                     "type"
                 ]
             },
+            "knob":{
+                "type":"object",
+                "properties":{
+                    "type":{
+                        "const":"knob"
+                    }
+                },
+                "required":[
+                    "type"
+                ]
+            },
             "listbox": {
                 "allOf": [
                     {
@@ -1441,6 +1858,38 @@
                     }
                 },
                 "required": [
+                    "type"
+                ]
+            },
+            "sensitivebutton":{
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "type":"object",
+                "properties":{
+                    "type":{
+                        "const":"sensitivebutton"
+                    },
+                    "value":{
+                        "type":"float"
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
+                    },
+                    "bindContentOpacity":{
+                        "type":"boolean",
+                        "default":true,
+                        "description":"If true (default), the Content's Opacity value will always be set to the sensitivebutton's Value"
+                    }
+                },
+                "required":[
                     "type"
                 ]
             },
@@ -1606,6 +2055,13 @@
                     ]
                 },
                 "onAxisMove": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/lgui2/eventHandler"
+                        }
+                    ]
+                },
+                "onNoteMove": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
@@ -1888,6 +2344,9 @@
                     "additionalProperties": {
                         "$ref": "#/definitions/lgui2/trigger"
                     }
+                },
+                "inputHooks": {
+                    "$ref": "#/definitions/lgui2/inputHook"
                 },
                 "tooltip": {
                     "$ref": "#/definitions/lgui2/element"
