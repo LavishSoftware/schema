@@ -1575,16 +1575,16 @@
                                 },
                                 "outerRadius":{
                                     "type":"float"
+                                },
+                                "segments":{
+                                    "type":"integer"
                                 }
-                            },
+                    },
                             "required":["op"],
                                 "oneOf":[{
                                     "properties":{
                                         "centerDegrees":{
                                             "type":"float"
-                                        },
-                                        "segments":{
-                                            "type":"integer"
                                         },
                                         "innerArcLength":{
                                             "type":"float"
