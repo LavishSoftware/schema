@@ -29,8 +29,8 @@
             "animationType": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2AnimationType.json"
             },
-            "code":{
-                "$ref":"http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+            "code": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2LS1Code.json"
             },
             "dataBinding": {
                 "description": "A LavishGUI2 Data Binding",
@@ -62,18 +62,18 @@
                                 ],
                                 "description": "A 2-item array forming the left and right sides of a LavishScript command, used to push the value to LavishScript"
                             },
-                            "pullReplaceNull":{
-                                "type":"string",
-                                "description":"A value to use instead if the Pull result is NULL"
+                            "pullReplaceNull": {
+                                "type": "string",
+                                "description": "A value to use instead if the Pull result is NULL"
                             },
-                            "pushNullFormat":{
-                                "type":"string",
-                                "description":"A LavishScript command used to Push if the current value is NULL"
+                            "pushNullFormat": {
+                                "type": "string",
+                                "description": "A LavishScript command used to Push if the current value is NULL"
                             },
-                            "pullOnce":{
-                                "type":"boolean",
-                                "default":false,
-                                "description":"True if autoPull should be enabled for one Pull, and then disabled (e.g. to initialize a control, but not refresh automatically)"
+                            "pullOnce": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "True if autoPull should be enabled for one Pull, and then disabled (e.g. to initialize a control, but not refresh automatically)"
                             },
                             "autoPull": {
                                 "type": "boolean",
@@ -209,7 +209,7 @@
                     }
                 ]
             },
-            "anchorBase":{
+            "anchorBase": {
                 "properties": {
                     "anchorToCursor": {
                         "type": "boolean"
@@ -398,7 +398,7 @@
                                     "code": {
                                         "allOf": [
                                             {
-                                                "$ref":"#/definitions/lgui2/code"
+                                                "$ref": "#/definitions/lgui2/code"
                                             }
                                         ]
                                     }
@@ -424,8 +424,8 @@
                             "$ref": "#/definitions/lgui2/item"
                         }
                     },
-                    "defaultItemViewTemplate":{
-                        "type":"string"
+                    "defaultItemViewTemplate": {
+                        "type": "string"
                     },
                     "itemViewGenerators": {
                         "type": "object",
@@ -449,36 +449,39 @@
                         ],
                         "description": "A Data Binding to use for the selected Item, corresponding to the item's Index. If a selectedItemBindingProperty is provided, the selectedItemBinding corresponds instead to the item Data's value for the specified property; for Pull, a search is performed for an item with this value."
                     },
-                    "selectedItemBindingProperty":{
-                        "type":"string",
-                        "description":"A property to use for the selectedItemBinding. If provided, the selectedItemBinding will correspond to the item Data's value for the specified property; Otheriwise, the selectedItemBinding is expected to correspond to the item's Index in the list. "
+                    "selectedItemBindingProperty": {
+                        "type": "string",
+                        "description": "A property to use for the selectedItemBinding. If provided, the selectedItemBinding will correspond to the item Data's value for the specified property; Otheriwise, the selectedItemBinding is expected to correspond to the item's Index in the list. "
                     }
                 }
             },
-            "inputHook":{
-                "type":"object",
-                "properties":{
-                    "control":{
-                        "$ref":"http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/inputControl"
+            "inputHook": {
+                "type": "object",
+                "properties": {
+                    "control": {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/inputControl"
                     },
-                    "mouseFocus":{
-                        "type":"boolean",
-                        "description":"If true, the Input Hook is activated while the element has Mouse Focus (the primary element with mouseover). If neither Mouse or Keyboard focus are specified, the Input Hook is active by default.",
-                        "default":false
+                    "mouseFocus": {
+                        "type": "boolean",
+                        "description": "If true, the Input Hook is activated while the element has Mouse Focus (the primary element with mouseover). If neither Mouse or Keyboard focus are specified, the Input Hook is active by default.",
+                        "default": false
                     },
-                    "keyboardFocus":{
-                        "type":"boolean",
-                        "description":"If true, the Input Hook is activated while the element has Keyboard Focus. If neither Mouse or Keyboard focus are specified, the Input Hook is active by default.",
-                        "default":false
+                    "keyboardFocus": {
+                        "type": "boolean",
+                        "description": "If true, the Input Hook is activated while the element has Keyboard Focus. If neither Mouse or Keyboard focus are specified, the Input Hook is active by default.",
+                        "default": false
                     },
-                    "modifiers":{
-                        "$ref":"http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/modifiers"
+                    "modifiers": {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/modifiers"
                     },
-                    "eventHandler":{
+                    "eventHandler": {
                         "$ref": "#/definitions/lgui2/eventHandler"
                     }
                 },
-                "required":["control","eventHandler"]
+                "required": [
+                    "control",
+                    "eventHandler"
+                ]
             },
             "trigger": {
                 "type": "object",
@@ -1009,13 +1012,13 @@
                         "type": "boolean",
                         "default": true
                     },
-                    "widthResizable":{
+                    "widthResizable": {
                         "type": "boolean",
-                        "default": true                        
+                        "default": true
                     },
-                    "heightResizable":{
+                    "heightResizable": {
                         "type": "boolean",
-                        "default": true                        
+                        "default": true
                     }
                 },
                 "required": [
@@ -1317,68 +1320,69 @@
                     "type"
                 ]
             },
-            "canvas":{
-                "vertex":{
-                    "oneOf":[{
-                        "type":"object",
-                        "properties":{
-                            "x":{
-                                "type":"float"
-                            },
-                            "y":{
-                                "type":"float"
-                            },
-                            "tu":{
-                                "type":"float"
-                            },
-                            "tv":{
-                                "type":"float"
-                            },
-                            "color":{
-                                "$ref":"#/definitions/lgui2/color"
-                            },
-                            "opacity":{
-                                "type":"float"
+            "canvas": {
+                "vertex": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "x": {
+                                    "type": "float"
+                                },
+                                "y": {
+                                    "type": "float"
+                                },
+                                "tu": {
+                                    "type": "float"
+                                },
+                                "tv": {
+                                    "type": "float"
+                                },
+                                "color": {
+                                    "$ref": "#/definitions/lgui2/color"
+                                },
+                                "opacity": {
+                                    "type": "float"
+                                }
                             }
+                        },
+                        {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "float",
+                                    "title": "X"
+                                },
+                                {
+                                    "type": "float",
+                                    "title": "Y"
+                                },
+                                {
+                                    "type": "float",
+                                    "title": "Texture X"
+                                },
+                                {
+                                    "type": "float",
+                                    "title": "Texture Y"
+                                },
+                                {
+                                    "$ref": "#/definitions/lgui2/color",
+                                    "title": "Color"
+                                },
+                                {
+                                    "type": "float",
+                                    "title": "Opacity"
+                                }
+                            ]
                         }
-                    },
-                    {
-                        "type":"array",
-                        "items":[
-                            {
-                                "type":"float",
-                                "title":"X"
-                            },
-                            {
-                                "type":"float",
-                                "title":"Y"
-                            },
-                            {
-                                "type":"float",
-                                "title":"Texture X"
-                            },
-                            {
-                                "type":"float",
-                                "title":"Texture Y"
-                            },
-                            {
-                                "$ref":"#/definitions/lgui2/color",
-                                "title":"Color"
-                            },
-                            {
-                                "type":"float",
-                                "title":"Opacity"
-                            }
-                        ]
-                    }
-               ]
+                    ]
                 },
-                "operation":{
-                    "type":"object",
-                    "properties":{
-                        "op":{
-                            "type":"string",
-                            "enum":[
+                "operation": {
+                    "type": "object",
+                    "properties": {
+                        "op": {
+                            "type": "string",
+                            "enum": [
                                 "pushBrush",
                                 "popBrush",
                                 "pushFont",
@@ -1393,308 +1397,346 @@
                             ]
                         }
                     },
-                    "required":["op"],
-                    "oneOf":[
+                    "required": [
+                        "op"
+                    ],
+                    "oneOf": [
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"clear"
+                            "properties": {
+                                "op": {
+                                    "const": "clear"
                                 },
-                                "color":{
-                                    "$ref":"#/definitions/lgui2/color"
+                                "color": {
+                                    "$ref": "#/definitions/lgui2/color"
                                 }
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"initialize"
+                            "properties": {
+                                "op": {
+                                    "const": "initialize"
                                 },
-                                "force":{
-                                    "type":"boolean",
-                                    "description":"If Initialize was already processed (including automatically by the canvas) since the canvas was allocated or reallocated, this operation would typically be ignored. Set Force to true to force it to occur (which may be useful after a clear operation, which does not reallocate the canvas)",
-                                    "default":false
+                                "force": {
+                                    "type": "boolean",
+                                    "description": "If Initialize was already processed (including automatically by the canvas) since the canvas was allocated or reallocated, this operation would typically be ignored. Set Force to true to force it to occur (which may be useful after a clear operation, which does not reallocate the canvas)",
+                                    "default": false
                                 }
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"pushBrush"
+                            "properties": {
+                                "op": {
+                                    "const": "pushBrush"
                                 },
-                                "brush":"string"
+                                "brush": "string"
                             },
-                            "required":["op","brush"]                          
+                            "required": [
+                                "op",
+                                "brush"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"popBrush"
+                            "properties": {
+                                "op": {
+                                    "const": "popBrush"
                                 },
-                                "brush":"string"
+                                "brush": "string"
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"pushFont"
+                            "properties": {
+                                "op": {
+                                    "const": "pushFont"
                                 },
-                                "font":"string"
+                                "font": "string"
                             },
-                            "required":["op","font"]                          
+                            "required": [
+                                "op",
+                                "font"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"popFont"
+                            "properties": {
+                                "op": {
+                                    "const": "popFont"
                                 },
-                                "font":"string"
+                                "font": "string"
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"drawPrimitives"
+                            "properties": {
+                                "op": {
+                                    "const": "drawPrimitives"
                                 },
-                                "type":{
-                                    "enum":["triangleList","triangleStrip","lineList","lineStrip","pointList"]
+                                "type": {
+                                    "enum": [
+                                        "triangleList",
+                                        "triangleStrip",
+                                        "lineList",
+                                        "lineStrip",
+                                        "pointList"
+                                    ]
                                 },
-                                "transform":{
-                                    "type":"boolean",
-                                    "default":true,
-                                    "description":"If true (default) the vertices are to be to be multiplied by canvas size"
+                                "transform": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "If true (default) the vertices are to be to be multiplied by canvas size"
                                 },
-                                "vertices":{
-                                    "type":"array",
-                                    "additionalItems":{
-                                        "$ref":"#/definitions/lgui2/canvas/vertex"
+                                "vertices": {
+                                    "type": "array",
+                                    "additionalItems": {
+                                        "$ref": "#/definitions/lgui2/canvas/vertex"
                                     }
                                 }
                             },
-                            "required":["op","type"]
+                            "required": [
+                                "op",
+                                "type"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"drawRect"
+                            "properties": {
+                                "op": {
+                                    "const": "drawRect"
                                 },
-                                "opacity":{
-                                    "type":"float",
-                                    "default":1.0
+                                "opacity": {
+                                    "type": "float",
+                                    "default": 1.0
                                 },
-                                "color":{
-                                    "$ref":"#/definitions/lgui2/color"
+                                "color": {
+                                    "$ref": "#/definitions/lgui2/color"
                                 },
-                                "x":{
-                                    "type":"float"
+                                "x": {
+                                    "type": "float"
                                 },
-                                "y":{
-                                    "type":"float"
+                                "y": {
+                                    "type": "float"
                                 },
-                                "width":{
-                                    "type":"float"
+                                "width": {
+                                    "type": "float"
                                 },
-                                "height":{
-                                    "type":"float"
+                                "height": {
+                                    "type": "float"
                                 },
-                                "transform":{
-                                    "type":"boolean",
-                                    "default":true,
-                                    "description":"If true (default) the x,y,width,height are assumed to be between 0 and 1, and the generated vertices are to be to be multiplied by canvas size"
+                                "transform": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "If true (default) the x,y,width,height are assumed to be between 0 and 1, and the generated vertices are to be to be multiplied by canvas size"
                                 },
-                                "texSz":{
-                                    "$ref":"#/definitions/lgui2/size"
+                                "texSz": {
+                                    "$ref": "#/definitions/lgui2/size"
                                 },
-                                "texPt":{
-                                    "$ref":"#/definitions/lgui2/point"
+                                "texPt": {
+                                    "$ref": "#/definitions/lgui2/point"
                                 }
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"drawCircle"
+                            "properties": {
+                                "op": {
+                                    "const": "drawCircle"
                                 },
-                                "opacity":{
-                                    "type":"float",
-                                    "default":1.0
+                                "opacity": {
+                                    "type": "float",
+                                    "default": 1.0
                                 },
-                                "color":{
-                                    "$ref":"#/definitions/lgui2/color"
+                                "color": {
+                                    "$ref": "#/definitions/lgui2/color"
                                 },
-                                "x":{
-                                    "type":"float"
+                                "x": {
+                                    "type": "float"
                                 },
-                                "y":{
-                                    "type":"float"
+                                "y": {
+                                    "type": "float"
                                 },
-                                "radius":{
-                                    "type":"float"
+                                "radius": {
+                                    "type": "float"
                                 },
-                                "resolution":{
-                                    "type":"integer"
+                                "resolution": {
+                                    "type": "integer"
                                 },
-                                "transform":{
-                                    "type":"boolean",
-                                    "default":true,
-                                    "description":"If true (default) the generated vertices are to be to be multiplied by canvas size"
+                                "transform": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "If true (default) the generated vertices are to be to be multiplied by canvas size"
                                 }
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"drawArc"
+                            "properties": {
+                                "op": {
+                                    "const": "drawArc"
                                 },
-                                "opacity":{
-                                    "type":"float",
-                                    "default":1.0
+                                "opacity": {
+                                    "type": "float",
+                                    "default": 1.0
                                 },
-                                "color":{
-                                    "$ref":"#/definitions/lgui2/color"
+                                "color": {
+                                    "$ref": "#/definitions/lgui2/color"
                                 },
-                                "transform":{
-                                    "type":"boolean",
-                                    "default":true,
-                                    "description":"If true (default) the generated vertices are to be to be multiplied by canvas size"
+                                "transform": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "If true (default) the generated vertices are to be to be multiplied by canvas size"
                                 },
-                                "x":{
-                                    "type":"float"
+                                "x": {
+                                    "type": "float"
                                 },
-                                "y":{
-                                    "type":"float"
+                                "y": {
+                                    "type": "float"
                                 },
-                                "innerRadius":{
-                                    "type":"float"
+                                "innerRadius": {
+                                    "type": "float"
                                 },
-                                "outerRadius":{
-                                    "type":"float"
+                                "outerRadius": {
+                                    "type": "float"
                                 },
-                                "segments":{
-                                    "type":"integer"
+                                "segments": {
+                                    "type": "integer"
                                 }
-                    },
-                            "required":["op"],
-                                "oneOf":[{
-                                    "properties":{
-                                        "centerDegrees":{
-                                            "type":"float"
+                            },
+                            "required": [
+                                "op"
+                            ],
+                            "oneOf": [
+                                {
+                                    "properties": {
+                                        "centerDegrees": {
+                                            "type": "float"
                                         },
-                                        "innerArcLength":{
-                                            "type":"float"
+                                        "innerArcLength": {
+                                            "type": "float"
                                         },
-                                        "outerArcLength":{
-                                            "type":"float"
+                                        "outerArcLength": {
+                                            "type": "float"
                                         },
-                                        "u1":{
-                                            "type":"float"
+                                        "u1": {
+                                            "type": "float"
                                         },
-                                        "u2":{
-                                            "type":"float"
+                                        "u2": {
+                                            "type": "float"
                                         }
                                     },
-                                    "required":["centerDegrees"]
+                                    "required": [
+                                        "centerDegrees"
+                                    ]
                                 },
                                 {
-                                    "properties":{
-                                        "startDegrees":{
-                                            "type":"float"
+                                    "properties": {
+                                        "startDegrees": {
+                                            "type": "float"
                                         },
-                                        "endDegrees":{
-                                            "type":"float"
+                                        "endDegrees": {
+                                            "type": "float"
                                         }
                                     },
-                                    "required":["startDegrees"]
+                                    "required": [
+                                        "startDegrees"
+                                    ]
                                 }
                             ]
                         },
                         {
-                            "properties":{
-                                "op":{
-                                    "const":"drawText"
+                            "properties": {
+                                "op": {
+                                    "const": "drawText"
                                 },
-                                "opacity":{
-                                    "type":"float",
-                                    "default":1.0
+                                "opacity": {
+                                    "type": "float",
+                                    "default": 1.0
                                 },
-                                "color":{
-                                    "$ref":"#/definitions/lgui2/color"
+                                "color": {
+                                    "$ref": "#/definitions/lgui2/color"
                                 },
-                                "x":{
-                                    "type":"float"
+                                "x": {
+                                    "type": "float"
                                 },
-                                "y":{
-                                    "type":"float"
+                                "y": {
+                                    "type": "float"
                                 },
-                                "width":{
-                                    "type":"float"
+                                "width": {
+                                    "type": "float"
                                 },
-                                "height":{
-                                    "type":"float"
+                                "height": {
+                                    "type": "float"
                                 },
-                                "transform":{
-                                    "type":"boolean",
-                                    "default":true,
-                                    "description":"If true (default) the generated vertices are to be to be multiplied by canvas size"
+                                "transform": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "If true (default) the generated vertices are to be to be multiplied by canvas size"
                                 }
                             },
-                            "required":["op"]                          
+                            "required": [
+                                "op"
+                            ]
                         }
                     ]
                 },
-                "type":"object",
-                "properties":{
-                    "type":{
-                        "const":"canvas"
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "const": "canvas"
                     },
-                    "fonts":{
-                        "type":"object",
-                        "additionalProperties":{
-                            "allOf":[
+                    "fonts": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "allOf": [
                                 {
-                                    "$ref":"#/definitions/lgui2/font"
+                                    "$ref": "#/definitions/lgui2/font"
                                 }
                             ]
                         }
                     },
-                    "brushes":{
-                        "type":"object",
-                        "additionalProperties":{
-                            "allOf":[
+                    "brushes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "allOf": [
                                 {
-                                    "$ref":"#/definitions/lgui2/brush"
+                                    "$ref": "#/definitions/lgui2/brush"
                                 }
                             ]
                         }
                     },
-                    "initialize":{
-                        "type":"array",
-                        "additionalItems":{
-                            "allOf":[
+                    "initialize": {
+                        "type": "array",
+                        "additionalItems": {
+                            "allOf": [
                                 {
-                                    "$ref":"#/definitions/lgui2/canvas/operation"
+                                    "$ref": "#/definitions/lgui2/canvas/operation"
                                 }
                             ]
                         }
                     },
-                    "batch":{
-                        "type":"array",
-                        "additionalItems":{
-                            "allOf":[
+                    "batch": {
+                        "type": "array",
+                        "additionalItems": {
+                            "allOf": [
                                 {
-                                    "$ref":"#/definitions/lgui2/canvas/operation"
+                                    "$ref": "#/definitions/lgui2/canvas/operation"
                                 }
                             ]
                         }
                     }
                 },
-                "required":[
+                "required": [
                     "type"
                 ]
             },
@@ -1746,9 +1788,9 @@
                     "popup": {
                         "$ref": "#/definitions/lgui2/element"
                     },
-                    "selectedItemViewTemplate":{
-                        "type":"string",
-                        "default":"comboboxselection"
+                    "selectedItemViewTemplate": {
+                        "type": "string",
+                        "default": "comboboxselection"
                     }
                 },
                 "required": [
@@ -1785,14 +1827,14 @@
                     "type"
                 ]
             },
-            "knob":{
-                "type":"object",
-                "properties":{
-                    "type":{
-                        "const":"knob"
+            "knob": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "const": "knob"
                     }
                 },
-                "required":[
+                "required": [
                     "type"
                 ]
             },
@@ -1861,19 +1903,19 @@
                     "type"
                 ]
             },
-            "sensitivebutton":{
+            "sensitivebutton": {
                 "allOf": [
                     {
                         "$ref": "#/definitions/lgui2/contentContainer"
                     }
                 ],
-                "type":"object",
-                "properties":{
-                    "type":{
-                        "const":"sensitivebutton"
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "const": "sensitivebutton"
                     },
-                    "value":{
-                        "type":"float"
+                    "value": {
+                        "type": "float"
                     },
                     "valueBinding": {
                         "allOf": [
@@ -1883,13 +1925,13 @@
                         ],
                         "description": "A Data Binding to use for the value"
                     },
-                    "bindContentOpacity":{
-                        "type":"boolean",
-                        "default":true,
-                        "description":"If true (default), the Content's Opacity value will always be set to the sensitivebutton's Value"
+                    "bindContentOpacity": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "If true (default), the Content's Opacity value will always be set to the sensitivebutton's Value"
                     }
                 },
-                "required":[
+                "required": [
                     "type"
                 ]
             },
@@ -2159,105 +2201,105 @@
                         }
                     ]
                 },
-                "onMouse1Press":{
+                "onMouse1Press": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse1Release":{
+                "onMouse1Release": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse1DoubleClick":{
+                "onMouse1DoubleClick": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse2Press":{
+                "onMouse2Press": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse2Release":{
+                "onMouse2Release": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse2DoubleClick":{
+                "onMouse2DoubleClick": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse3Press":{
+                "onMouse3Press": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse3Release":{
+                "onMouse3Release": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse3DoubleClick":{
+                "onMouse3DoubleClick": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse4Press":{
+                "onMouse4Press": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse4Release":{
+                "onMouse4Release": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse4DoubleClick":{
+                "onMouse4DoubleClick": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse5Press":{
+                "onMouse5Press": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse5Release":{
+                "onMouse5Release": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
                         }
                     ]
                 },
-                "onMouse5DoubleClick":{
+                "onMouse5DoubleClick": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/lgui2/eventHandler"
@@ -2346,7 +2388,10 @@
                     }
                 },
                 "inputHooks": {
-                    "$ref": "#/definitions/lgui2/inputHook"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/lgui2/inputHook"
+                    }
                 },
                 "tooltip": {
                     "$ref": "#/definitions/lgui2/element"
@@ -2468,6 +2513,9 @@
                     "$ref": "#/definitions/lgui2/border"
                 },
                 {
+                    "$ref": "#/definitions/lgui2/canvas"
+                },
+                {
                     "$ref": "#/definitions/lgui2/dockpanel"
                 },
                 {
@@ -2478,6 +2526,9 @@
                 },
                 {
                     "$ref": "#/definitions/lgui2/hud"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/knob"
                 },
                 {
                     "$ref": "#/definitions/lgui2/panel"
@@ -2493,6 +2544,9 @@
                 },
                 {
                     "$ref": "#/definitions/lgui2/scrollviewer"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/sensitivebutton"
                 },
                 {
                     "$ref": "#/definitions/lgui2/stackpanel"
