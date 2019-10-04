@@ -1346,22 +1346,22 @@
                         "type": "object",
                         "properties": {
                             "x": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "y": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "tu": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "tv": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "color": {
                                 "$ref": "#/definitions/lgui2/color"
                             },
                             "opacity": {
-                                "type": "float"
+                                "type": "number"
                             }
                         }
                     },
@@ -1369,19 +1369,19 @@
                         "type": "array",
                         "items": [
                             {
-                                "type": "float",
+                                "type": "number",
                                 "title": "X"
                             },
                             {
-                                "type": "float",
+                                "type": "number",
                                 "title": "Y"
                             },
                             {
-                                "type": "float",
+                                "type": "number",
                                 "title": "Texture X"
                             },
                             {
-                                "type": "float",
+                                "type": "number",
                                 "title": "Texture Y"
                             },
                             {
@@ -1389,7 +1389,7 @@
                                 "title": "Color"
                             },
                             {
-                                "type": "float",
+                                "type": "number",
                                 "title": "Opacity"
                             }
                         ]
@@ -1541,23 +1541,23 @@
                                 "const": "drawRect"
                             },
                             "opacity": {
-                                "type": "float",
+                                "type": "number",
                                 "default": 1.0
                             },
                             "color": {
                                 "$ref": "#/definitions/lgui2/color"
                             },
                             "x": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "y": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "width": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "height": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "transform": {
                                 "type": "boolean",
@@ -1581,20 +1581,20 @@
                                 "const": "drawCircle"
                             },
                             "opacity": {
-                                "type": "float",
+                                "type": "number",
                                 "default": 1.0
                             },
                             "color": {
                                 "$ref": "#/definitions/lgui2/color"
                             },
                             "x": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "y": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "radius": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "resolution": {
                                 "type": "integer"
@@ -1615,7 +1615,7 @@
                                 "const": "drawArc"
                             },
                             "opacity": {
-                                "type": "float",
+                                "type": "number",
                                 "default": 1.0
                             },
                             "color": {
@@ -1627,16 +1627,16 @@
                                 "description": "If true (default) the generated vertices are to be to be multiplied by canvas size"
                             },
                             "x": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "y": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "innerRadius": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "outerRadius": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "segments": {
                                 "type": "integer"
@@ -1649,19 +1649,19 @@
                             {
                                 "properties": {
                                     "centerDegrees": {
-                                        "type": "float"
+                                        "type": "number"
                                     },
                                     "innerArcLength": {
-                                        "type": "float"
+                                        "type": "number"
                                     },
                                     "outerArcLength": {
-                                        "type": "float"
+                                        "type": "number"
                                     },
                                     "u1": {
-                                        "type": "float"
+                                        "type": "number"
                                     },
                                     "u2": {
-                                        "type": "float"
+                                        "type": "number"
                                     }
                                 },
                                 "required": [
@@ -1671,10 +1671,10 @@
                             {
                                 "properties": {
                                     "startDegrees": {
-                                        "type": "float"
+                                        "type": "number"
                                     },
                                     "endDegrees": {
-                                        "type": "float"
+                                        "type": "number"
                                     }
                                 },
                                 "required": [
@@ -1689,23 +1689,23 @@
                                 "const": "drawText"
                             },
                             "opacity": {
-                                "type": "float",
+                                "type": "number",
                                 "default": 1.0
                             },
                             "color": {
                                 "$ref": "#/definitions/lgui2/color"
                             },
                             "x": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "y": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "width": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "height": {
-                                "type": "float"
+                                "type": "number"
                             },
                             "transform": {
                                 "type": "boolean",
@@ -1945,7 +1945,7 @@
                         "const": "sensitivebutton"
                     },
                     "value": {
-                        "type": "float"
+                        "type": "number"
                     },
                     "valueBinding": {
                         "allOf": [
