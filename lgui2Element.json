@@ -1747,7 +1747,7 @@
                     },
                     "initialize": {
                         "type": "array",
-                        "additionalItems": {
+                        "items": {
                             "allOf": [
                                 {
                                     "$ref": "#/definitions/lgui2/canvasOperation"
@@ -1757,7 +1757,7 @@
                     },
                     "batch": {
                         "type": "array",
-                        "additionalItems": {
+                        "items": {
                             "allOf": [
                                 {
                                     "$ref": "#/definitions/lgui2/canvasOperation"
