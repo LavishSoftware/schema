@@ -1525,7 +1525,7 @@
                             },
                             "vertices": {
                                 "type": "array",
-                                "additionalItems": {
+                                "items": {
                                     "$ref": "#/definitions/lgui2/canvasVertex"
                                 }
                             }
