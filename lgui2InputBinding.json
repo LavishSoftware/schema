@@ -167,13 +167,10 @@
                         },
                         "oneOf": [
                             {
-                                "not": {
-                                    "properties": {
-                                        "controlType": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
+                                "not": 
+                                {
+                                    "required": ["controlType"]
+                                }                                
                             },
                             {
                                 "properties": {
@@ -224,6 +221,13 @@
                                 "properties": {
                                     "controlType": {
                                         "const": "axis"
+                                    }
+                                }
+                            },
+                            {
+                                "properties": {
+                                    "controlType": {
+                                        "const": "note"
                                     }
                                 }
                             },
