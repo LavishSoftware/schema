@@ -1299,6 +1299,26 @@
                 "properties": {
                     "type": {
                         "const": "textblock"
+                    },
+                    "horizontalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "left",
+                            "center",
+                            "right",
+                            "stretch"
+                        ]
+                    },
+                    "verticalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "top",
+                            "center",
+                            "bottom",
+                            "stretch"
+                        ]
                     }
                 },
                 "required": [
@@ -1408,6 +1428,16 @@
                                 },
                                 "color": {
                                     "$ref": "#/definitions/lgui2/color"
+                                },
+                                "reset":{
+                                    "type":"boolean",
+                                    "description":"If set to true, resets the Font and Brush stacks along with the clear operation",
+                                    "default":false
+                                },
+                                "initialize":{
+                                    "type":"boolean",
+                                    "default":false,
+                                    "description":"If set to true, immediately processes the \"initialize\" operations (like an \"initialize\" with \"force\" enabled)"
                                 }
                             },
                             "required": [
