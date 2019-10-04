@@ -189,7 +189,8 @@
                                         "maxValue": 1.0,
                                         "multipleOf": 1
                                     }
-                                }
+                                },
+                                "required":["controlType"]
                             },
                             {
                                 "properties": {
@@ -208,28 +209,32 @@
                                         "maxValue": 1.0,
                                         "multipleOf": 1.0
                                     }
-                                }
+                                },
+                                "required":["controlType"]
                             },
                             {
                                 "properties": {
                                     "controlType": {
                                         "const": "dpad"
-                                    }
-                                }
+                                    }                                    
+                                },
+                                "required":["controlType"]
                             },
                             {
                                 "properties": {
                                     "controlType": {
                                         "const": "axis"
                                     }
-                                }
+                                },
+                                "required":["controlType"]
                             },
                             {
                                 "properties": {
                                     "controlType": {
                                         "const": "note"
                                     }
-                                }
+                                },
+                                "required":["controlType"]
                             },
                             {
                                 "properties": {
@@ -244,7 +249,8 @@
                                         "type": "number",
                                         "multipleOf": 120.0
                                     }
-                                }
+                                },
+                                "required":["controlType"]
                             },
                             {
                                 "properties": {
@@ -263,7 +269,8 @@
                                     "maxY": {
                                         "type": "number"
                                     }
-                                }
+                                },
+                                "required":["controlType"]
                             }
                         ]
                     }
