@@ -10,9 +10,33 @@
         },
         "templates":{
             "type":"object",
-            "description": "A set Templates to add to the Skin. Each Template can be referred to by the name provided here to define it.",
+            "description": "A set of Templates to add to the Skin. Each Template can be referred to by the name provided here to define it.",
             "additionalProperties": {
                 "description": "A Template to add to the Skin"
+            }
+        },
+        "brushes":{
+            "type":"object",
+            "description": "A set of Brushes to add to the Skin. Each Brush can be referred to by the name provided here to define it.",
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2Brush.json"
+                    }
+                ],
+                "description": "A Brush to add to the Skin"
+            }
+        },
+        "fonts":{
+            "type":"object",
+            "description": "A set of Font Styles to add to the Skin. Each Font Style can be referred to by the name provided here to define it.",
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2Font.json"
+                    }
+                ],
+                "description": "A Font to add to the Skin"
             }
         }
     },

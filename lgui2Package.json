@@ -27,6 +27,30 @@
             },
             "description": "A set of Templates to add to the default Skin"
         },
+        "brushes":{
+            "type":"object",
+            "description": "A set of Brushes to add to the defult Skin",
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2Brush.json"
+                    }
+                ],
+                "description": "A Brush to add to the default Skin"
+            }
+        },
+        "fonts":{
+            "type":"object",
+            "description": "A set of Font Styles to add to the default Skin",
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2Font.json"
+                    }
+                ],
+                "description": "A Font to add to the default Skin"
+            }
+        },
         "animationTypes":{
             "type":"object",
             "description":"Custom Animation Types, by name",

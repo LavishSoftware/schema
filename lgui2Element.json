@@ -1725,6 +1725,12 @@
                     "type": {
                         "const": "canvas"
                     },
+                    "width":{
+                        "type":"number"
+                    },
+                    "height":{
+                        "type":"number"
+                    },
                     "fonts": {
                         "type": "object",
                         "additionalProperties": {

@@ -15,43 +15,114 @@
             },
             "color": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2Color.json"
+            },
+            "brush": {
+                "$ref": "#"
+            },
+            "font": {
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Font.json"
+            },
+            "canvasOperation":{
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Element.json#/definitions/lgui2/canvasOperation"
+            },
+            "canvasVertex":{
+                "$ref": "http://www.lavishsoft.com/schema/lgui2Element.json#/definitions/lgui2/canvasVertex"
             }
         }
     },
-    "type": "object",
-    "properties": {
-        "color": {
-            "$ref": "#/definitions/lgui2/color"
+    "oneOf":[
+        {
+            "type":"string",
+            "description": "The name of a global Brush to use"
         },
-        "imageFile": {
-            "type": "string"
-        },
-        "imageFileTransparencyKey": {
-            "$ref": "#/definitions/lgui2/color"
-        },
-        "imageOrientation": {
-            "oneOf": [
-                {
+        {
+            "type": "object",
+            "properties": {
+                "color": {
+                    "$ref": "#/definitions/lgui2/color"
+                },
+                "canvas":{
+                    "type":"object",
+                    "properties": {
+                        "width":{
+                            "type":"number"
+                        },
+                        "height":{
+                            "type":"number"
+                        },
+                        "fonts": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/lgui2/font"
+                                    }
+                                ]
+                            }
+                        },
+                        "brushes": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/lgui2/brush"
+                                    }
+                                ]
+                            }
+                        },
+                        "initialize": {
+                            "type": "array",
+                            "items": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/lgui2/canvasOperation"
+                                    }
+                                ]
+                            }
+                        },
+                        "batch": {
+                            "type": "array",
+                            "items": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/lgui2/canvasOperation"
+                                    }
+                                ]
+                            }
+                        }    
+                    }
+                },
+                "imageFile": {
                     "type": "string"
                 },
-                {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "normal",
-                            "mirrorHorizontal",
-                            "mirrorVertical"
-                        ]
-                    }
+                "imageFileTransparencyKey": {
+                    "$ref": "#/definitions/lgui2/color"
+                },
+                "imageOrientation": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "normal",
+                                    "mirrorHorizontal",
+                                    "mirrorVertical"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "pixelShader": {
+                    "$ref": "#/definitions/lgui2/pixelShader"
+                },
+                "vertexShader": {
+                    "$ref": "#/definitions/lgui2/vertexShader"
                 }
-            ]
-        },
-        "pixelShader": {
-            "$ref": "#/definitions/lgui2/pixelShader"
-        },
-        "vertexShader": {
-            "$ref": "#/definitions/lgui2/vertexShader"
+            }        
         }
-    }
+    ]
 }

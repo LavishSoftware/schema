@@ -2,40 +2,52 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.lavishsoft.com/schema/lgui2Font.json",
     "description": "A LavishGUI2 Font",
-    "type": "object",
-    "properties": {
-        "face": {
-            "type": "string",
-            "description": "Face of the font, e.g. Arial or Segoe UI",
-            "examples": [
-                "Arial",
-                "Segoe UI"
-            ]
-        },
-        "fixed": {
-            "type": "boolean",
-            "description": "true if a fixed-width font should be used if possible"
-        },
-        "bold": {
-            "type": "boolean",
-            "description": "true if the font should be bolded"
-        },
-        "height": {
-            "type": "integer",
-            "examples": [
-                10,
-                11,
-                12
-            ],
-            "description": "the font height in points"
-        },
-        "heightOffset": {
-            "type": "integer",
-            "description": "the font height in points, relative to its parent Font"
-        },
-        "heightFactor": {
-            "type": "number",
-            "description": "the height factor for the font. The actual height will be heightOffset+(heightFactor*parentHeight)"
-        }
-    }
+    "oneOf":[
+      {
+          "type":"string",
+          "description": "The name of a global Font to use"
+      },
+      {
+        "type": "object",
+        "properties": {
+            "globalFont":{
+                "type":"string",
+                "description": "The name of a global Font to use for base font properties, instead of its parent Font"
+            },
+            "face": {
+                "type": "string",
+                "description": "Face of the font, e.g. Arial or Segoe UI",
+                "examples": [
+                    "Arial",
+                    "Segoe UI"
+                ]
+            },
+            "fixed": {
+                "type": "boolean",
+                "description": "true if a fixed-width font should be used if possible"
+            },
+            "bold": {
+                "type": "boolean",
+                "description": "true if the font should be bolded"
+            },
+            "height": {
+                "type": "integer",
+                "examples": [
+                    10,
+                    11,
+                    12
+                ],
+                "description": "the font height in points"
+            },
+            "heightOffset": {
+                "type": "integer",
+                "description": "the font height in points, relative to its parent Font"
+            },
+            "heightFactor": {
+                "type": "number",
+                "description": "the height factor for the font. The actual height will be heightOffset+(heightFactor*parentHeight)"
+            }
+        }    
+      }
+    ]
 }
