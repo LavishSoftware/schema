@@ -75,6 +75,23 @@
                                 "default": false,
                                 "description": "True if autoPull should be enabled for one Pull, and then disabled (e.g. to initialize a control, but not refresh automatically)"
                             },
+                            "pullHook":{
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/lgui2/elementLocator"
+                                    }
+                                ],
+                                "type": "object",
+                                "description":"An Event Hook. When the hooked event fires, the Data Binding will Pull",
+                                "properties": {
+                                    "event": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "event"
+                                ]        
+                            },
                             "autoPull": {
                                 "type": "boolean",
                                 "default": true,
@@ -1827,6 +1844,24 @@
                     "selectedItemViewTemplate": {
                         "type": "string",
                         "default": "comboboxselection"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
+            },
+            "commandbox":{
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/textblockBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "commandbox"
+                    },
+                    "multiline": {
+                        "type": "boolean"
                     }
                 },
                 "required": [
