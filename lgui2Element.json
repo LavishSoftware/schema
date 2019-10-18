@@ -1002,6 +1002,52 @@
                     "type"
                 ]
             },
+            "table":{
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/panelBase"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "table"
+                    },
+                   "rows":{
+                       "type":"array",
+                       "items":{
+                           "type":"object",
+                           "properties":{
+                                "height":{
+                                    "$ref": "#/definitions/numberOrInteger"
+                                },
+                                "heightFactor":{
+                                    "$ref": "#/definitions/numberOrInteger"
+                                }
+                           }
+                       }
+                   },
+                   "columns":{
+                        "type":"array",
+                        "items":{
+                            "type":"object",
+                            "properties":{
+                                "width":{
+                                    "$ref": "#/definitions/numberOrInteger"
+                                },
+                                "widthFactor":{
+                                    "$ref": "#/definitions/numberOrInteger"
+                                }
+                            }
+                        }
+                    },
+                    "cellSpacing":{
+                        "$ref": "#/definitions/lgui2/size"
+                    }
+                },
+                "required": [
+                    "type"
+                ]                
+            },
             "window": {
                 "allOf": [
                     {
