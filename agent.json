@@ -40,7 +40,7 @@
                     ],
                     "description": "Fires when the Inner Space platform is ready and active"
                 },
-                "onPulse":{
+                "onPulse": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/eventHandler"
@@ -63,8 +63,12 @@
         "name": {
             "type": "string"
         },
+        "metadata": {
+            "type": "object",
+            "description": "Metadata to always attach to the Agent, regardless of the Inner Space platform or the process"
+        },
         "eventHandlers": {
-            "type":"object",
+            "type": "object",
             "description": "So-called 'global' Agent event handlers, which are activated regardless of the Inner Space platform or the process",
             "allOf": [
                 {
@@ -77,38 +81,50 @@
             "description": "'platform' Agent event handlers, which are activated depending on the Inner Space platform",
             "properties": {
                 "inner space session": {
-                    "type":"object",
+                    "type": "object",
                     "description": "Agent properties specifically for Inner Space Sessions (a process, usually a game, that has been launched via Inner Space)",
                     "properties": {
+                        "metadata": {
+                            "type": "object",
+                            "description": "Metadata to attach to the Agent only in an Inner Space Session"
+                        },
                         "eventHandlers": {
                             "allOf": [
                                 {
                                     "$ref": "#/definitions/eventHandlers"
                                 }
                             ],
-                            "description": "'platform' Agent event handlers which are activated only in an Inner Space Session (a process, usually a game, that has been launched via Inner Space)"
+                            "description": "'platform' Agent event handlers which are activated only in an Inner Space Session"
                         }
                     }
                 },
                 "inner space uplink": {
-                    "type":"object",
+                    "type": "object",
                     "description": "Agent properties specifically for the Inner Space Uplink (main program)",
                     "properties": {
+                        "metadata": {
+                            "type": "object",
+                            "description": "Metadata to attach to the Agent only in the Inner Space Uplink"
+                        },
                         "eventHandlers": {
                             "allOf": [
                                 {
                                     "$ref": "#/definitions/eventHandlers"
                                 }
                             ],
-                            "description": "'platform' Agent event handlers which are activated only in the Inner Space Uplink (main program)"
+                            "description": "'platform' Agent event handlers which are activated only in the Inner Space Uplink"
                         }
                     }
                 }
             },
-            "additionalProperties":{
-                "type":"object",
+            "additionalProperties": {
+                "type": "object",
                 "description": "Agent properties specifically for an Inner Space platform other than 'inner space uplink' or 'inner space session'",
                 "properties": {
+                    "metadata": {
+                        "type": "object",
+                        "description": "Metadata to attach to the Agent only in the specified Inner Space platform (specified by the property name given to this object)"
+                    },
                     "eventHandlers": {
                         "allOf": [
                             {
@@ -124,6 +140,10 @@
             "type": "object",
             "description": "Agent properties specifically for the specified process executable name (lower case!) such as 'innerspace.exe' or 'notepad.exe'",
             "additionalProperties": {
+                "metadata": {
+                    "type": "object",
+                    "description": "Metadata to attach to the Agent depending on the process executable name, such as 'innerspace.exe' or 'notepad.exe'"
+                },
                 "allOf": [
                     {
                         "$ref": "#/definitions/eventHandlers"
