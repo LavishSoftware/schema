@@ -6,7 +6,13 @@
     "description": "An Inner Space Agent provides event handlers for the Inner Space platform",
     "definitions": {
         "eventHandler": {
-            "$ref": "http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+            "type":"object",
+            "properties":{
+                "code":{
+                    "$ref": "http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+                }
+            },
+            "required":["code"]            
         },
         "eventHandlers": {
             "type": "object",
