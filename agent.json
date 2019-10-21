@@ -1,0 +1,139 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Inner Space Agent",
+    "description": "An Inner Space Agent provides event handlers for the Inner Space platform",
+    "definitions": {
+        "eventHandler": {
+            "$ref": "http://www.lavishsoft.com/schema/lgui2LS1Code.json"
+        },
+        "eventHandlers": {
+            "type": "object",
+            "properties": {
+                "onAgentStartup": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/eventHandler"
+                        }
+                    ]
+                },
+                "onAgentShutdown": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/eventHandler"
+                        }
+                    ]
+                },
+                "onPlatformPreStartup": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/eventHandler"
+                        }
+                    ],
+                    "description": "Fires before Startup, with specific timing depending on the Inner Space platform. The Session platform (inner space session) performs Pre-Startup before the host game/program is able to run code, useful for assigning Virtual Files, etc."
+                },
+                "onPlatformStartup": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/eventHandler"
+                        }
+                    ],
+                    "description": "Fires when the Inner Space platform is ready and active"
+                },
+                "onPulse":{
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/eventHandler"
+                        }
+                    ],
+                    "description": "Fires each frame before scripts, the OnFrame LavishScript event, etc."
+                }
+            },
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/eventHandler"
+                    }
+                ],
+                "description": "A custom Agent event handler that can be fired via agent:FireEvent[name]"
+            }
+        }
+    },
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "eventHandlers": {
+            "type":"object",
+            "description": "So-called 'global' Agent event handlers, which are activated regardless of the Inner Space platform or the process",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/eventHandlers"
+                }
+            ]
+        },
+        "platforms": {
+            "type": "object",
+            "description": "'platform' Agent event handlers, which are activated depending on the Inner Space platform",
+            "properties": {
+                "inner space session": {
+                    "type":"object",
+                    "description": "Agent properties specifically for Inner Space Sessions (a process, usually a game, that has been launched via Inner Space)",
+                    "properties": {
+                        "eventHandlers": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/eventHandlers"
+                                }
+                            ],
+                            "description": "'platform' Agent event handlers which are activated only in an Inner Space Session (a process, usually a game, that has been launched via Inner Space)"
+                        }
+                    }
+                },
+                "inner space uplink": {
+                    "type":"object",
+                    "description": "Agent properties specifically for the Inner Space Uplink (main program)",
+                    "properties": {
+                        "eventHandlers": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/eventHandlers"
+                                }
+                            ],
+                            "description": "'platform' Agent event handlers which are activated only in the Inner Space Uplink (main program)"
+                        }
+                    }
+                }
+            },
+            "additionalProperties":{
+                "type":"object",
+                "description": "Agent properties specifically for an Inner Space platform other than 'inner space uplink' or 'inner space session'",
+                "properties": {
+                    "eventHandlers": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/eventHandlers"
+                            }
+                        ],
+                        "description": "'platform' Agent event handlers which are activated only in the specified Inner Space platform (specified by the property name given to this object)"
+                    }
+                }
+            }
+        },
+        "processes": {
+            "type": "object",
+            "description": "Agent properties specifically for the specified process executable name (lower case!) such as 'innerspace.exe' or 'notepad.exe'",
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/eventHandlers"
+                    }
+                ],
+                "description": "'process' Agent event handlers, which are activated depending on the process executable name, such as 'innerspace.exe' or 'notepad.exe'"
+            }
+        }
+    },
+    "required": [
+        "name"
+    ]
+}
