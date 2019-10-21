@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/agent.json",
     "type": "object",
     "title": "Inner Space Agent",
     "description": "An Inner Space Agent provides event handlers for the Inner Space platform",
