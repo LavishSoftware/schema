@@ -176,12 +176,23 @@
             "type": "array",
             "description": "MetaScripts to prepare, and optionally auto-Start",
             "items": {
-                "allOf": [
-                    {
-                        "$ref": "http://www.lavishsoft.com/schema/metascript.json"
-                    }
-                ],
                 "properties": {
+                    "metaScript":{
+                        "oneOf":[
+                            {
+                                "type":"string",
+                                "description": "Filename of a MetaScript JSON file"
+                            },
+                            {
+                                "type":"object",
+                                "allOf": [
+                                    {
+                                        "$ref": "http://www.lavishsoft.com/schema/metascript.json"
+                                    }
+                                ]                
+                            }
+                        ]
+                    },
                     "autoStart": {
                         "type": "boolean",
                         "default": false
