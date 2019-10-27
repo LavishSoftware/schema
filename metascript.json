@@ -20,7 +20,8 @@
                         "global",
                         "script",
                         "object",
-                        "local"
+                        "local",
+                        "globalkeep"
                     ]
                 },
                 "type": {
@@ -105,7 +106,47 @@
                         }
                     ]
                 }
-            }
+            },
+            "required":["type","name"],
+            "oneOf":[
+                {
+                    "properties": {
+                        "type":{
+                            "const":"function"
+                        }
+                    },
+                    "required": ["type"]
+                },
+                {
+                    "properties": {
+                        "type":{
+                            "const":"atom"
+                        },
+                        "scope":{
+                            "type":"string",
+                            "enum":["global","globalkeep","script"],
+                            "default":"script"
+                        }
+                    },
+                    "required": ["type"]
+                },
+                {
+                    "properties": {
+                        "type":{
+                            "const":"member"
+                        }
+                    },
+                    "required": ["type"]
+                },
+                {
+                    "properties": {
+                        "type":{
+                            "const":"method"
+                        }
+                    },
+                    "required": ["type"]
+                }
+            ]
         },
         "parameter": {
             "type": "object",
