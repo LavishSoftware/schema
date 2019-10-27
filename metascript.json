@@ -5,12 +5,12 @@
     "title": "MetaScript",
     "description": "A MetaScript combines code and metadata",
     "definitions": {
-        "code":{
+        "code": {
             "$ref": "http://www.lavishsoft.com/schema/lgui2LS1Code.json"
         },
         "include": {
             "type": "string"
-        },        
+        },
         "variable": {
             "type": "object",
             "properties": {
@@ -46,18 +46,24 @@
                     "type": "string"
                 },
                 "variables": {
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/variable"
-                        }
-                    ]
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/variable"
+                            }
+                        ]
+                    }
                 },
                 "functions": {
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/function"
-                        }
-                    ]
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/function"
+                            }
+                        ]
+                    }
                 }
             },
             "required": [
@@ -66,28 +72,33 @@
         },
         "function": {
             "type": "object",
-            "properties":{
-                "type":{
-                    "type":"string",
-                    "enum": ["function","atom","member","method"]
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "function",
+                        "atom",
+                        "member",
+                        "method"
+                    ]
                 },
-                "returnType":{
-                    "type":"string"
+                "returnType": {
+                    "type": "string"
                 },
-                "name":{
-                    "type":"string"
+                "name": {
+                    "type": "string"
                 },
-                "parameters":{
-                    "type":"array",
-                    "items":{
+                "parameters": {
+                    "type": "array",
+                    "items": {
                         "allOf": [
                             {
                                 "$ref": "#/definitions/parameter"
                             }
-                        ]       
+                        ]
                     }
                 },
-                "code":{
+                "code": {
                     "allOf": [
                         {
                             "$ref": "#/definitions/code"
@@ -98,7 +109,7 @@
         },
         "parameter": {
             "type": "object",
-            "properties":{
+            "properties": {
                 "type": {
                     "type": "string"
                 },
@@ -107,7 +118,10 @@
                 },
                 "value": {}
             },
-            "required": ["type","name"]
+            "required": [
+                "type",
+                "name"
+            ]
         }
     },
     "properties": {
@@ -135,25 +149,34 @@
             }
         },
         "variables": {
-            "allOf": [
-                {
-                    "$ref": "#/definitions/variable"
-                }
-            ]
+            "type": "array",
+            "items": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/variable"
+                    }
+                ]
+            }
         },
         "objectdefs": {
-            "allOf": [
-                {
-                    "$ref": "#/definitions/objectdef"
-                }
-            ]
+            "type": "array",
+            "items": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/objectdef"
+                    }
+                ]
+            }
         },
         "functions": {
-            "allOf": [
-                {
-                    "$ref": "#/definitions/function"
-                }
-            ]
+            "type": "array",
+            "items": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/function"
+                    }
+                ]
+            }
         }
     },
     "required": [
