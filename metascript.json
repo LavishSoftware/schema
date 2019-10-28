@@ -89,6 +89,16 @@
                 "name": {
                     "type": "string"
                 },
+                "variables": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/variable"
+                            }
+                        ]
+                    }
+                },
                 "parameters": {
                     "type": "array",
                     "items": {
