@@ -53,9 +53,9 @@
             }
         },
         "animationTypes": {
-            "type": "object",
-            "description": "Custom Animation Types, by name",
-            "additionalProperties": {
+            "type": "array",
+            "description": "Custom Animation Types",
+            "items": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2AnimationType.json"
             }
         },
