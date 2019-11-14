@@ -75,14 +75,14 @@
                                 "default": false,
                                 "description": "True if autoPull should be enabled for one Pull, and then disabled (e.g. to initialize a control, but not refresh automatically)"
                             },
-                            "pullHook":{
+                            "pullHook": {
                                 "allOf": [
                                     {
                                         "$ref": "#/definitions/lgui2/elementLocator"
                                     }
                                 ],
                                 "type": "object",
-                                "description":"An Event Hook. When the hooked event fires, the Data Binding will Pull",
+                                "description": "An Event Hook. When the hooked event fires, the Data Binding will Pull",
                                 "properties": {
                                     "event": {
                                         "type": "string"
@@ -90,7 +90,7 @@
                                 },
                                 "required": [
                                     "event"
-                                ]        
+                                ]
                             },
                             "autoPull": {
                                 "type": "boolean",
@@ -584,19 +584,19 @@
                             "stretch"
                         ]
                     },
-                    "maintainAspectRatio":{
-                        "oneOf":[
+                    "maintainAspectRatio": {
+                        "oneOf": [
                             {
-                                "type":"null"
+                                "type": "null"
                             },
                             {
-                                "type":"false"
+                                "type": "false"
                             },
                             {
-                                "type":"integer"
+                                "type": "integer"
                             },
                             {
-                                "type":"number"
+                                "type": "number"
                             }
                         ]
                     }
@@ -670,7 +670,11 @@
                 ]
             },
             "panel": {
-                "$ref": "#/definitions/lgui2/panelBase",
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/panelBase"
+                    }
+                ],
                 "properties": {
                     "type": {
                         "const": "panel"
@@ -1018,7 +1022,7 @@
                     "type"
                 ]
             },
-            "table":{
+            "table": {
                 "allOf": [
                     {
                         "$ref": "#/definitions/lgui2/panelBase"
@@ -1028,41 +1032,41 @@
                     "type": {
                         "const": "table"
                     },
-                   "rows":{
-                       "type":"array",
-                       "items":{
-                           "type":"object",
-                           "properties":{
-                                "height":{
+                    "rows": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "height": {
                                     "$ref": "#/definitions/numberOrInteger"
                                 },
-                                "heightFactor":{
-                                    "$ref": "#/definitions/numberOrInteger"
-                                }
-                           }
-                       }
-                   },
-                   "columns":{
-                        "type":"array",
-                        "items":{
-                            "type":"object",
-                            "properties":{
-                                "width":{
-                                    "$ref": "#/definitions/numberOrInteger"
-                                },
-                                "widthFactor":{
+                                "heightFactor": {
                                     "$ref": "#/definitions/numberOrInteger"
                                 }
                             }
                         }
                     },
-                    "cellSpacing":{
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "width": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                },
+                                "widthFactor": {
+                                    "$ref": "#/definitions/numberOrInteger"
+                                }
+                            }
+                        }
+                    },
+                    "cellSpacing": {
                         "$ref": "#/definitions/lgui2/size"
                     }
                 },
                 "required": [
                     "type"
-                ]                
+                ]
             },
             "window": {
                 "allOf": [
@@ -1419,7 +1423,7 @@
                     "type"
                 ]
             },
-            "canvasVertex":{
+            "canvasVertex": {
                 "oneOf": [
                     {
                         "type": "object",
@@ -1475,7 +1479,7 @@
                     }
                 ]
             },
-            "canvasOperation":{
+            "canvasOperation": {
                 "type": "object",
                 "properties": {
                     "op": {
@@ -1507,15 +1511,15 @@
                             "color": {
                                 "$ref": "#/definitions/lgui2/color"
                             },
-                            "reset":{
-                                "type":"boolean",
-                                "description":"If set to true, resets the Font and Brush stacks along with the clear operation",
-                                "default":false
+                            "reset": {
+                                "type": "boolean",
+                                "description": "If set to true, resets the Font and Brush stacks along with the clear operation",
+                                "default": false
                             },
-                            "initialize":{
-                                "type":"boolean",
-                                "default":false,
-                                "description":"If set to true, immediately processes the \"initialize\" operations (like an \"initialize\" with \"force\" enabled)"
+                            "initialize": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "If set to true, immediately processes the \"initialize\" operations (like an \"initialize\" with \"force\" enabled)"
                             }
                         },
                         "required": [
@@ -1804,11 +1808,11 @@
                     "type": {
                         "const": "canvas"
                     },
-                    "width":{
-                        "type":"number"
+                    "width": {
+                        "type": "number"
                     },
-                    "height":{
-                        "type":"number"
+                    "height": {
+                        "type": "number"
                     },
                     "fonts": {
                         "type": "object",
@@ -1912,7 +1916,7 @@
                     "type"
                 ]
             },
-            "commandbox":{
+            "commandbox": {
                 "allOf": [
                     {
                         "$ref": "#/definitions/lgui2/textblockBase"
