@@ -1062,6 +1062,26 @@
                     },
                     "cellSpacing": {
                         "$ref": "#/definitions/lgui2/size"
+                    },
+                    "cellSpacingFactor": {
+                        "$ref": "#/definitions/lgui2/size"
+                    },
+                    "autoFill":{
+                        "type":"object",
+                        "properties":{
+                            "firstRow":{
+                                "type":"integer"
+                            },
+                            "lastRow":{
+                                "type":"integer"
+                            },
+                            "firstColumn":{
+                                "type":"integer"
+                            },
+                            "lastColumn":{
+                                "type":"integer"
+                            }
+                        }
                     }
                 },
                 "required": [
@@ -2690,6 +2710,9 @@
                 },
                 {
                     "$ref": "#/definitions/lgui2/wrappanel"
+                },
+                {
+                    "$ref": "#/definitions/lgui2/table"
                 },
                 {
                     "$ref": "#/definitions/lgui2/tab"
