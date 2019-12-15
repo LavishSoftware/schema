@@ -21,6 +21,54 @@
                 "description": "A LavishGUI 2 Package filename to load prior to loading any assets from this one. The path is relative to the current file, or an absolute path can be specified."
             }
         },
+        "audioVoices": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "volume": {
+                        "oneOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "array",
+                                "description": "Array of up to 32 per-channel volumes (2 channels for left/right stereo, 6 for 5.1, etc)",
+                                "items": {
+                                    "oneOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "type": "integer"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "description": "An Audio Voice definition"
+            },
+            "description": "A set of Audio Voices"
+        },
+        "audioStreams": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "type": "string",
+                        "description": "A filename (or URL) to use for the audio stream. Any audio file format supported by Windows Media Foundation should work."
+                    }
+                },
+                "description": "An Audio Stream definition"
+            },
+            "description": "A set of Audio Streams"
+        },
         "templates": {
             "type": "object",
             "additionalProperties": {

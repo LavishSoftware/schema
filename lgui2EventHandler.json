@@ -36,7 +36,8 @@
                         "forward",
                         "style",
                         "animation",
-                        "task"
+                        "task",
+                        "audio"
                     ]
                 }
             },
@@ -152,7 +153,28 @@
                         "taskManager",
                         "task"
                     ]
+                },
+                {
+                    "properties": {
+                        "type": {
+                            "const": "audio"
+                        },
+                        "voiceName": {
+                            "type": "string"
+                        },
+                        "streamName": {
+                            "type": "string"
+                        },
+                        "flush": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "required": [
+                        "voiceName"
+                    ]
                 }
+
             ]
         }
     ]
