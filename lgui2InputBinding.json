@@ -240,6 +240,14 @@
                             {
                                 "properties": {
                                     "controlType": {
+                                        "const": "data"
+                                    }
+                                },
+                                "required":["controlType"]
+                            },
+                            {
+                                "properties": {
+                                    "controlType": {
                                         "const": "mousewheel"
                                     },
                                     "minValue": {
