@@ -104,7 +104,6 @@
                                 "type": "string",
                                 "enum": [
                                     "button",
-                                    "mousebutton",
                                     "dpad",
                                     "axis",
                                     "mousewheel",
@@ -189,26 +188,6 @@
                                         "minValue": 0.0,
                                         "maxValue": 1.0,
                                         "multipleOf": 1
-                                    }
-                                },
-                                "required":["controlType"]
-                            },
-                            {
-                                "properties": {
-                                    "controlType": {
-                                        "const": "mousebutton"
-                                    },
-                                    "minValue": {
-                                        "type": "number",
-                                        "minValue": 0.0,
-                                        "maxValue": 1.0,
-                                        "multipleOf": 1.0
-                                    },
-                                    "maxValue": {
-                                        "type": "number",
-                                        "minValue": 0.0,
-                                        "maxValue": 1.0,
-                                        "multipleOf": 1.0
                                     }
                                 },
                                 "required":["controlType"]
