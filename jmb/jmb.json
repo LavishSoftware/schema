@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/jmb.json",
+    "type": "object",
+    "title": "Joe Multiboxer",
+    "description": "https://joemultiboxer.com",
+    "definitions": {
+        "globalSettings":{
+            "type":"object",
+            "properties": {
+                "characters":{
+                    "$ref":"#/definitions/character"
+                }
+            }
+        },     
+        "virtualFile":{
+            "type":"object",
+            "properties": {
+                "pattern":{
+                    "type":"string"
+                },
+                "replacement":{
+                    "type":"string"
+                },
+                "exact":{
+                    "type":"boolean"
+                },
+                "target":{
+                    "type":"string",
+                    "enum": ["file","filemapping","pipe","event","mutex","registry","all","nonfile"],
+                    "default":"all"
+                }
+            },
+            "required": ["pattern"]
+        },
+        "character":{
+            "type":"object",
+            "properties": {
+                "id":{
+                    "type":"integer"
+                },
+                "display_name":{
+                    "type":"string"
+                },
+                "actualName":{
+                    "type":"string"
+                },
+                "server":{
+                    "type":"string"
+                },
+                "game":{
+                    "type":"string"
+                },
+                "gameProfile":{
+                    "type":"string"
+                },
+                "virtualFiles":{
+                    "type":"array",
+                    "items":{
+                        "$ref": "#/definitions/virtualFile"
+                    }
+                },
+                "metadata":{
+                    "type":"object"
+                }
+            },
+            "required": ["display_name"]
+        }
+    }
+}
