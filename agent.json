@@ -37,7 +37,7 @@
                             "$ref": "#/definitions/eventHandler"
                         }
                     ],
-                    "description": "Fires before Startup, with specific timing depending on the Inner Space platform. The Session platform (inner space session) performs Pre-Startup before the host game/program is able to run code, useful for assigning Virtual Files, etc."
+                    "description": "Fires before Startup, with specific timing depending on the Inner Space platform. The Session platform (inner space session or joe multiboxer session) performs Pre-Startup before the host game/program is able to run code, useful for assigning Virtual Files, etc."
                 },
                 "onPlatformStartup": {
                     "allOf": [
@@ -122,15 +122,51 @@
                             "description": "'platform' Agent event handlers which are activated only in the Inner Space Uplink"
                         }
                     }
+                },
+                "joe multiboxer session": {
+                    "type": "object",
+                    "description": "Agent properties specifically for Joe Multiboxer Sessions (a process, usually a game, that has been launched via Joe Multiboxer)",
+                    "properties": {
+                        "metadata": {
+                            "type": "object",
+                            "description": "Metadata to attach to the Agent only in a Joe Multiboxer Session"
+                        },
+                        "eventHandlers": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/eventHandlers"
+                                }
+                            ],
+                            "description": "'platform' Agent event handlers which are activated only in a Joe Multiboxer Session"
+                        }
+                    }
+                },
+                "joe multiboxer uplink": {
+                    "type": "object",
+                    "description": "Agent properties specifically for the Joe Multiboxer Uplink (main program)",
+                    "properties": {
+                        "metadata": {
+                            "type": "object",
+                            "description": "Metadata to attach to the Agent only in the Joe Multiboxer Uplink"
+                        },
+                        "eventHandlers": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/eventHandlers"
+                                }
+                            ],
+                            "description": "'platform' Agent event handlers which are activated only in the Joe Multiboxer Uplink"
+                        }
+                    }
                 }
             },
             "additionalProperties": {
                 "type": "object",
-                "description": "Agent properties specifically for an Inner Space platform other than 'inner space uplink' or 'inner space session'",
+                "description": "Agent properties specifically for a platform other than those named",
                 "properties": {
                     "metadata": {
                         "type": "object",
-                        "description": "Metadata to attach to the Agent only in the specified Inner Space platform (specified by the property name given to this object)"
+                        "description": "Metadata to attach to the Agent only in the specified platform (specified by the property name given to this object)"
                     },
                     "eventHandlers": {
                         "allOf": [
@@ -138,7 +174,7 @@
                                 "$ref": "#/definitions/eventHandlers"
                             }
                         ],
-                        "description": "'platform' Agent event handlers which are activated only in the specified Inner Space platform (specified by the property name given to this object)"
+                        "description": "'platform' Agent event handlers which are activated only in the specified platform (specified by the property name given to this object)"
                     }
                 }
             }
