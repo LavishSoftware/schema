@@ -2100,6 +2100,17 @@
                 "properties": {
                     "type": {
                         "const": "knob"
+                    },
+                    "value":{
+                        "type":"number"                        
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
                     }
                 },
                 "required": [
