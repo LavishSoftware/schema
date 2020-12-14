@@ -2784,7 +2784,7 @@
                     "$ref": "#/definitions/numberOrInteger"
                 }
             },
-            "oneOf": [
+            "anyOf": [
                 {
                     "$ref": "#/definitions/lgui2/anchor"
                 },
