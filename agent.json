@@ -121,9 +121,9 @@
             ]
         },
         "dependencies":{
-            "type":"object",
+            "type":"array",
             "description": "A set of agents required by this one",
-            "additionalProperties": {
+            "items": {
                 "type":"object",
                 "properties":{
                     "agent":{
