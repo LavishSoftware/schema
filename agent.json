@@ -64,15 +64,83 @@
                 ],
                 "description": "A custom Agent event handler that can be fired via agent:FireEvent[name]"
             }
+        },
+        "feature":{
+            "type":"string",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPS",
+                "Window Layout",
+                "Window Switching",
+                "Agent Management",
+                "Characters",
+                "Teams",
+                "Hotkeys",
+                "Video FX",
+                "Audio",
+                "Highlights"
+            ]
         }
     },
     "properties": {
         "name": {
-            "type": "string"
+            "type": "string",
+            "description": "A uniquely identifying name"
+        },
+        "description":{
+            "type":"string"
+        },
+        "version":{
+            "type":"string",
+            "description": "A string-comparable version number",
+            "examples": [
+                "0001",
+                "20201222.1",
+                "20201222.2 (Purple Nurple Edition)"
+            ]
+        },
+        "provides":{
+            "type":"array",
+            "items":{
+                "$ref": "#/definitions/feature"
+            }
+        },
+        "conflicts":{
+            "type":"array",
+            "items":{
+                "$ref": "#/definitions/feature"
+            }
+        },
+        "minimumBuild":{
+            "type":"integer",
+            "description": "Minimum supported Build number of Joe Multiboxer or Inner Space",
+            "examples": [
+                6752,
+                6760
+            ]
+        },
+        "dependencies":{
+            "type":"object",
+            "description": "A set of agents required by this one",
+            "additionalProperties": {
+                "type":"object",
+                "properties":{
+                    "agent":{
+                        "type":"string",
+                        "description": "Name of the required agent"
+                    },
+                    "version":{
+                        "type":"string",
+                        "description": "Minimum version number of the required agent"
+                    }                    
+                },
+                "required": ["agent"]
+            }
         },
         "metadata": {
             "type": "object",
-            "description": "Metadata to always attach to the Agent, regardless of the Inner Space platform or the process"
+            "description": "Metadata to always attach to the Agent, regardless of the Joe Multiboxer/Inner Space platform or the process"
         },
         "eventHandlers": {
             "type": "object",
