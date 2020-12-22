@@ -72,7 +72,12 @@
         "templates": {
             "type": "object",
             "additionalProperties": {
-                "description": "A Template to add to the default Skin"
+                "description": "A Template to add to the default Skin",
+                "anyOf": [
+                    {
+                        "$ref": "http://www.lavishsoft.com/schema/lgui2Element.json"
+                    }
+                ]
             },
             "description": "A set of Templates to add to the default Skin"
         },
