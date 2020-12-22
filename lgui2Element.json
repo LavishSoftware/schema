@@ -17,6 +17,9 @@
             "element": {
                 "$ref": "#"
             },
+            "inputControl":{
+                "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/inputControl"
+            },
             "brush": {
                 "$ref": "http://www.lavishsoft.com/schema/lgui2Brush.json"
             },
@@ -107,7 +110,7 @@
                                 "default": 4096,
                                 "description": "Size of the temporary buffer used to Pull the value from LavishScript, which will restrict the length of pulled values. Long strings and other large objects could need a larger buffer, but the default 4096 is safe for the vast majority of cases."
                             },
-                            "linkBinding":{
+                            "linkBinding": {
                                 "allOf": [
                                     {
                                         "$ref": "#/definitions/lgui2/elementLocator"
@@ -118,8 +121,8 @@
                                 "properties": {
                                     "member": {
                                         "type": "string",
-                                        "description":"LavishScript object member for the desired Data Binding",
-                                        "examples":[
+                                        "description": "LavishScript object member for the desired Data Binding",
+                                        "examples": [
                                             "CheckedBinding",
                                             "TextBinding",
                                             "ValueBinding"
@@ -269,16 +272,16 @@
                     "anchorOffsetFactor": {
                         "$ref": "#/definitions/lgui2/point"
                     },
-                    "anchorToElement":{
-                        "$ref":"#/definitions/lgui2/elementLocator"
+                    "anchorToElement": {
+                        "$ref": "#/definitions/lgui2/elementLocator"
                     },
-                    "anchorMode":{
+                    "anchorMode": {
                         "type": "string",
                         "enum": [
                             "static",
                             "cursor",
                             "element"
-                        ]                                
+                        ]
                     }
                 }
             },
@@ -460,21 +463,21 @@
                                 ]
                             },
                             {
-                                "properties":{
+                                "properties": {
                                     "type": {
                                         "const": "property"
                                     },
-                                    "propertyName":{
-                                        "type":"string"
+                                    "propertyName": {
+                                        "type": "string"
                                     },
-                                    "templateName":{
-                                        "type":"string"
+                                    "templateName": {
+                                        "type": "string"
                                     },
-                                    "templateProperty":{
-                                        "type":"string"
+                                    "templateProperty": {
+                                        "type": "string"
                                     }
                                 },
-                                "required":[
+                                "required": [
                                     "propertyName",
                                     "templateName",
                                     "templateProperty"
@@ -532,7 +535,7 @@
                 "type": "object",
                 "properties": {
                     "control": {
-                        "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/inputControl"
+                        "$ref": "#/definitions/lgui2/inputControl"
                     },
                     "mouseFocus": {
                         "type": "boolean",
@@ -732,32 +735,35 @@
                     }
                 ],
                 "properties": {
-                    "object":{
-                        "type":"object"
+                    "type": {
+                        "const": "objectview"
                     },
-                    "objectBinding":{
-                        "type":"object"
+                    "object": {
+                        "type": "object"
                     },
-                    "properties":{
-                        "type":"array",
-                        "items":{
-                            "type":"object",
-                            "properties":{
-                                "propertyViewTemplate":{
-                                    "type":"string",
-                                    "default":"propertyview"
+                    "objectBinding": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "propertyViewTemplate": {
+                                    "type": "string",
+                                    "default": "propertyview"
                                 },
-                                "editTemplate":{
-                                    "type":"string"                                    
+                                "editTemplate": {
+                                    "type": "string"
                                 },
-                                "dataBinding":{
+                                "dataBinding": {
                                     "$ref": "#/definitions/lgui2/dataBinding"
                                 },
-                                "controlData":{
-                                    "type":"object"
+                                "controlData": {
+                                    "type": "object"
                                 }
                             },
-                            "required":[
+                            "required": [
                                 "editTemplate"
                             ]
                         }
@@ -767,15 +773,23 @@
                     "type"
                 ]
             },
-            "propertyview":{
+            "propertyview": {
                 "allOf": [
                     {
                         "$ref": "#/definitions/lgui2/headeredContentContainer"
                     }
                 ],
-                "valueBinding":{
-                    "$ref": "#/definitions/lgui2/dataBinding"
-                }
+                "properties": {
+                    "type": {
+                        "const": "propertyview"
+                    },
+                    "valueBinding": {
+                        "$ref": "#/definitions/lgui2/dataBinding"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "panel": {
                 "allOf": [
@@ -802,8 +816,8 @@
                     "type": {
                         "const": "popup"
                     },
-                    "open":{
-                        "type":"boolean"
+                    "open": {
+                        "type": "boolean"
                     }
                 },
                 "required": [
@@ -1007,7 +1021,10 @@
                     "type": {
                         "const": "page"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "pagecontrol": {
                 "allOf": [
@@ -1075,7 +1092,10 @@
                     "type": {
                         "const": "tab"
                     }
-                }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "tabcontrol": {
                 "allOf": [
@@ -1177,20 +1197,20 @@
                     "cellSpacingFactor": {
                         "$ref": "#/definitions/lgui2/size"
                     },
-                    "autoFill":{
-                        "type":"object",
-                        "properties":{
-                            "firstRow":{
-                                "type":"integer"
+                    "autoFill": {
+                        "type": "object",
+                        "properties": {
+                            "firstRow": {
+                                "type": "integer"
                             },
-                            "lastRow":{
-                                "type":"integer"
+                            "lastRow": {
+                                "type": "integer"
                             },
-                            "firstColumn":{
-                                "type":"integer"
+                            "firstColumn": {
+                                "type": "integer"
                             },
-                            "lastColumn":{
-                                "type":"integer"
+                            "lastColumn": {
+                                "type": "integer"
                             }
                         }
                     }
@@ -1307,6 +1327,57 @@
                     },
                     "imageBrush": {
                         "$ref": "#/definitions/lgui2/brush"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
+            },
+            "inputpicker": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "inputpicker"
+                    },
+                    "multipleControlMode":{
+                        "type":"boolean",
+                        "description":"true if using 'controls' for an Input Binding, or false if using 'control' for an Input Hook"
+                    },
+                    "value": {
+                        "type":"object",
+                        "properties":{
+                            "control": {
+                                "$ref": "#/definitions/lgui2/inputControl"
+                            },        
+                            "controls": {
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/definitions/lgui2/inputControl"
+                                        }
+                                    }
+                                ]
+                            },
+                            "modifiers": {
+                                "$ref": "http://www.lavishsoft.com/schema/lgui2InputBinding.json#/definitions/lgui2/modifiers"
+                            }                            
+                        }
+                    },
+                    "valueBinding": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the value"
                     }
                 },
                 "required": [
@@ -1499,10 +1570,7 @@
                     "segments": {
                         "type": "integer"
                     }
-                },
-                "required": [
-                    "type"
-                ]
+                }
             },
             "textblock": {
                 "allOf": [
@@ -2101,8 +2169,8 @@
                     "type": {
                         "const": "knob"
                     },
-                    "value":{
-                        "type":"number"                        
+                    "value": {
+                        "type": "number"
                     },
                     "valueBinding": {
                         "allOf": [
@@ -2281,13 +2349,16 @@
                         "const": "broadcaster"
                     },
                     "broadcastTarget": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "not available in Joe Multiboxer"
                     },
                     "receiver": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "not available in Joe Multiboxer"
                     },
                     "blockLocal": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "not available in Joe Multiboxer"
                     }
                 },
                 "required": [
@@ -2319,19 +2390,24 @@
                 "type": "object",
                 "properties": {
                     "sendKeyboard": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "not available in Joe Multiboxer"
                     },
                     "sendMouse": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "not available in Joe Multiboxer"
                     },
                     "sendForegroundOnly": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "not available in Joe Multiboxer"
                     },
                     "receiveMouseFeedback": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "not available in Joe Multiboxer"
                     },
                     "useLocalBindings": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "not available in Joe Multiboxer"
                     }
                 },
                 "required": [
@@ -2784,132 +2860,133 @@
                     "$ref": "#/definitions/numberOrInteger"
                 }
             },
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/lgui2/anchor"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/border"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/canvas"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/dockpanel"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/dragger"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/expander"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/hud"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/knob"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/objectview"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/propertyview"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/panel"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/popup"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/radialpanel"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/screen"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/scrollviewer"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/sensitivebutton"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/stackpanel"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/wrappanel"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/table"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/tab"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/tabcontrol"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/page"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/pagecontrol"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/window"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/imagebox"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/progressbar"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/radialgauge"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/textblock"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/button"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/checkbox"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/combobox"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/contextmenu"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/itemview"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/listbox"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/scrollbar"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/slider"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/textbox"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/broadcaster"
-                },
-                {
-                    "$ref": "#/definitions/lgui2/videofeed"
-                },
-                {
-                    "not": {
-                        "required": [
-                            "type"
-                        ]
+                "oneOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/anchor"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/border"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/canvas"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/dockpanel"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/dragger"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/expander"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/hud"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/knob"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/objectview"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/propertyview"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/panel"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/popup"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/radialpanel"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/screen"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/scrollviewer"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/sensitivebutton"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/stackpanel"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/wrappanel"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/table"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/tab"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/tabcontrol"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/page"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/pagecontrol"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/window"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/imagebox"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/inputpicker"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/progressbar"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/radialgauge"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/textblock"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/button"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/checkbox"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/combobox"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/contextmenu"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/itemview"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/listbox"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/scrollbar"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/slider"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/textbox"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/broadcaster"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/videofeed"
+                    },
+                    {
+                        "not":{
+                            "required": ["type"]
+                        }
                     }
-                }
-            ]
+                ]            
         }
     ]
 }
