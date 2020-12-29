@@ -2386,6 +2386,20 @@
                     "type"
                 ]
             },
+            "videofeedsource":{
+                "type":"object",
+                "properties":{
+                    "type":{
+                        "const":"videofeedsource"
+                    },
+                    "feedName":{
+                        "type":"string"
+                    }
+                },
+                "required":[
+                    "type"
+                ]
+            },
             "remoteControl": {
                 "type": "object",
                 "properties": {
@@ -2980,6 +2994,9 @@
                     },
                     {
                         "$ref": "#/definitions/lgui2/videofeed"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/videofeedsource"
                     },
                     {
                         "not":{
