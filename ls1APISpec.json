@@ -1,0 +1,474 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "type": "object",
+    "title": "LavishScript API Specification",
+    "description": "Describes LavishScript API usage",
+    "definitions": {
+        "oneOrMoreStrings":{
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type":"string"
+                    }
+                }
+            ]    
+        },
+        "example": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "code": {
+                    "$ref":"#/definitions/oneOrMoreStrings"
+                },
+                "result": {
+                    "$ref":"#/definitions/oneOrMoreStrings"
+                }
+            },
+            "required": ["code"]
+        },
+        "event": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/parameter"
+                    }
+                },
+                "context": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                },
+                "minimumBuild": {
+                    "uint": "Minimum Build number to include this"
+                },
+                "category": {
+                    "type": "string"
+                }
+            }
+        },
+        "type": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description":{
+                    "type":"string"
+                },
+                "baseType": {
+                    "type": "string"
+                },
+                "variableType":{
+                    "type":"string",
+                    "description": "Creating a variable will use `variableType` instead (e.g. due to requiring a different method of storage)"
+                },
+                "usesSubType": {
+                    "type": "boolean"
+                },
+                "members": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/typeMember"
+                    }
+                },
+                "methods": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/typeMethod"
+                    }
+                },
+                "persistent":{
+                    "type":"boolean",
+                    "description": "True if `weakref` is supported by this type",
+                    "default":true
+                },
+                "initializer": {
+                    "$ref": "#/definitions/typeInitializer"
+                },
+                "index": {
+                    "$ref": "#/definitions/typeIndex"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                },
+                "minimumBuild": {
+                    "uint": "Minimum Build number to include this"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "asString": {
+                    "type": "object",
+                    "properties": {
+                        "constant": {
+                            "type": "string"
+                        },
+                        "member": {
+                            "type": "string",
+                            "description": "If this value is the same as a member, this specifies that member"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "type": "array",
+                            "items":{
+                                "$ref": "#/definitions/example"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "topLevelObject": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/parameter"
+                                }
+                            },
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/definitions/example"
+                                }
+                            }
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                }
+            }
+        },
+        "typeIndex": {
+            "type": "object",
+            "properties": {
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/parameter"
+                                }
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/definitions/example"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "typeInitializer": {
+            "type": "object",
+            "properties": {
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/parameter"
+                                }
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/definitions/example"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "typeMember": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/parameter"
+                                }
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/definitions/example"
+                                }
+                            }
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                }
+            }
+        },
+        "typeMethod": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            },
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "parameters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/parameter"
+                                }
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/definitions/example"
+                                }
+                            }
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                }
+            }
+        },
+        "command": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "forms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object", 
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            },
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "parameters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/parameter"
+                                }
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/definitions/example"
+                                }
+                            }
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                }
+            }
+        },
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "constant": {
+                    "type": "string",
+                    "description": "Used for flags, e.g. -exact. Often used with `followingParameter`."
+                },
+                "enum":{
+                    "type":"array",
+                    "items": {
+                        "type":"string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "greedy": {
+                    "type": "boolean",
+                    "description": "If enabled, specifies that all remaining parameters are combined into this one"
+                },
+                "optional": {
+                    "type": "boolean"
+                },
+                "default": {},
+                "followingParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/parameter"
+                    }
+                },
+                "parameterGroup":{
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/parameter"
+                    }
+                }
+            },
+            "required": [
+                "type"
+            ]
+        }
+    },
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "A uniquely identifying name for the API provider"
+        },
+        "description": {
+            "type": "string"
+        },
+        "events": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/event"
+            }
+        },
+        "types": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/type"
+            }
+        },
+        "topLevelObjects": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/topLevelObject"
+            }
+        },
+        "commands": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/command"
+            }
+        }
+    },
+    "required": [
+        "name"
+    ]
+}
