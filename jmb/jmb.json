@@ -5,63 +5,155 @@
     "title": "Joe Multiboxer",
     "description": "https://joemultiboxer.com",
     "definitions": {
-        "globalSettings":{
-            "type":"object",
+        "globalSettings": {
+            "type": "object",
             "properties": {
-                "characters":{
-                    "$ref":"#/definitions/character"
+                "characters": {
+                    "$ref": "#/definitions/character"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/team"
+                    }
+                },
+                "agents": {
+                    "type": "object",
+                    "properties": {
+                        "defaultAutoStart": {
+                            "type": "boolean"
+                        },
+                        "autoStart": {
+                            "type": "object",
+                            "description": "agent names to set auto-start behavior for",
+                            "additionalProperties": {
+                                "type": "boolean",
+                                "description": "auto-start"
+                            }
+                        }
+                    }
+                },
+                "windowWidth": {
+                    "type": "integer"
+                },
+                "windowHeight": {
+                    "type": "integer"
                 }
             }
-        },     
-        "virtualFile":{
-            "type":"object",
+        },
+        "virtualFile": {
+            "type": "object",
             "properties": {
-                "pattern":{
-                    "type":"string"
+                "pattern": {
+                    "type": "string"
                 },
-                "replacement":{
-                    "type":"string"
+                "replacement": {
+                    "type": "string"
                 },
-                "exact":{
-                    "type":"boolean"
+                "exact": {
+                    "type": "boolean"
                 },
-                "target":{
-                    "type":"string",
-                    "enum": ["file","filemapping","pipe","event","mutex","registry","all","nonfile"],
-                    "default":"all"
+                "target": {
+                    "type": "string",
+                    "enum": [
+                        "file",
+                        "filemapping",
+                        "pipe",
+                        "event",
+                        "mutex",
+                        "registry",
+                        "all",
+                        "nonfile"
+                    ],
+                    "default": "all"
                 }
             },
-            "required": ["pattern"]
+            "required": [
+                "pattern"
+            ],
+            "examples": [
+                {
+                    "pattern": "*/Config.WTF",
+                    "replacement": "{1}/Config.Generic.JMB1.WTF",
+                    "exact": false,
+                    "target": "all"
+                },
+                {
+                    "pattern": "Software/Blizzard Entertainment/World of Warcraft/Client/*",
+                    "replacement": "Software/Blizzard Entertainment/World of Warcraft/Client-JMB1/*",
+                    "exact": false,
+                    "target": "all"
+                }
+            ]
         },
-        "character":{
-            "type":"object",
+        "character": {
+            "type": "object",
             "properties": {
-                "id":{
-                    "type":"integer"
+                "id": {
+                    "type": "integer",
+                    "description": "an id unique to all characters in this database"
                 },
-                "display_name":{
-                    "type":"string"
+                "display_name": {
+                    "type": "string"
                 },
-                "actualName":{
-                    "type":"string"
+                "actualName": {
+                    "type": "string"
                 },
-                "server":{
-                    "type":"string"
+                "server": {
+                    "type": "string"
                 },
-                "game":{
-                    "type":"string"
+                "game": {
+                    "type": "string",
+                    "examples": ["dxNothing"]
                 },
-                "gameProfile":{
-                    "type":"string"
+                "gameProfile": {
+                    "type": "string",
+                    "examples": ["dxNothing Default Profile"]
                 },
-                "virtualFiles":{
-                    "type":"array",
-                    "items":{
+                "virtualFiles": {
+                    "type": "array",
+                    "items": {
                         "$ref": "#/definitions/virtualFile"
                     }
                 },
-                "metadata":{
-                    "type":"object"
+                "metadata": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "display_name"
+            ]
+        },
+        "team": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "an id unique to all teams in this database"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "virtualFiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/virtualFile"
+                    }
+                },
+                "characters": {
+                    "type": "array",
+                    "description": "array of character ids to include in the team",
+                    "items": {
+                        "type": "integer",
+                        "description": "character id"
+                    }
+                },
+                "masterSlot": {
+                    "type": "integer",
+                    "description": "the initial Master Slot for the team"
+                },
+                "metadata": {
+                    "type": "object"
                 }
             },
             "required": ["display_name"]
