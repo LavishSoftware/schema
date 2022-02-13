@@ -700,6 +700,24 @@
                     "type"
                 ]
             },
+            "dragin": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "dragin"
+                    },
+                    "dragDropItemType":{
+                        "type":"string"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
+            },
             "expander": {
                 "allOf": [
                     {
@@ -2889,6 +2907,9 @@
                     },
                     {
                         "$ref": "#/definitions/lgui2/dragger"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/dragin"
                     },
                     {
                         "$ref": "#/definitions/lgui2/expander"
