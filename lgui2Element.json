@@ -420,7 +420,8 @@
                                 "enum": [
                                     "method",
                                     "code",
-                                    "property"
+                                    "property",
+                                    "template"
                                 ]
                             }
                         },
@@ -482,6 +483,16 @@
                                     "templateName",
                                     "templateProperty"
                                 ]
+                            },
+                            {
+                                "properties":{
+                                    "type":{
+                                        "const":"template"
+                                    },
+                                    "template":{
+                                        "type":"string"
+                                    }
+                                }
                             }
                         ]
                     }
