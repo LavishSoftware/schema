@@ -2229,6 +2229,22 @@
                     "type"
                 ]
             },
+            "overlay":{
+                "type":"object",
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties": {
+                    "overlay": {
+                        "$ref": "#/definitions/lgui2/element"
+                    },
+                    "overlayContainer": {
+                        "$ref": "#/definitions/lgui2/element"
+                    }
+                }            
+            },
             "scrollbar": {
                 "allOf": [
                     {
@@ -3011,6 +3027,9 @@
                     },
                     {
                         "$ref": "#/definitions/lgui2/listbox"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/overlay"
                     },
                     {
                         "$ref": "#/definitions/lgui2/scrollbar"
