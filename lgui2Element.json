@@ -785,6 +785,9 @@
                                 "editTemplate": {
                                     "type": "string"
                                 },
+                                "viewTemplate": {
+                                    "type": "string"
+                                },
                                 "dataBinding": {
                                     "$ref": "#/definitions/lgui2/dataBinding"
                                 },
@@ -792,8 +795,17 @@
                                     "type": "object"
                                 }
                             },
-                            "required": [
-                                "editTemplate"
+                            "oneOf":[
+                                {
+                                    "required": [
+                                        "editTemplate"
+                                    ]        
+                                },
+                                {
+                                    "required": [
+                                        "viewTemplate"
+                                    ]        
+                                }
                             ]
                         }
                     }
