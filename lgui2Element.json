@@ -902,6 +902,11 @@
                 }
             },
             "radialpanel": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/panelBase"
+                    }
+                ],
                 "properties": {
                     "type": {
                         "const": "radialpanel"
@@ -947,6 +952,11 @@
                 ]
             },
             "scrollviewer": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
                 "properties": {
                     "type": {
                         "const": "scrollviewer"
