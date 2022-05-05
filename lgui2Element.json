@@ -2251,6 +2251,81 @@
                     "type"
                 ]
             },
+            "map": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/itemList"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "map"
+                    },
+                    "virtualAlignment":{
+                        "type": "string",
+                        "enum": [
+                            "center",
+                            "corner"
+                        ]
+                    },
+                    "virtualLocation":{
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "virtualScale":{
+                        "$ref": "#/definitions/lgui2/size"
+                    },
+                    "virtualSize":{
+                        "$ref": "#/definitions/lgui2/size"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
+            },
+            "mapitemview": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/lgui2/itemview"
+                    }
+                ],
+                "properties": {
+                    "type": {
+                        "const": "mapitemview"
+                    },
+                    "virtualAlignment":{
+                        "type": "string",
+                        "enum": [
+                            "center",
+                            "corner"
+                        ]
+                    },
+                    "virtualLocation":{
+                        "$ref": "#/definitions/lgui2/point"
+                    },
+                    "virtualSize":{
+                        "$ref": "#/definitions/lgui2/size"
+                    },
+                    "virtualLocationBinding":{
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the virtual location"
+                    },
+                    "virtualSizeBinding":{
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the virtual size"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
+            },
             "overlay":{
                 "type":"object",
                 "allOf": [
