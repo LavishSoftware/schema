@@ -3153,6 +3153,12 @@
                         "$ref": "#/definitions/lgui2/videofeedsource"
                     },
                     {
+                        "$ref": "#/definitions/lgui2/map"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/mapitemview"
+                    },
+                    {
                         "not":{
                             "required": ["type"]
                         }
