@@ -2526,6 +2526,14 @@
                     "feedName": {
                         "type": "string"
                     },
+                    "feedNameBinding":{
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/lgui2/dataBinding"
+                            }
+                        ],
+                        "description": "A Data Binding to use for the feed name"
+                    },
                     "permanent": {
                         "type": "boolean"
                     }
