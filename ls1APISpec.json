@@ -108,6 +108,18 @@
                         "$ref": "#/definitions/typeMethod"
                     }
                 },
+                "staticMembers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/typeMember"
+                    }
+                },
+                "staticMethods": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/typeMethod"
+                    }
+                },
                 "persistent":{
                     "type":"boolean",
                     "description": "True if `weakref` is supported by this type",
@@ -125,6 +137,10 @@
                 },
                 "minimumBuild": {
                     "uint": "Minimum Build number to include this"
+                },
+                "static":{
+                    "type":"boolean",
+                    "description": "True if the type is marked as a static type, meaning all Members and Methods also work as Static Members and Methods"
                 },
                 "category": {
                     "type": "string"
@@ -296,6 +312,9 @@
                         }
                     }
                 },
+                "static":{
+                    "type":"boolean"
+                },
                 "category": {
                     "type": "string"
                 },
@@ -336,6 +355,9 @@
                             }
                         }
                     }
+                },
+                "static":{
+                    "type":"boolean"
                 },
                 "category": {
                     "type": "string"
