@@ -778,6 +778,9 @@
                         "items": {
                             "type": "object",
                             "properties": {
+                                "name":{
+                                    "type":"string"
+                                },
                                 "propertyViewTemplate": {
                                     "type": "string",
                                     "default": "propertyview"
@@ -795,6 +798,7 @@
                                     "type": "object"
                                 }
                             },
+                            "required":["name"],
                             "oneOf":[
                                 {
                                     "required": [
