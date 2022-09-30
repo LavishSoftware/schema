@@ -292,7 +292,7 @@
                                 "type": "string"
                             },
                             "schema":{
-                                "$schema": "http://json-schema.org/draft-07/schema#"
+                                "$ref": "http://json-schema.org/draft-07/schema#"
                             },            
                             "minimumBuild": {
                                 "uint": "Minimum Build number to include this"
@@ -455,7 +455,7 @@
                     }
                 },
                 "schema":{
-                    "$schema": "http://json-schema.org/draft-07/schema#"
+                    "$ref": "http://json-schema.org/draft-07/schema#"
                 }
             },
             "required": [
