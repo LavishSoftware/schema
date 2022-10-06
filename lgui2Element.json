@@ -2484,6 +2484,9 @@
                     },
                     "multiline": {
                         "type": "boolean"
+                    },
+                    "textBindingUsesFocus": {
+                        "type": "boolean"
                     }
                 },
                 "required": [
