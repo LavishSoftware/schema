@@ -334,6 +334,26 @@
                             }
                         ],
                         "description": "A Data Binding to use for the text"
+                    },
+                    "horizontalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "left",
+                            "center",
+                            "right",
+                            "stretch"
+                        ]
+                    },
+                    "verticalContentAlignment": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "top",
+                            "center",
+                            "bottom",
+                            "stretch"
+                        ]
                     }
                 }
             },
