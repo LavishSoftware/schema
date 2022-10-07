@@ -463,7 +463,7 @@
                                 },
                                 "required": [
                                     "object",
-                                    "method"
+                                    "method"                        
                                 ]
                             },
                             {
@@ -512,7 +512,10 @@
                                     "template":{
                                         "type":"string"
                                     }
-                                }
+                                },
+                                "required":[
+                                    "template"
+                                ]
                             }
                         ]
                     }
@@ -530,6 +533,10 @@
                         "items": {
                             "$ref": "#/definitions/lgui2/item"
                         }
+                    },
+                    "multiselect":{
+                        "type":"boolean",
+                        "default":false  
                     },
                     "defaultItemViewTemplate": {
                         "type": "string"
@@ -764,6 +771,62 @@
                     }
                 },
                 "required": [
+                    "type"
+                ]
+            },
+            "filepicker":{
+                "allOf":[
+                    {
+                        "$ref": "#/definitions/lgui2/contentContainer"
+                    }
+                ],
+                "properties":{
+                    "folderMode":{
+                        "type":"boolean",
+                        "default":false
+                    },
+                    "multiselect":{
+                        "type":"boolean",
+                        "default":false
+                    },
+                    "filename":{
+                        "type":"string",
+                        "default":""
+                    },
+                    "wildcard":{
+                        "type":"string",
+                        "default":"*"
+                    },
+                    "path":{
+                        "type":"string",
+                        "default":"."
+                    },
+                    "autoRefreshFileList":{
+                        "type":"boolean",
+                        "default":true
+                    },
+                    "requireExisting":{
+                        "type":"boolean",
+                        "default":false
+                    },
+                    "fileList":{
+                        "type":"array"
+                    },
+                    "value":{
+                        "oneOf":[
+                            {
+                                "type":"string"
+                            },
+                            {
+                                "type":"array"
+                            }
+                        ]
+                    },
+                    "valueBinding":{
+                        "$ref": "#/definitions/lgui2/dataBinding"
+                    }
+                },
+                "required":[
                     "type"
                 ]
             },
@@ -3078,6 +3141,9 @@
                     },
                     {
                         "$ref": "#/definitions/lgui2/expander"
+                    },
+                    {
+                        "$ref": "#/definitions/lgui2/filepicker"
                     },
                     {
                         "$ref": "#/definitions/lgui2/hud"
