@@ -781,6 +781,9 @@
                     }
                 ],
                 "properties":{
+                    "type": {
+                        "const": "filepicker"
+                    },
                     "folderMode":{
                         "type":"boolean",
                         "default":false
