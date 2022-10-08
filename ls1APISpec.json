@@ -75,8 +75,7 @@
                 "category": {
                     "type": "string"
                 }
-            },
-            "required": ["name"]
+            }
         },
         "enum":{
             "type":"object",
@@ -114,8 +113,7 @@
                 "description": {
                     "type":"string"
                 }
-            },
-            "required": ["name"]
+            }
         },
         "type": {
             "type": "object",
@@ -207,8 +205,6 @@
                     }
                 }
             },
-            "required": ["name"]
-        },
         "topLevelObject": {
             "type": "object",
             "properties": {
@@ -252,8 +248,6 @@
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
             },
-            "required": ["name"]
-        },
         "typeIndex": {
             "type": "object",
             "properties": {
@@ -368,8 +362,6 @@
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
             },
-            "required": ["name"]
-        },
         "typeMethod": {
             "type": "object",
             "properties": {
@@ -413,8 +405,6 @@
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
             },
-            "required": ["name"]
-        },
         "command": {
             "type": "object",
             "properties": {
@@ -455,8 +445,6 @@
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
             },
-            "required": ["name"]
-        },
         "parameter": {
             "type": "object",
             "properties": {
