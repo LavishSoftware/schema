@@ -87,21 +87,29 @@
                     "type":"boolean"
                 },
                 "values":{
-                    "type":"object",
-                    "additionalProperties": {
-                        "type":"object",
-                        "properties": {
-                            "value":{
-                                "type":"integer"
-                            },
-                            "minimumBuild": {
-                                "uint": "Minimum Build number to include this"
-                            },
-                            "description": {
-                                "type":"string"
-                            }            
-                        }                        
-                    }                    
+                    "oneOf": [
+                        {
+                            "type":"object",
+                            "additionalProperties": {
+                                "type":"object",
+                                "properties": {
+                                    "value":{
+                                        "type":"integer"
+                                    },
+                                    "minimumBuild": {
+                                        "uint": "Minimum Build number to include this"
+                                    },
+                                    "description": {
+                                        "type":"string"
+                                    }            
+                                },
+                                "required": ["value"]                        
+                            }                            
+                        },
+                        {
+                            "type":"integer"
+                        }
+                    ]
                 },
                 "restricted": {
                     "type": "boolean",
