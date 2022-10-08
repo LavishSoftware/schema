@@ -94,7 +94,18 @@
                                 "type":"object",
                                 "properties": {
                                     "value":{
-                                        "type":"integer"
+                                        "oneOf": [
+                                            {
+                                                "type":"integer"                                                
+                                            },
+                                            {
+                                                "type":"array",
+                                                "description": "Array of value names that combine to form this value",
+                                                "items": {
+                                                    "type":"string"
+                                                }
+                                            }
+                                        ]
                                     },
                                     "minimumBuild": {
                                         "uint": "Minimum Build number to include this"
