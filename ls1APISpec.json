@@ -87,10 +87,10 @@
                     "type":"boolean"
                 },
                 "values":{
-                    "oneOf": [
-                        {
-                            "type":"object",
-                            "additionalProperties": {
+                    "type":"object",
+                    "additionalProperties": {
+                        "oneOf": [
+                            {
                                 "type":"object",
                                 "properties": {
                                     "value":{
@@ -103,13 +103,13 @@
                                         "type":"string"
                                     }            
                                 },
-                                "required": ["value"]                        
-                            }                            
-                        },
-                        {
-                            "type":"integer"
-                        }
-                    ]
+                                "required": ["value"]                                
+                            },
+                            {
+                                "type":"integer"
+                            }
+                        ]
+                    }                                                                        
                 },
                 "restricted": {
                     "type": "boolean",
