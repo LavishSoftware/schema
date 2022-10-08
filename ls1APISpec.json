@@ -75,7 +75,47 @@
                 "category": {
                     "type": "string"
                 }
-            }
+            },
+            "required": ["name"]
+        },
+        "enum":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "flags":{
+                    "type":"boolean"
+                },
+                "values":{
+                    "type":"object",
+                    "additionalProperties": {
+                        "type":"object",
+                        "properties": {
+                            "value":{
+                                "type":"integer"
+                            },
+                            "minimumBuild": {
+                                "uint": "Minimum Build number to include this"
+                            },
+                            "description": {
+                                "type":"string"
+                            }            
+                        }                        
+                    }                    
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
+                },
+                "minimumBuild": {
+                    "uint": "Minimum Build number to include this"
+                },
+                "description": {
+                    "type":"string"
+                }
+            },
+            "required": ["name"]
         },
         "type": {
             "type": "object",
@@ -166,7 +206,8 @@
                         }
                     }
                 }
-            }
+            },
+            "required": ["name"]
         },
         "topLevelObject": {
             "type": "object",
@@ -210,7 +251,8 @@
                     "type": "boolean",
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
-            }
+            },
+            "required": ["name"]
         },
         "typeIndex": {
             "type": "object",
@@ -325,7 +367,8 @@
                     "type": "boolean",
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
-            }
+            },
+            "required": ["name"]
         },
         "typeMethod": {
             "type": "object",
@@ -369,7 +412,8 @@
                     "type": "boolean",
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
-            }
+            },
+            "required": ["name"]
         },
         "command": {
             "type": "object",
@@ -410,7 +454,8 @@
                     "type": "boolean",
                     "description": "Restricted functionality may be available in Inner Space, but not Joe Multiboxer and other similarly strict software"
                 }
-            }
+            },
+            "required": ["name"]
         },
         "parameter": {
             "type": "object",
@@ -478,6 +523,12 @@
             "type": "object",
             "additionalProperties": {
                 "$ref": "#/definitions/event"
+            }
+        },
+        "enums": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/enum"
             }
         },
         "types": {
