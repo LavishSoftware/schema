@@ -5,6 +5,82 @@
     "title": "Inner Space Agent",
     "description": "An Inner Space Agent provides event handlers for the Inner Space platform",
     "definitions": {
+        "provider":{
+            "properties": {
+                "name":{
+                    "type":"string"
+                },
+                "description":{
+                    "type":"string"
+                },
+                "updated":{
+                    "type":"integer"
+                },
+                "url":{
+                    "type":"string"
+                },
+                "platform":{
+                    "enum": ["innerspace","joemultiboxer"]
+                },
+                "listings":{
+                    "type":"object",
+                    "additionalProperties": {
+                        "$ref":"#/definitions/listing"    
+                    }
+                }
+            }
+        },
+        "listing":{
+            "properties": {
+                "codeName":{
+                    "type":"string",
+                    "description": "A canonical name to differentiate between other listings with the same name (e.g. capable of providing 2 different builds of the same Agent)"
+                },
+                "name":{
+                    "type":"string",
+                    "description": "The full name of the Agent"
+                },
+                "description":{
+                    "type":"string"
+                },
+                "version":{
+                    "type":"string"
+                },
+                "updated":{
+                    "type":"integer"
+                },
+                "url":{
+                    "type":"string"
+                },
+                "localDevPath":{
+                    "type":"string",
+                    "description": "Intended for developers, this allows the installer to pull from a local development path instead of a URL"
+                },
+                "minimumBuild":{
+                    "type":"integer"
+                },
+                "collection":{
+                    "type":"array",
+                    "items": {
+                        "type":"object",
+                        "properties": {
+                            "name":{
+                                "type":"string"
+                            },
+                            "entry":{
+                                "type":"object",
+                                "properties": {
+                                    "filepath":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        },
+                        "required": ["name"]
+                    }
+                }
+            }
+        },
         "eventHandler": {
             "type":"object",
             "properties":{
